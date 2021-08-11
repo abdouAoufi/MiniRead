@@ -39,6 +39,19 @@ module.exports = {
       "2xl": "1536px",
       // => @media (min-width: 1536px) { ... }
     },
+    minHeight: {
+      14: "56px",
+
+      0: "0",
+
+      "1/4": "25%",
+
+      "1/2": "50%",
+
+      "3/4": "75%",
+
+      full: "100%",
+    },
   },
   variants: {
     extend: {},
