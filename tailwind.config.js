@@ -1,8 +1,11 @@
+const colors = require('tailwindcss/colors')
+
 module.exports = {
   purge: [],
   darkMode: false, // or 'media' or 'class'
   theme: {
-    colors: {
+    extend:{
+      colors: {
       // Configure your color palette here
       primary: {
         light: "#b3bcf5",
@@ -21,7 +24,11 @@ module.exports = {
       },
       black: "#40514e",
       gray: "#f8f8f8",
+      graymodal:"#2d767f",
+      boldGray : "#c4c4c4"
+    }
     },
+    
     screen: {
       xsm: "400px",
       sm: "512px",
