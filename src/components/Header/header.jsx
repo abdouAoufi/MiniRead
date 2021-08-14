@@ -1,12 +1,8 @@
 import React, { useState, useEffect, Fragment } from "react";
 import logo from "../../assets/images/svg/logo.svg";
-import profilePicture from "../../assets/images/jpeg/port.jpg";
-import Bell from "../icons/Bell";
 import Search from "../icons/Search";
 import MenuBurger from "../icons/Menu";
 import { Link } from "react-router-dom";
-import Modal from "../StyleRelated/Modal/Modal";
-import { Menu, Transition } from "@headlessui/react";
 import ProfileMenus from "./Menus/ProfileMenus";
 import NotifMenu from "./Menus/NotifMenu";
 
