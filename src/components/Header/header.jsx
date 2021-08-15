@@ -5,13 +5,7 @@ import MenuBurger from "../icons/Menu";
 import { Link } from "react-router-dom";
 import ProfileMenus from "./Menus/ProfileMenus";
 import NotifMenu from "./Menus/NotifMenu";
-
-const navigation = [
-  { name: "trend", to: "/timeline", current: false },
-  { name: "Home", to: "/feed", current: false },
-  { name: "Blogs", to: "/descussion", current: false },
-  { name: "Quizes", to: "/course", current: false },
-];
+import { LINKS_NAVBAR } from "../../assets/assets";
 
 function header(props) {
   const [searchBarParams, setSearchBarPrams] = useState("hidden");
@@ -71,14 +65,13 @@ function header(props) {
             <div className="hidden cursor-pointer md:block lg:hidden">
               <MenuBurger className="hidden" />
             </div>
-            {/* LOGO */}
+            {/* // ! LOGO */}
             <div className="cursor-pointer">
               <img src={logo} alt="logo" height="25" />
             </div>
-            {/* LINKS LIST */}
-
+            {/*// ! LINKS LIST */}
             <ul className="hidden md:hidden lg:flex">
-              {navigation.map((item) => (
+              {LINKS_NAVBAR.map((item) => (
                 <Link
                   key={item.name}
                   to={item.to}
@@ -94,7 +87,7 @@ function header(props) {
                 </Link>
               ))}
             </ul>
-            {/* ICONS CONTAINER */}
+            {/*// ! ICONS CONTAINER */}
             <div className="flex items-center">
               {/* Profile dropdown */}
               <div className="mx-2 cursor-pointer" onClick={displaySearchBar}>
