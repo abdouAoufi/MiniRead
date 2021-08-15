@@ -1,34 +1,37 @@
-const colors = require('tailwindcss/colors')
+const colors = require("tailwindcss/colors");
 
 module.exports = {
   purge: [],
   darkMode: false, // or 'media' or 'class'
   theme: {
-    extend:{
+    extend: {
+      spacing: {
+        104: "26rem",
+      },
       colors: {
-      // Configure your color palette here
-      primary: {
-        light: "#b3bcf5",
-        DEFAULT: "#364f6b",
-        dark: "#202e78",
+        // Configure your color palette here
+        primary: {
+          light: "#b3bcf5",
+          DEFAULT: "#364f6b",
+          dark: "#202e78",
+        },
+        secondary: {
+          light: "#77FAC6",
+          DEFAULT: "#00beb0",
+          dark: "#2186A3",
+        },
+        accent: {
+          light: "#F1F1E6",
+          DEFAULT: "#FFF7d6",
+          dark: "#e3c4a8",
+        },
+        black: { light: "#6b7280", DEFAULT: "#40514e", dark: "#000000" },
+        gray: "#f8f8f8",
+        graymodal: "#2d767f",
+        boldGray: "#c4c4c4",
       },
-      secondary: {
-        light: "#77FAC6",
-        DEFAULT: "#00beb0",
-        dark: "#2186A3",
-      },
-      accent: {
-        light: "#F1F1E6",
-        DEFAULT: "#FFF7d6",
-        dark: "#e3c4a8",
-      },
-      black: "#40514e",
-      gray: "#f8f8f8",
-      graymodal:"#2d767f",
-      boldGray : "#c4c4c4"
-    }
     },
-    
+
     screen: {
       xsm: "400px",
       sm: "512px",

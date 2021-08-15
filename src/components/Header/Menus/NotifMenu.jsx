@@ -1,22 +1,23 @@
 import React, { Fragment } from "react";
 import { Menu, Transition } from "@headlessui/react";
 import Bell from "../../../components/icons/Bell";
+import ProfilePicture from "../../../assets/images/jpeg/port.jpg";
 import { Link } from "react-router-dom";
+import Notification from "../Notification/Notification";
 
-
-  function classNames(...classes) {
-    return classes.filter(Boolean).join(" ");
-  }
+function classNames(...classes) {
+  return classes.filter(Boolean).join(" ");
+}
 
 function NotifMenu() {
   return (
-    <Menu as="div" className="cursor-pointer mx-2 md:mx-4 relative">
+    <Menu as="div" className="cursor-pointer  md:mx-4 relative">
       {({ open }) => (
         <>
           <div>
             <Menu.Button className=" flex text-sm rounded-full focus:outline-none ">
               <span className="sr-only">Open user menu</span>
-              {/* IMAGE-PROFILE */}
+              {/* BELL-ICON */}
               <div className="relative">
                 <span className="absolute -top-2 -right-2 rounded-md font-semibold shadow-sm px-1 bg-secondary text-white">
                   4
@@ -35,50 +36,37 @@ function NotifMenu() {
             leaveFrom="transform opacity-100 scale-100"
             leaveTo="transform opacity-0 scale-95"
           >
-            <Menu.Items
-              static
-              className="origin-top-right border absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none"
-            >
-              <Menu.Item>
-                {({ active }) => (
-                  <Link
-                    to="/"
-                    className={classNames(
-                      active ? "bg-gray-100" : "",
-                      "block px-4 py-2 text-sm text-gray-700"
-                    )}
-                  >
-                    Your Profile
-                  </Link>
-                )}
-              </Menu.Item>
-              <Menu.Item>
-                {({ active }) => (
-                  <Link
-                    to="/"
-                    className={classNames(
-                      active ? "bg-gray-100" : "",
-                      "block px-4 py-2 text-sm text-gray-700"
-                    )}
-                  >
-                    Settings
-                  </Link>
-                )}
-              </Menu.Item>
-              <Menu.Item>
-                {({ active }) => (
-                  <Link
-                    to="/"
-                    className={classNames(
-                      active ? "bg-gray-100" : "",
-                      "block px-4 py-2 text-sm text-gray-700"
-                    )}
-                  >
-                    Sign out
-                  </Link>
-                )}
-              </Menu.Item>
-            </Menu.Items>
+            <div>
+              <Menu.Items
+                static
+                className="origin-top-right mx-6 absolute right-0 mt-2 w-104 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none"
+              >
+                <div className="pt-4  mx-4 pb-3 flex justify-between mb-2 border-b-2 border-gray ">
+                  <p className="font-bold text-md text-primary">Notification</p>
+                  <p className="font-semibod text-sm text-secondary">
+                    Mark as read
+                  </p>
+                </div>
+
+                <Menu.Item>
+                  {({ active }) => (
+                    <Link
+                      to="/"
+                      className={classNames(
+                        active ? "bg-gray-100" : "",
+                        "block px-4 py-2 text-sm text-gray-700"
+                      )}
+                    >
+                      <div>
+                        {/* NOTIFICATION */}
+                        <Notification />
+                        <Notification />
+                      </div>
+                    </Link>
+                  )}
+                </Menu.Item>
+              </Menu.Items>
+            </div>
           </Transition>
         </>
       )}
