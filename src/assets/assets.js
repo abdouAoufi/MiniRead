@@ -37,3 +37,16 @@ export const LINKS_NAVBAR = [{
         current: false
     },
 ];
+
+
+const TEXT_DATA = {
+    title: "",
+    content: {
+        title_1: "",
+        par_1: "",
+        title_2: "",
+        par_2: "",
+        title_3: "",
+        par_3:""
+    }
+}

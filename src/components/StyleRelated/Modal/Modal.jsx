@@ -18,7 +18,7 @@ function Modal(props) {
       />
       <Transition
         id="search-modal"
-        className=" w-full fixed overflow-hidden inset-0 z-50 overflow-hidden top-14 flex items-start mb-4 justify-center transform px-4 sm:px-6"
+        className="  fixed inset-0 z-50 overflow-hidden  top-14 flex items-start mb-4 justify-center transform px-4 sm:px-6"
         role="dialog"
         aria-modal="true"
         show={props.openModal}
@@ -34,7 +34,7 @@ function Modal(props) {
           onClick={(e) => {
             e.stopPropagation();
           }}
-          className="rounded-b-3xl  bg-white p-8 w-full min-h-1/2
+          className="rounded-sm  bg-white p-8 w-full min-h-1/2
          md:w-1/3 lg:w-1/2"
         >
           {props.children}

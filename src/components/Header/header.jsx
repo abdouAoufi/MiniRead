@@ -8,10 +8,15 @@ import NotifMenu from "./Menus/NotifMenu";
 import { LINKS_NAVBAR } from "../../assets/assets";
 
 function header(props) {
-  const [searchBarParams, setSearchBarPrams] = useState("hidden");
-  const [menuItems, setMenuItemsState] = useState(
-    "p-4 flex justify-between items-center"
+  const defaultClasses = {
+    searchBar: "hidden",
+    navbarItems: "p-4 flex justify-between items-center",
+  };
+
+  const [searchBarParams, setSearchBarPrams] = useState(
+    defaultClasses.searchBar
   );
+  const [menuItems, setMenuItemsState] = useState(defaultClasses.navbarItems);
 
   function classNames(...classes) {
     return classes.filter(Boolean).join(" ");
@@ -39,7 +44,7 @@ function header(props) {
   }, [props.closing]);
 
   return (
-    <header className=" z-50 shadow-sm right-0 top-0 left-0 bg-white  min-h-14 fixed unset-0  border-gray">
+    <header className="sticky z-50 shadow-sm right-0 top-0 left-0 bg-white  min-h-14  unset-0  border-gray">
       <nav>
         {/* BIG CONTAINER */}
         <div className="md:px-8 md:border-1">
@@ -94,7 +99,9 @@ function header(props) {
                 <Search />
               </div>
               <NotifMenu />
-              <ProfileMenus />
+              <div className="hidden md:block">
+                <ProfileMenus />
+              </div>
             </div>
           </div>
         </div>

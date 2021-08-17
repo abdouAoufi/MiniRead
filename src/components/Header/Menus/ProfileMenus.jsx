@@ -10,7 +10,7 @@ function classNames(...classes) {
 function ProfileMenus() {
   return (
     <div>
-      <Menu as="div" className="cursor-pointer mx-2 md:mx-4 relative">
+      <Menu as="div" className="cursor-pointer mx-3 md:mx-4 relative">
         {({ open }) => (
           <>
             <div>

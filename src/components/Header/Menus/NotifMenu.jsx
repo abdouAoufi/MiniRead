@@ -1,7 +1,6 @@
 import React, { Fragment } from "react";
 import { Menu, Transition } from "@headlessui/react";
 import Bell from "../../../components/icons/Bell";
-import ProfilePicture from "../../../assets/images/jpeg/port.jpg";
 import { Link } from "react-router-dom";
 import Notification from "../Notification/Notification";
 
@@ -11,7 +10,7 @@ function classNames(...classes) {
 
 function NotifMenu() {
   return (
-    <Menu as="div" className="cursor-pointer  md:mx-4 relative">
+    <Menu as="div" className="cursor-pointer mx-3 md:mx-4 relative">
       {({ open }) => (
         <>
           <div>
@@ -39,7 +38,7 @@ function NotifMenu() {
             <div>
               <Menu.Items
                 static
-                className="origin-top-right mx-6 absolute right-0 mt-2 w-104 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none"
+                className="origin-top-right mx-6 absolute right-1 lef-1 mt-2 w-auto rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none"
               >
                 <div className="pt-4  mx-4 pb-3 flex justify-between mb-2 border-b-2 border-gray ">
                   <p className="font-bold text-md text-primary">Notification</p>

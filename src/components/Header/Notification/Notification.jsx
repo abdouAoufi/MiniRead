@@ -2,7 +2,7 @@ import React from "react";
 
 function Notification() {
   return (
-    <article className="mb-2 pb-2">
+    <article className="mb-2 pb-2 w-80 md:w-96 lg:w-104">
       <div className="flex justify-between">
         <div className="flex items-center">
           <div className="relative w-12 h-12 mr-4">

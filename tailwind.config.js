@@ -25,7 +25,7 @@ module.exports = {
           DEFAULT: "#FFF7d6",
           dark: "#e3c4a8",
         },
-        black: { light: "#6b7280", DEFAULT: "#40514e", dark: "#000000" },
+        black: { light: "#6b7280", DEFAULT: "#40514e", dark: "#000000" , lighter : "#c4c4c4"},
         gray: "#f8f8f8",
         graymodal: "#2d767f",
         boldGray: "#c4c4c4",
