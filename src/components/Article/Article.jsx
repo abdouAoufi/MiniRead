@@ -9,15 +9,15 @@ function Article() {
           Trend
         </p>
         {/* TITLE */}
-        <h1 className="mt-3 text-black-dark tracking-wider font-bold md:font-extrabold text-2xl ">
+        <h1 className="mt-3 text-black-dark tracking-wider font-bold md:font-medium text-4xl ">
           Highway to Inferno: On the Road with the Oregon Proud Boys
         </h1>
-      
-     
 
-        <p className="mt-2 text-black font-normal ">
+        <p className="mt-4 text-black font-normal ">
           Law-and-order rebels. Freedom-loving fascists. What makes the far
-          right tick?
+          right tick? Law-and-order rebels. Freedom-loving fascists. What makes
+          the far right tick? loving fascists. What makes the far right tick?
+          Law-and-order rebels.
         </p>
 
         {/* IMAGE */}
