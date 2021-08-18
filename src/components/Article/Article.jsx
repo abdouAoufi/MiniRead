@@ -2,7 +2,7 @@ import React from "react";
 
 function Article() {
   return (
-    <div className="">
+    <div className="lg:mr-8">
       {/* ARTICLE CONTENT */}
       <div>
         <p className="tracking-wide text-secondary-dark font-normal text-sm">

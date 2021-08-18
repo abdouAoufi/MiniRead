@@ -11,6 +11,8 @@ function header(props) {
   const defaultClasses = {
     searchBar: "hidden",
     navbarItems: "p-4 flex justify-between items-center",
+    header:
+      "sticky z-50 shadow-sm right-0 top-0 left-0 bg-white  min-h-14  unset-0  border-gray",
   };
 
   const [searchBarParams, setSearchBarPrams] = useState(
@@ -44,7 +46,7 @@ function header(props) {
   }, [props.closing]);
 
   return (
-    <header className="sticky z-50 shadow-sm right-0 top-0 left-0 bg-white  min-h-14  unset-0  border-gray">
+    <header className={defaultClasses.header}>
       <nav>
         {/* BIG CONTAINER */}
         <div className="md:px-8 md:border-1">
