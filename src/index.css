@@ -3,6 +3,13 @@
 @tailwind components;
 @tailwind utilities;
 
+html {
+  font-size: calc(60% + 0.8vmin);
+  scroll-behavior: smooth;
+}
+* {
+  font-size: 1rem;
+}
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',

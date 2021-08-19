@@ -8,6 +8,7 @@ import like from "./images/svg/like.svg";
 import follwers from "./images/svg/followers.svg";
 import message from "./images/svg/message.svg";
 import trend from "./images/svg/trend.svg";
+import star from "./images/svg/star.svg";
 
 export const LOGO = {
   logo,
@@ -47,7 +48,8 @@ export const ICONS = {
   like,
   follwers,
   message,
-  trend
+  trend,
+  star
 };
 
 const TEXT_DATA = {
