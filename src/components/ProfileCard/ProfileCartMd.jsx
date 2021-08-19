@@ -3,7 +3,7 @@ import { ICONS } from "../../assets/assets";
 
 function ProfileCartMd() {
   return (
-    <div className=" w-72 border-b border-gray-300 pb-4 p-3">
+    <div className=" w-72 border-b border-gray-200 pb-5 p-3">
       <div className="flex justify-between items-center border-b border-gray-100 pb-3">
         <div>
           <p className="text-black font-semibold text-md  ">

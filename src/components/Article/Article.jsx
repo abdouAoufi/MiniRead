@@ -1,4 +1,5 @@
 import React from "react";
+import { ICONS } from "../../assets/assets";
 
 function Article() {
   return (
@@ -6,7 +7,10 @@ function Article() {
       {/* ARTICLE CONTENT */}
       <div>
         <p className="tracking-wide text-secondary-dark font-normal text-sm">
-          Trend
+          Trend{" "}
+          <span>
+            <img src={ICONS.trend} alt="trends" className="ml-2 w-6 h-6 inline-block" />
+          </span>
         </p>
         {/* TITLE */}
         <h1 className="mt-3 text-black-dark tracking-wider font-bold md:font-medium text-4xl ">
