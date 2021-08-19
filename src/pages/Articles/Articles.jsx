@@ -3,7 +3,6 @@ import Article from "../../components/Article/Article";
 import ProfileCardMobile from "../../components/ProfileCard/ProfileCardMobile";
 import ProfileCartMd from "../../components/ProfileCard/ProfileCartMd";
 import Tags from "../../components/Tags/Tags";
-import { ICONS } from "../../assets/assets";
 import AlsoReadMd from "../../components/AlsoRead/AlsoReadMd";
 
 function ArticleFn() {
@@ -14,7 +13,8 @@ function ArticleFn() {
     "jQuery",
     "nodeJs",
     "AngularJs",
-    "sQl",
+    "SQL",
+    "Data structure",
   ];
   return (
     <div className="md:flex flex-column justify-center items-start md:px-4 md:justify-between px-4 py-6  ">

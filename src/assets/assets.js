@@ -9,6 +9,8 @@ import follwers from "./images/svg/followers.svg";
 import message from "./images/svg/message.svg";
 import trend from "./images/svg/trend.svg";
 import star from "./images/svg/star.svg";
+import recent from "./images/svg/recent.svg";
+import deltee from "./images/svg/delete.svg";
 
 export const LOGO = {
   logo,
@@ -49,7 +51,9 @@ export const ICONS = {
   follwers,
   message,
   trend,
-  star
+  star,
+  recent,
+  deltee
 };
 
 const TEXT_DATA = {

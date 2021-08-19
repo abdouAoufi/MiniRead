@@ -34,8 +34,7 @@ function Modal(props) {
           onClick={(e) => {
             e.stopPropagation();
           }}
-          className="rounded-sm  bg-white p-8 w-full min-h-1/2
-         md:w-1/3 lg:w-1/2"
+          className="rounded-b-md bg-white w-full min-h-1/4 md:w-5/6 lg:w-1/2"
         >
           {props.children}
         </div>

@@ -7,7 +7,7 @@ function Tags(props) {
       <div className="mt-2 ">
         {props.tags?.map((tag) => {
           return (
-            <div className="inline-block py-1 px-4 mr-3 my-1 rounded-xl bg-gray-100 text-sm text-black-light">
+            <div className="inline-block py-1 px-4 mr-3 my-1 rounded-md bg-gray-100 text-sm text-black-light">
               {tag}
             </div>
           );

@@ -12,7 +12,7 @@ function header(props) {
     searchBar: "hidden",
     navbarItems: "p-4 flex justify-between items-center",
     header:
-      "sticky z-50 shadow-sm right-0 top-0 left-0 bg-white  min-h-14  unset-0  border-gray",
+      "sticky z-50 shadow-sm right-0 top-0 left-0 bg-white  unset-0  border-gray",
   };
 
   const [searchBarParams, setSearchBarPrams] = useState(
