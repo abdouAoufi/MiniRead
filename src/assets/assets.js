@@ -11,6 +11,10 @@ import trend from "./images/svg/trend.svg";
 import star from "./images/svg/star.svg";
 import recent from "./images/svg/recent.svg";
 import deltee from "./images/svg/delete.svg";
+import likee from "./images/svg/love.svg";
+import comment from "./images/svg/comment.svg";
+import save from "./images/svg/save.svg";
+import share from "./images/svg/share.svg";
 
 export const LOGO = {
   logo,
@@ -53,17 +57,9 @@ export const ICONS = {
   trend,
   star,
   recent,
-  deltee
-};
-
-const TEXT_DATA = {
-  title: "",
-  content: {
-    title_1: "",
-    par_1: "",
-    title_2: "",
-    par_2: "",
-    title_3: "",
-    par_3: "",
-  },
+  deltee,
+  likee,
+  share,
+  comment,
+  save,
 };
