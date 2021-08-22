@@ -15,6 +15,8 @@ import likee from "./images/svg/love.svg";
 import comment from "./images/svg/comment.svg";
 import save from "./images/svg/save.svg";
 import share from "./images/svg/share.svg";
+import write from "./images/svg/write.svg";
+import stats from "./images/svg/stats.svg";
 
 export const LOGO = {
   logo,
@@ -62,4 +64,6 @@ export const ICONS = {
   share,
   comment,
   save,
+  write,
+  stats
 };

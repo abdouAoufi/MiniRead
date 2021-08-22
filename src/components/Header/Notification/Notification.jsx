@@ -2,7 +2,7 @@ import React from "react";
 
 function Notification() {
   return (
-    <article className="mb-2 pb-2 w-80 md:w-96 lg:w-104">
+    <article className="mb-2 w-80 md:w-96 lg:w-104">
       <div className="flex justify-between">
         <div className="flex items-center">
           <div className="relative w-12 h-12 mr-4">
@@ -22,7 +22,7 @@ function Notification() {
         </div>
         <p className="text-xs text-black-light font-thin">2 min</p>
       </div>
-      <div className="h-0.5 w-88 bg-gray mt-3 mx-auto"></div>
+      <div className="h-0.5 w-88 bg-gray  mx-auto"></div>
     </article>
   );
 }

@@ -59,6 +59,22 @@ function NotifMenu() {
                       <div>
                         {/* NOTIFICATION */}
                         <Notification />
+                      </div>
+                    </Link>
+                  )}
+                </Menu.Item>
+
+                <Menu.Item>
+                  {({ active }) => (
+                    <Link
+                      to="/"
+                      className={classNames(
+                        active ? "bg-gray-100" : "",
+                        "block px-4 py-2 text-sm text-gray-700"
+                      )}
+                    >
+                      <div>
+                        {/* NOTIFICATION */}
                         <Notification />
                       </div>
                     </Link>
