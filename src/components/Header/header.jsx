@@ -84,9 +84,9 @@ function header(props) {
                   to={item.to}
                   className={classNames(
                     item.current
-                      ? "bg-gray-900 text-white"
-                      : "text-black hover:bg-secondary hover:text-white",
-                    "px-3 py-2 mx-3 rounded-sm text-base font-semibold"
+                      ? "bg-gray-900 text-white capitalize"
+                      : "text-black hover:bg-secondary hover:text-white capitalize",
+                    "px-3 py-2 mx-3 rounded-sm text-base font-semibold capitalize"
                   )}
                   aria-current={item.current ? "page" : undefined}
                 >

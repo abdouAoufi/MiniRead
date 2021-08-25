@@ -65,5 +65,16 @@ export const ICONS = {
   comment,
   save,
   write,
-  stats
+  stats,
 };
+
+export const TAGS = [
+  "Web",
+  "JavaScript",
+  "Css",
+  "jQuery",
+  "nodeJs",
+  "AngularJs",
+  "SQL",
+  "Data structure",
+];
