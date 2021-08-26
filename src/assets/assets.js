@@ -76,5 +76,5 @@ export const TAGS = [
   "nodeJs",
   "AngularJs",
   "SQL",
-  "Data structure",
+  "Algoritms",
 ];

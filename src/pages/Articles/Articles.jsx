@@ -34,7 +34,6 @@ function ArticleFn() {
           </div>
         </div>
       </div>
-      <Footer />
     </section>
   );
 }

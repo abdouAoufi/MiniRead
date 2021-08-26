@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import Header from "../components/Header/header";
+import Footer from "../components/Footer/Footer";
 import { BrowserRouter as Router , Route } from "react-router-dom";
 import Modal from "../components/StyleRelated/Modal/Modal";
 import Suggesion from "../components/Header/Suggesion/Suggesion";
 import Article from "../pages/Articles/Articles";
+import Home from "../pages/Home/Home";
 
 function App() {
   const [openModal, setOpenModal] = useState(false);
@@ -24,8 +26,10 @@ function App() {
       </Modal>
       <div className="App">
         <Header setOpenModal={click} closing={openModal} />
-        <Article />
+        {/* <Article /> */}
+        <Home />
       </div>
+      {/* <Footer/> */}
     </Router>
   );
 }
