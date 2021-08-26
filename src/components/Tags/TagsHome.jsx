@@ -3,12 +3,12 @@ import React from "react";
 function Tags(props) {
   return (
     <div className="border-b border-gray-200 pb-4 p-2 ">
-      <div className="mt-2 flex flex-row overflow-auto">
-        {props.tags?.map((tag,index) => {
+      <div className="width-full mt-1 flex flex-row overflow-x-auto ">
+        {props.tags?.map((tag, index) => {
           return (
-            <div key={index} className=" grid place-items-center w-auto py-1 px-4 mr-3 h-8 my-1 rounded-md bg-gray-100 text-sm text-black-light">
+            <a key={index} className="px-3 py-1 text-sm mr-2  font-bold text-black transition-colors duration-200 transform bg-black-lighterr rounded cursor-pointer hover:bg-secondary hover:text-white">
               {tag}
-            </div>
+            </a>
           );
         })}
       </div>

@@ -4,7 +4,7 @@ function ProfileCardMobile() {
   return (
     <div className="mx-auto md:hidden border-black-lighter mb-6 border-b pb-4">
       <div className="flex items-center">
-        <div className="relative w-12 h-12 mr-4">
+        <div className="relative w-8 h-8 mr-4">
           <img
             className="rounded-full  shadow-sm"
             src="https://randomuser.me/api/portraits/women/81.jpg"
