@@ -4,6 +4,7 @@ import { TAGS } from "../../assets/assets";
 import ProfilePic from "../../components/ProfilePicture/ProfilePic";
 import ArticleCard from "../../components/Article/ArticleCard";
 import { ARTICLES } from "../../assets/data";
+import { ICONS } from "../../assets/assets";
 import { Link } from "react-router-dom";
 
 const MYTABS = [
@@ -80,14 +81,30 @@ function Home() {
         </div>
       </div>
       {/* information CONTAINER */}
-      <div className="hidden md:block  border-l border-gray">
-        <div className="w-80">
-          <p>
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-            Temporexpedita dicta totam aspernatur doloremque. Excepturi iste
-            iusto eosenim reprehenderit nisi, accusamus delectus nihil quis
-            facere in modratione libero!
-          </p>
+      <div className="hidden md:block w-80">
+        <div className="mt-6">
+          <div className="5/6 h-48 border rounded relative p-4">
+            <img
+              src={ICONS.deltee}
+              className="w-4 h-4 absolute top-4 right-4"
+              alt="close"
+            />
+            <div className="flex-column items-center justify-center   h-full">
+              <h3 className=" text-md  text-black ">Welcome to MiniRead </h3>
+
+              <div className="mt-3">
+                <p className=" font-bold text-sm  text-black-light mt-2">
+                  Read articles you like{" "}
+                </p>
+                <p className=" font-bold text-sm  text-black-light mt-2">
+                  Write articles and share{" "}
+                </p>
+                <p className=" font-bold text-sm  text-black-light mt-2">
+                  Interact with people{" "}
+                </p>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>

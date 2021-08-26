@@ -1,5 +1,6 @@
 import React from "react";
 import ProfilePic from "../ProfilePicture/ProfilePic";
+import { ICONS } from "../../assets/assets";
 
 function ArticleCard(props) {
   return (
@@ -22,22 +23,24 @@ function ArticleCard(props) {
             {props.article.content}
           </p>
         </div>
-        <div className="flex items-center justify-between mt-4">
-          <a
-            href="#"
-            className=" text-primary dark:text-blue-400 hover:underline"
-          >
-            Read more
-          </a>
-          <span className="text-sm  mr-4 font-light text-gray-600 dark:text-gray-400">
-            {props.article.date}
-          </span>
-          {/* <div className="flex items-center">
-          <ProfilePic />
-          <a className="mr-3 font-medium text-gray-700 cursor-pointer dark:text-gray-200">
-            {props.article.profileName}
-          </a>
-        </div> */}
+        <div className="flex items-center justify-between mt-4  ">
+          <div className="flex relative">
+            <span className="text-xs font-bold mr-1 text-black-light dark:text-gray-400">
+              {props.article.date}
+            </span>
+            <p className="mx-2 line"> · </p>
+            <span className="text-xs  font-bold text-black-light dark:text-gray-400">
+              7 min
+            </span>
+            <p className="mx-2 line"> · </p>
+            <span className="text-xs  mr-2 font-bold text-black-light dark:text-gray-400">
+              {props.article.topic}
+            </span>
+          </div>
+          <div className="flex px-2 mr-3">
+            <img className="h-5 w-5 inline-block ml-4 p-0.5" src={ICONS.share} />
+            <img className="h-5 w-5 inline-block ml-4 p-0.5" src={ICONS.save} />
+          </div>
         </div>
       </div>
       <div className="overflow-hidden rounded-md ml-8 h-32 w-48">
