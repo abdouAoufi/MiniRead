@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Header from "../components/Header/header";
 import Footer from "../components/Footer/Footer";
-import { BrowserRouter as Router , Route } from "react-router-dom";
+import { BrowserRouter as Router, Route } from "react-router-dom";
 import Modal from "../components/StyleRelated/Modal/Modal";
 import Suggesion from "../components/Header/Suggesion/Suggesion";
 import Article from "../pages/Articles/Articles";
@@ -26,10 +26,12 @@ function App() {
       </Modal>
       <div className="App">
         <Header setOpenModal={click} closing={openModal} />
-        {/* <Article /> */}
-        <Home />
+        <main>
+          {/* <Article /> */}
+          <Home />
+        </main>
       </div>
-      {/* <Footer/> */}
+      <Footer />
     </Router>
   );
 }

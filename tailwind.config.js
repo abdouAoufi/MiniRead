@@ -7,6 +7,7 @@ module.exports = {
     extend: {
       spacing: {
         104: "26rem",
+        108: "28rem",
       },
       colors: {
         // Configure your color palette here

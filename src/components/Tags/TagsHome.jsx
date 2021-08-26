@@ -6,7 +6,10 @@ function Tags(props) {
       <div className="width-full mt-1 flex flex-row overflow-x-auto ">
         {props.tags?.map((tag, index) => {
           return (
-            <a key={index} className="px-3 py-1 text-sm mr-2  font-bold text-black transition-colors duration-200 transform bg-black-lighterr rounded cursor-pointer hover:bg-secondary hover:text-white">
+            <a
+              key={index}
+              className="px-3 py-1 text-sm mr-2  font-bold text-black transition-colors duration-200 transform bg-black-lighterr rounded cursor-pointer hover:bg-secondary hover:text-white"
+            >
               {tag}
             </a>
           );

@@ -4,17 +4,28 @@ import { TAGS } from "../../assets/assets";
 import ProfilePic from "../../components/ProfilePicture/ProfilePic";
 import ArticleCard from "../../components/Article/ArticleCard";
 import { ARTICLES } from "../../assets/data";
+import { Link } from "react-router-dom";
 
 const MYTABS = [
   {
     name: "Recommended for you",
-    to: "/timeline",
+    to: "/recommended",
     current: false,
   },
   {
     name: "Following",
-    to: "/feed",
+    to: "/following",
     current: true,
+  },
+];
+
+const classes = [
+  {
+    tabs: {
+      active:
+        "pr-4 py-2 font-semibol border-b-2  border-secondary text-gray-800 rounded-t opacity-50",
+      idle: "pr-4 py-2 font-semibol  text-gray-800 rounded-t opacity-50",
+    },
   },
 ];
 
@@ -32,8 +43,8 @@ function Home() {
     setTABS(newTab);
   };
   return (
-    <div>
-      {/* INNER CONTAINER */}
+    <section className="md:flex width-full border justify-between lg:px-8">
+      {/* feed CONTAINER */}
       <div className="p-4">
         <div>
           <p className="text-black-light font-medium text-base">
@@ -43,7 +54,7 @@ function Home() {
         </div>
         {/* TABS */}
         <div>
-          <ul id="tabs" className="inline-flex w-full px-1 pt-2 ">
+          <ul id="tabs" className="inline-flex w-full  pt-2 ">
             {TABS.map((i) => {
               return (
                 <li
@@ -51,24 +62,35 @@ function Home() {
                   key={i.name}
                   className={
                     i.current === true
-                      ? "px-4 py-2 font-semibol border-b-2  border-secondary text-gray-800 rounded-t opacity-50"
-                      : "px-4 py-2 font-semibol  text-gray-800 rounded-t opacity-50"
+                      ? classes[0].tabs.active
+                      : classes[0].tabs.idle
                   }
                 >
-                  <a href="#second">{i.name}</a>
+                  <Link to={i.to}>{i.name}</Link>
                 </li>
               );
             })}
           </ul>
         </div>
         {/* ARTICLES */}
-        <section>
-          {ARTICLES.map((article , index) => {
-            return <ArticleCard article={article} key={index}/>;
+        <div className="">
+          {ARTICLES.map((article, index) => {
+            return <ArticleCard article={article} key={index} />;
           })}
-        </section>
+        </div>
       </div>
-    </div>
+      {/* information CONTAINER */}
+      <div className="hidden md:block  border-l border-gray">
+        <div className="w-80">
+          <p>
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+            Temporexpedita dicta totam aspernatur doloremque. Excepturi iste
+            iusto eosenim reprehenderit nisi, accusamus delectus nihil quis
+            facere in modratione libero!
+          </p>
+        </div>
+      </div>
+    </section>
   );
 }
 
