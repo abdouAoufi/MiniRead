@@ -6,6 +6,8 @@ import ArticleCard from "../../components/Article/ArticleCard";
 import { ARTICLES } from "../../assets/data";
 import { ICONS } from "../../assets/assets";
 import { Link } from "react-router-dom";
+import AlsoRead from "../../components/AlsoRead/AlsoReadMd";
+import ProfileSide from "../../components/ProfileCard/ProfileSide";
 
 const MYTABS = [
   {
@@ -44,9 +46,9 @@ function Home() {
     setTABS(newTab);
   };
   return (
-    <section className="md:flex width-full border justify-between lg:px-8">
+    <section className="md:flex flex-wrap width-full border px-4">
       {/* feed CONTAINER */}
-      <div className="p-4">
+      <div className="p-4 flex-column justify-start lg:w-2/3">
         <div>
           <p className="text-black-light font-medium text-base">
             You're may be inressted by{" "}
@@ -81,60 +83,39 @@ function Home() {
         </div>
       </div>
       {/* information CONTAINER */}
-      <div className="hidden md:block w-80">
+      <div className="hidden md:block lg:w-1/3 px-8">
         <div className="mt-6">
-          {/* <div className="5/6 h-48 border rounded relative p-4">
+          <div className="5/6 h-48 shadow-sm  text-primary rounded relative p-6 bg-accent">
             <img
               src={ICONS.deltee}
               className="w-4 h-4 absolute top-4 right-4"
               alt="close"
             />
-            <div className="flex-column items-center justify-center   h-full">
-              <h3 className=" text-md  text-black ">Welcome to MiniRead </h3>
+            <div className="flex-column items-center justify-center h-full">
+              <h3 className=" text-md   focus: ">Welcome to MiniRead </h3>
 
-              <div className="mt-3">
-                <p className=" font-bold text-sm  text-black-light mt-2">
-                  Read articles you like{" "}
-                </p>
-                <p className=" font-bold text-sm  text-black-light mt-2">
-                  Write articles and share{" "}
-                </p>
-                <p className=" font-bold text-sm  text-black-light mt-2">
-                  Interact with people{" "}
-                </p>
+              <div className="mt-5">
+                <p className=" font-bold   mt-2">Read articles you like </p>
+                <p className=" font-bold   mt-2">Write articles and share </p>
+                <p className=" font-bold  mt-2">Interact with people </p>
               </div>
             </div>
-          </div> */}
-          <button className="btn btn-primary loading bg-black-light border-0">
-            {" "}
-            hello{" "}
-          </button>
-          <div className="avatar">
-            <div className="w-16 h-16">
-              <img src="http://daisyui.com/tailwind-css-component-profile-1@56w.png" />
-            </div>
           </div>
-          <div className="artboard">
-            <div className="alert alert-success">hi three</div>
+        </div>
+        <div className="mt-8 border-b pb-8">
+          <AlsoRead headTitle="Trends this week " />
+        </div>
+
+        <div className="mt-8 border-b pb-8">
+          <h2 className="text-md font-semibold text-primary uppercase">
+            Who to follow
+          </h2>
+          <div className="mt-4">
+            <ProfileSide />
+            <ProfileSide />
+            <ProfileSide />
+            <ProfileSide />
           </div>
-          <div className="avatar">
-            <div className="mb-8 rounded-btn w-14 h-14">
-              <img src="http://daisyui.com/tailwind-css-component-profile-1@56w.png" />
-            </div>
-          </div>
-          <div className="text-sm breadcrumbs">
-            <ul>
-              <li>
-                <a>Home</a>
-              </li>
-             
-              <li>
-                <a>Documents</a>
-              </li>
-              <li>Add Document</li>
-            </ul>
-          </div>
-          <div class="badge badge-xs bg-black-light"></div>
         </div>
       </div>
     </section>

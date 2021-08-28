@@ -4,9 +4,9 @@ import { ICONS } from "../../assets/assets";
 
 function ArticleCard(props) {
   return (
-    <article className="flex w-full  items-center">
-      <div className="  my-2 py-2 mx-auto dark:bg-gray-800">
-        <div className="flex items-center ">
+    <article className="flex w-full p-0 m-0 items-center">
+      <div className="my-2 py-2  dark:bg-gray-800">
+        <div className="flex">
           <ProfilePic />
           <a className="px-3  text-sm mr-2 font-semibold text-black transition-colors duration-200 transform cursor-pointer  hover:text-secondary">
             Aoufi abderahmane
