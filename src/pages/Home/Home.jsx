@@ -83,7 +83,7 @@ function Home() {
       {/* information CONTAINER */}
       <div className="hidden md:block w-80">
         <div className="mt-6">
-          <div className="5/6 h-48 border rounded relative p-4">
+          {/* <div className="5/6 h-48 border rounded relative p-4">
             <img
               src={ICONS.deltee}
               className="w-4 h-4 absolute top-4 right-4"
@@ -104,7 +104,37 @@ function Home() {
                 </p>
               </div>
             </div>
+          </div> */}
+          <button className="btn btn-primary loading bg-black-light border-0">
+            {" "}
+            hello{" "}
+          </button>
+          <div className="avatar">
+            <div className="w-16 h-16">
+              <img src="http://daisyui.com/tailwind-css-component-profile-1@56w.png" />
+            </div>
           </div>
+          <div className="artboard">
+            <div className="alert alert-success">hi three</div>
+          </div>
+          <div className="avatar">
+            <div className="mb-8 rounded-btn w-14 h-14">
+              <img src="http://daisyui.com/tailwind-css-component-profile-1@56w.png" />
+            </div>
+          </div>
+          <div className="text-sm breadcrumbs">
+            <ul>
+              <li>
+                <a>Home</a>
+              </li>
+             
+              <li>
+                <a>Documents</a>
+              </li>
+              <li>Add Document</li>
+            </ul>
+          </div>
+          <div class="badge badge-xs bg-black-light"></div>
         </div>
       </div>
     </section>

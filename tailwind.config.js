@@ -72,7 +72,9 @@ module.exports = {
   variants: {
     extend: {},
   },
-  plugins: [],
+  plugins: [
+    require('daisyui'),
+  ],
   extend: {
     spacing: {
       128: "32rem",
