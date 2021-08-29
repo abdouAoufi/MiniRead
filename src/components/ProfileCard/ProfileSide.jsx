@@ -16,7 +16,7 @@ function ProfileSide() {
           <p className="text-black-light text-xs">UX Designer at Hyrule</p>
         </div>
       </div>
-      <button className="text-secondary text-sm hover:opacity-75 border-primary border rounded-full px-4 py-2">
+      <button className="text-black-light text-sm hover:opacity-75 border-black-\light border rounded-full px-4 py-2">
         Follow
       </button>
     </div>

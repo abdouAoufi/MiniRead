@@ -8,6 +8,7 @@ import { ICONS } from "../../assets/assets";
 import { Link } from "react-router-dom";
 import AlsoRead from "../../components/AlsoRead/AlsoReadMd";
 import ProfileSide from "../../components/ProfileCard/ProfileSide";
+import ArticleSlide from "../../components/Article/ArticleSlide";
 
 const MYTABS = [
   {
@@ -46,14 +47,24 @@ function Home() {
     setTABS(newTab);
   };
   return (
-    <section className="md:flex flex-wrap width-full border px-4">
+    <section className="md:flex mt-4 flex-wrap width-full  px-4">
       {/* feed CONTAINER */}
-      <div className="p-4 flex-column justify-start lg:w-2/3">
+      <div className="p-4 flex-column overflow-scroll justify-start lg:w-2/3">
         <div>
           <p className="text-black-light font-medium text-base">
             You're may be inressted by{" "}
           </p>
           <Tags tags={TAGS} />
+        </div>
+        <div className="mt-4 ">
+          <p className="text-black-light font-medium text-base">
+            Last article you've read
+          </p>
+          <div>
+            <div className="flex w-full items-center mt-4 overflow-scroll">
+              <ArticleSlide />
+            </div>
+          </div>
         </div>
         {/* TABS */}
         <div>
@@ -75,6 +86,7 @@ function Home() {
             })}
           </ul>
         </div>
+
         {/* ARTICLES */}
         <div className="">
           {ARTICLES.map((article, index) => {

@@ -12,7 +12,7 @@ function header(props) {
     searchBar: "hidden",
     navbarItems: "p-4 flex justify-between items-center",
     header:
-      "sticky z-50 shadow-sm right-0 top-0 left-0 bg-white  unset-0  border-gray",
+      "sticky z-50 shadow border-0  right-0 top-0 left-0 bg-white  unset-0  ",
   };
 
   const [searchBarParams, setSearchBarPrams] = useState(
@@ -49,7 +49,7 @@ function header(props) {
     <header className={defaultClasses.header}>
       <nav>
         {/* BIG CONTAINER */}
-        <div className="md:px-8 md:border-1">
+        <div className="md:px-8 ">
           {/* SEARCH APPEAR ONY ON SEARCHNG */}
           <div className={`${searchBarParams}`}>
             <div className="flex items-center lg:w:1/2">
@@ -60,11 +60,12 @@ function header(props) {
               {/* INPUT */}
               <input
                 onClick={displaySearchSuggestion}
-                className="outline-none flex-1"
+                className="outline-none flex-2"
                 type="text"
                 name="search"
-                placeholder="Look for anything ... . ."
+                placeholder="Look for anything ...."
               />
+          
             </div>
           </div>
           <div className={`${menuItems}`}>

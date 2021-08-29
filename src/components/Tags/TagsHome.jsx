@@ -3,7 +3,7 @@ import React from "react";
 function Tags(props) {
   return (
     <div className="border-b border-gray-200 pb-4 p-2 ">
-      <div className="width-full mt-1 flex flex-row overflow-x-auto ">
+      <div className="width-full mt-1 flex flex-row overflow-x-auto scrollbar-hide ">
         {props.tags?.map((tag, index) => {
           return (
             <a

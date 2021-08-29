@@ -25,20 +25,27 @@ function ArticleCard(props) {
         </div>
         <div className="flex items-center justify-between mt-4  ">
           <div className="flex relative">
-            <span className="text-xs font-bold mr-1 text-black-light dark:text-gray-400">
+            <span className="text-xs font-bold mr-2 text-black-light dark:text-gray-400">
               {props.article.date}
             </span>
-            <p className="mx-2 line"> · </p>
-            <span className="text-xs  font-bold text-black-light dark:text-gray-400">
+            <div className=" mr-1 relative ">
+              <span className="  absolute -top-1 text-black-light"> · </span>
+            </div>
+            <p className="text-xs mx-2 font-bold text-black-light dark:text-gray-400">
               7 min
-            </span>
-            <p className="mx-2 line"> · </p>
-            <span className="text-xs  mr-2 font-bold text-black-light dark:text-gray-400">
+            </p>
+            <div className=" mr-1 relative ">
+              <span className="  absolute -top-1 text-black-light"> · </span>
+            </div>
+            <p className="text-xs  mx-2 font-bold text-black-light dark:text-gray-400">
               {props.article.topic}
-            </span>
+            </p>
           </div>
           <div className="flex px-2 mr-3">
-            <img className="h-5 w-5 inline-block ml-4 p-0.5" src={ICONS.share} />
+            <img
+              className="h-5 w-5 inline-block ml-4 p-0.5"
+              src={ICONS.share}
+            />
             <img className="h-5 w-5 inline-block ml-4 p-0.5" src={ICONS.save} />
           </div>
         </div>
