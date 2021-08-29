@@ -6,7 +6,7 @@ import Modal from "../components/StyleRelated/Modal/Modal";
 import Suggesion from "../components/Header/Suggesion/Suggesion";
 import Article from "../pages/Articles/Articles";
 import Home from "../pages/Home/Home";
-
+import Auth from "../pages/Auth/Auth"
 function App() {
   const [openModal, setOpenModal] = useState(false);
   const click = () => {
@@ -27,11 +27,12 @@ function App() {
       <div className="App">
         <Header setOpenModal={click} closing={openModal} />
         <main>
+          <Auth />
           {/* <Article /> */}
-          <Home />
+          {/* <Home /> */}
         </main>
       </div>
-      <Footer />
+      {/* <Footer /> */}
     </Router>
   );
 }
