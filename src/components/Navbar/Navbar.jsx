@@ -15,10 +15,17 @@ function header(props) {
       "sticky z-50 shadow border-0  right-0 top-0 left-0 bg-white  unset-0  ",
   };
 
+  useEffect(() => {
+    if (props.closing === false) {
+      hideSearchBar();
+    }
+  }, [props.closing]);
+
   const [searchBarParams, setSearchBarPrams] = useState(
     defaultClasses.searchBar
   );
   const [menuItems, setMenuItemsState] = useState(defaultClasses.navbarItems);
+  
 
   function classNames(...classes) {
     return classes.filter(Boolean).join(" ");
@@ -33,17 +40,13 @@ function header(props) {
     props.setOpenModal();
   };
 
+  
+
   const hideSearchBar = () => {
     console.log("Executed ...");
     setMenuItemsState("p-4 flex justify-between items-center");
     setSearchBarPrams("hidden");
   };
-
-  useEffect(() => {
-    if (props.closing === false) {
-      hideSearchBar();
-    }
-  }, [props.closing]);
 
   return (
     <header className={defaultClasses.header}>
@@ -65,7 +68,6 @@ function header(props) {
                 name="search"
                 placeholder="Look for anything ...."
               />
-          
             </div>
           </div>
           <div className={`${menuItems}`}>
@@ -78,34 +80,48 @@ function header(props) {
               <img src={logo} alt="logo" height="25" />
             </div>
             {/*// ! LINKS LIST */}
-            <ul className="hidden md:hidden lg:flex">
-              {LINKS_NAVBAR.map((item) => (
-                <Link
-                  key={item.name}
-                  to={item.to}
-                  className={classNames(
-                    item.current
-                      ? "bg-gray-900 text-white capitalize"
-                      : "text-black hover:bg-secondary hover:text-white capitalize",
-                    "px-3 py-2 mx-3 rounded-sm text-base font-semibold capitalize"
-                  )}
-                  aria-current={item.current ? "page" : undefined}
-                >
-                  {item.name}
-                </Link>
-              ))}
-            </ul>
+            {props.isAuth ? (
+              <ul className="hidden md:hidden lg:flex">
+                {LINKS_NAVBAR.map((item) => (
+                  <Link
+                    key={item.name}
+                    to={item.to}
+                    className={classNames(
+                      item.current
+                        ? "bg-gray-900 text-white capitalize"
+                        : "text-black hover:bg-secondary hover:text-white capitalize",
+                      "px-3 py-2 mx-3 rounded-sm text-base font-semibold capitalize"
+                    )}
+                    aria-current={item.current ? "page" : undefined}
+                  >
+                    {item.name}
+                  </Link>
+                ))}
+              </ul>
+            ) : (
+              ""
+            )}
             {/*// ! ICONS CONTAINER */}
-            <div className="flex items-center">
-              {/* Profile dropdown */}
-              <div className="mx-2 cursor-pointer" onClick={displaySearchBar}>
-                <Search />
+            {props.isAuth === true ? (
+              <div className="flex items-center">
+                <div className="mx-2 cursor-pointer" onClick={displaySearchBar}>
+                  <Search />
+                </div>
+                <NotifMenu />
+                <div className="hidden md:block">
+                  <ProfileMenus />
+                </div>
               </div>
-              <NotifMenu />
-              <div className="hidden md:block">
-                <ProfileMenus />
+            ) : (
+              <div className="flex">
+                <button
+                  onClick={props.switchAuthState}
+                  className="text-black-light text-sm hover:opacity-75 border-black-\light border rounded-full px-4 py-2"
+                >
+                  {props.authState === "login" ? "Sign up" : "Login"}
+                </button>
               </div>
-            </div>
+            )}
           </div>
         </div>
       </nav>

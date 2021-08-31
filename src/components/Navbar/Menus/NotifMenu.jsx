@@ -1,6 +1,6 @@
 import React, { Fragment } from "react";
 import { Menu, Transition } from "@headlessui/react";
-import Bell from "../../../components/icons/Bell";
+import Bell from "../../icons/Bell";
 import { Link } from "react-router-dom";
 import Notification from "../Notification/Notification";
 
