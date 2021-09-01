@@ -8,9 +8,9 @@ function Auth(props) {
       <div className="w-full flex flex-wrap">
         <div className="w-full md:w-1/2 flex flex-col">
           <div className="flex flex-col justify-center md:justify-start my-auto pt-8 md:pt-0 px-8 md:px-24 lg:px-32">
-            <p className="text-center text-3xl">Welcome Readers.</p>
+            <p className="text-center font-bold text-3xl">Welcome Readers.</p>
             {props.authState === "login" ? <Login /> : <Register />}
-            <div className="text-center pt-12 pb-12">
+            <div className="text-center pt-9 pb-12">
               {props.authState === "signup" ? (
                 <p>
                   You have an account?{" "}
