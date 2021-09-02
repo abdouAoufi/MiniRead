@@ -32,13 +32,13 @@ function App() {
         <Header
           authState={authState}
           switchAuthState={switchAuthState}
-          isAuth={true}
+          isAuth={false}
           setOpenModal={click}
           closing={openModal}
         />
         <main>
-          {/* <Auth authState={authState} switchAuthState={switchAuthState} /> */}
-          <Article />
+          <Auth authState={authState} switchAuthState={switchAuthState} />
+          {/* <Article /> */}
           {/* <Home /> */}
         </main>
       </div>
