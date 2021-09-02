@@ -9,43 +9,11 @@ import { Link } from "react-router-dom";
 import AlsoRead from "../../components/AlsoRead/AlsoReadMd";
 import ProfileSide from "../../components/ProfileCard/ProfileSide";
 import ArticleSlide from "../../components/Article/ArticleSlide";
-
-const MYTABS = [
-  {
-    name: "Recommended for you",
-    to: "/recommended",
-    current: false,
-  },
-  {
-    name: "Following",
-    to: "/following",
-    current: true,
-  },
-];
-
-const classes = [
-  {
-    tabs: {
-      active:
-        "pr-4 py-2 font-semibol border-b-2  border-secondary text-gray-800 rounded-t opacity-50",
-      idle: "pr-4 py-2 font-semibol  text-gray-800 rounded-t opacity-50",
-    },
-  },
-];
+import HomeHandler from "./HomeHandler";
 
 function Home() {
-  const [TABS, setTABS] = useState(MYTABS);
-  const switchTabs = (who) => {
-    let newTab = [...TABS];
-    newTab = newTab.map((i) => {
-      i.current = false;
-      if (i.name === who) {
-        i.current = true;
-      }
-      return i;
-    });
-    setTABS(newTab);
-  };
+  const { TABS, switchTabs, classes } = HomeHandler();
+
   return (
     <section className="md:flex mt-4 flex-wrap width-full  px-4">
       {/* feed CONTAINER */}

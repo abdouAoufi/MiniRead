@@ -6,10 +6,11 @@ import Modal from "../components/StyleRelated/Modal/Modal";
 import Suggesion from "../components/Navbar/Suggesion/Suggesion";
 import Article from "../pages/Articles/Articles";
 import Home from "../pages/Home/Home";
+import AuthHandler from "./AuthHandler";
 import Auth from "../pages/Auth/Auth";
 function App() {
   const [openModal, setOpenModal] = useState(false);
-  const [authState, setAuthState] = useState("signup");
+
   const click = () => {
     setOpenModal(!openModal);
   };
@@ -17,11 +18,8 @@ function App() {
   const insideModalHandler = () => {
     console.log("Inside modal cliked ");
   };
-
-  const switchAuthState = () => {
-    console.log("executed!");
-    authState === "signup" ? setAuthState("login") : setAuthState("signup");
-  };
+  // controlling the navbar from app when is shared
+  const { authState, switchAuthState  } = AuthHandler();
 
   return (
     <Router>
@@ -34,13 +32,13 @@ function App() {
         <Header
           authState={authState}
           switchAuthState={switchAuthState}
-          isAuth={false}
+          isAuth={true}
           setOpenModal={click}
           closing={openModal}
         />
         <main>
-          <Auth authState={authState} switchAuthState={switchAuthState} />
-          {/* <Article /> */}
+          {/* <Auth authState={authState} switchAuthState={switchAuthState} /> */}
+          <Article />
           {/* <Home /> */}
         </main>
       </div>
