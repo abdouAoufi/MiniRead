@@ -19,7 +19,7 @@ function App() {
     console.log("Inside modal cliked ");
   };
   // controlling the navbar from app when is shared
-  const { authState, switchAuthState  } = AuthHandler();
+  const { authState, switchAuthState } = AuthHandler();
 
   return (
     <Router>
@@ -32,13 +32,13 @@ function App() {
         <Header
           authState={authState}
           switchAuthState={switchAuthState}
-          isAuth={false}
+          isAuth={true}
           setOpenModal={click}
           closing={openModal}
         />
         <main>
-          <Auth authState={authState} switchAuthState={switchAuthState} />
-          {/* <Article /> */}
+          {/* <Auth authState={authState} switchAuthState={switchAuthState} /> */}
+          <Article />
           {/* <Home /> */}
         </main>
       </div>
