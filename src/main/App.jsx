@@ -37,8 +37,8 @@ function App() {
           closing={openModal}
         />
         <main>
-          {/* <Auth authState={authState} switchAuthState={switchAuthState} /> */}
-          <Article />
+          <Auth authState={authState} switchAuthState={switchAuthState} />
+          {/* <Article /> */}
           {/* <Home /> */}
         </main>
       </div>

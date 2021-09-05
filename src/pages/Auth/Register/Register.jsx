@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useFormik } from "formik";
 import RegisterHandler from "./RegisterHandler";
-
+import { signup } from "../../../api/authservice";
 const { validate } = RegisterHandler();
 
 function Register() {
@@ -15,7 +15,7 @@ function Register() {
     },
     validate,
     onSubmit: (values) => {
-      alert(JSON.stringify(values, null, 2));
+      signup(values);
     },
   });
   return (
