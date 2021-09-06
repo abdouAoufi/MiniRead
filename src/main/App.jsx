@@ -8,39 +8,17 @@ import Article from "../pages/Articles/Articles";
 import Home from "../pages/Home/Home";
 import AuthHandler from "./AuthHandler";
 import Auth from "../pages/Auth/Auth";
+import Layout from "./Layout/Layout";
 import { AuthContextProvider } from "../contexts/AuthContext";
 function App() {
-  const [openModal, setOpenModal] = useState(false);
-
-  const click = () => {
-    setOpenModal(!openModal);
-  };
-
-  const insideModalHandler = () => {
-    console.log("Inside modal cliked ");
-  };
-  // controlling the navbar from app when is shared
   const { authState, switchAuthState } = AuthHandler();
-
   return (
     <AuthContextProvider>
       <Router>
-        <Modal click={click} openModal={openModal}>
-          <div onClick={insideModalHandler}>
-            <Suggesion />
-          </div>
-        </Modal>
-        <div className="App">
-          <Header
-            authState={authState}
-            switchAuthState={switchAuthState}
-            isAuth={true}
-            setOpenModal={click}
-            closing={openModal}
-          />
+        <Layout>
           <main>
             <Switch>
-              <Route path="/home" exact>
+              <Route path="/" exact>
                 <Home />
               </Route>
               <Route path="/auth">
@@ -51,8 +29,7 @@ function App() {
               </Route>
             </Switch>
           </main>
-        </div>
-        {/* <Footer /> */}
+        </Layout>
       </Router>
     </AuthContextProvider>
   );

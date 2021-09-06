@@ -9,15 +9,13 @@ import AlsoRead from "../../components/AlsoRead/AlsoReadMd";
 import ProfileSide from "../../components/ProfileCard/ProfileSide";
 import ArticleSlide from "../../components/Article/ArticleSlide";
 import HomeHandler from "./HomeHandler";
-import { Link, useRouteMatch } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Following from "./Temp/Following";
 import Recomended from "./Temp/Recomended";
 import { Switch, Route } from "react-router-dom";
 
 function Home() {
   const { TABS, switchTabs, classes } = HomeHandler();
-  const { path, url } = useRouteMatch();
-  console.log(path, url);
   return (
     <section className="md:flex mt-4 flex-wrap width-full  px-4">
       {/* feed CONTAINER */}
@@ -40,7 +38,7 @@ function Home() {
         </div>
         {/* TABS */}
         <div>
-          {/* <ul id="tabs" className="inline-flex w-full  pt-2 ">
+          <ul id="tabs" className="inline-flex w-full  pt-2 ">
             {TABS.map((i) => {
               return (
                 <li
@@ -52,24 +50,12 @@ function Home() {
                       : classes[0].tabs.idle
                   }
                 >
-                  <Link to={i.to}>{i.name}</Link>
+                  <p className="cursor-pointer">{i.name}</p>
                 </li>
               );
             })}
-          </ul> */}
-          <ul className="inline-flex w-full  pt-2 ">
-            <li>
-              <Link to={`${url}/following`}>Following</Link>
-            </li>
-            <li>
-              <Link to={`${url}/recomended`}>Recomended</Link>
-            </li>
           </ul>
         </div>
-
-        <Switch>
-          <Route path={`${path}/following`} component={Following} />
-        </Switch>
         <div className="">
           {ARTICLES.map((article, index) => {
             return <ArticleCard article={article} key={index} />;
