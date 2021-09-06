@@ -16,6 +16,6 @@ export const signup = (credenials) => {
       alert(JSON.stringify(data));
     })
     .catch((err) => {
-      console.lpg(err);
+      throw Error(err);
     });
 };

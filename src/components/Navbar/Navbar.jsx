@@ -1,4 +1,4 @@
-import React, { useState, useEffect, Fragment } from "react";
+import React, { useState, useEffect, Fragment, useContext } from "react";
 import logo from "../../assets/images/svg/logo.svg";
 import Search from "../icons/Search";
 import MenuBurger from "../icons/Menu";
@@ -6,8 +6,10 @@ import { Link } from "react-router-dom";
 import ProfileMenus from "./Menus/ProfileMenus";
 import NotifMenu from "./Menus/NotifMenu";
 import { LINKS_NAVBAR } from "../../assets/assets";
+import { AuthContext } from "../../contexts/AuthContext";
 
 function header(props) {
+  const { isLogged, setLogged } = useContext(AuthContext);
   const defaultClasses = {
     searchBar: "hidden",
     navbarItems: "p-4 flex justify-between items-center",
@@ -25,7 +27,6 @@ function header(props) {
     defaultClasses.searchBar
   );
   const [menuItems, setMenuItemsState] = useState(defaultClasses.navbarItems);
-  
 
   function classNames(...classes) {
     return classes.filter(Boolean).join(" ");
@@ -39,8 +40,6 @@ function header(props) {
   const displaySearchSuggestion = () => {
     props.setOpenModal();
   };
-
-  
 
   const hideSearchBar = () => {
     console.log("Executed ...");
@@ -80,7 +79,7 @@ function header(props) {
               <img src={logo} alt="logo" height="25" />
             </div>
             {/*// ! LINKS LIST */}
-            {props.isAuth ? (
+            {isLogged ? (
               <ul className="hidden md:hidden lg:flex">
                 {LINKS_NAVBAR.map((item) => (
                   <Link
@@ -102,7 +101,7 @@ function header(props) {
               ""
             )}
             {/*// ! ICONS CONTAINER */}
-            {props.isAuth === true ? (
+            {isLogged === true ? (
               <div className="flex items-center">
                 <div className="mx-2 cursor-pointer" onClick={displaySearchBar}>
                   <Search />

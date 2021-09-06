@@ -32,17 +32,17 @@ export const IMAGES = {
 export const LINKS_NAVBAR = [
   {
     name: "trend",
-    to: "/timeline",
+    to: "/auth",
     current: false,
   },
   {
     name: "Home",
-    to: "/feed",
+    to: "/",
     current: false,
   },
   {
     name: "Blogs",
-    to: "/descussion",
+    to: "/article",
     current: false,
   },
   {

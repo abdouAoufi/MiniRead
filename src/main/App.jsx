@@ -1,13 +1,14 @@
 import React, { useState } from "react";
 import Header from "../components/Navbar";
 import Footer from "../components/Footer/Footer";
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Modal from "../components/StyleRelated/Modal/Modal";
 import Suggesion from "../components/Navbar/Suggesion/Suggesion";
 import Article from "../pages/Articles/Articles";
 import Home from "../pages/Home/Home";
 import AuthHandler from "./AuthHandler";
 import Auth from "../pages/Auth/Auth";
+import { AuthContextProvider } from "../contexts/AuthContext";
 function App() {
   const [openModal, setOpenModal] = useState(false);
 
@@ -22,28 +23,38 @@ function App() {
   const { authState, switchAuthState } = AuthHandler();
 
   return (
-    <Router>
-      <Modal click={click} openModal={openModal}>
-        <div onClick={insideModalHandler}>
-          <Suggesion />
+    <AuthContextProvider>
+      <Router>
+        <Modal click={click} openModal={openModal}>
+          <div onClick={insideModalHandler}>
+            <Suggesion />
+          </div>
+        </Modal>
+        <div className="App">
+          <Header
+            authState={authState}
+            switchAuthState={switchAuthState}
+            isAuth={true}
+            setOpenModal={click}
+            closing={openModal}
+          />
+          <main>
+            <Switch>
+              <Route path="/home" exact>
+                <Home />
+              </Route>
+              <Route path="/auth">
+                <Auth authState={authState} switchAuthState={switchAuthState} />
+              </Route>
+              <Route path="/article">
+                <Article />
+              </Route>
+            </Switch>
+          </main>
         </div>
-      </Modal>
-      <div className="App">
-        <Header
-          authState={authState}
-          switchAuthState={switchAuthState}
-          isAuth={true}
-          setOpenModal={click}
-          closing={openModal}
-        />
-        <main>
-          <Auth authState={authState} switchAuthState={switchAuthState} />
-          {/* <Article /> */}
-          {/* <Home /> */}
-        </main>
-      </div>
-      {/* <Footer /> */}
-    </Router>
+        {/* <Footer /> */}
+      </Router>
+    </AuthContextProvider>
   );
 }
 
