@@ -3,7 +3,6 @@ import Login from "./Login/Login";
 import Register from "./Register/Register";
 import Modal from "../../components/StyleRelated/Modal/Modal";
 import ModalLogic from "../../main/Layout/modal";
-import { Dialog } from "@headlessui/react";
 
 function Auth(props) {
   const { openModal, insideModalHandler, click } = ModalLogic();
@@ -15,22 +14,28 @@ function Auth(props) {
     setMessage(newMessage);
     click();
   };
+
   return (
     <div className="h-screen">
       <Modal center click={click} openModal={openModal}>
         <div onClick={insideModalHandler}>
           <div className="inline-block   max-w-md p-6 my-8 w-120 overflow-hidden text-left align-middle transition-all transform bg-white shadow-xl rounded-xl">
-            <p as="h3" className="text-lg font-medium leading-6 text-gray-900">
+            <p
+              as="h2"
+              className="text-xl font-semibold leading-6 text-gray-900"
+            >
               {message.title}
             </p>
             <div className="mt-2">
-              <p className="text-sm text-gray-500">{message.message}</p>
+              <p className="text-sm font-medium text-black-light">
+                {message.message}
+              </p>
             </div>
 
-            <div className="mt-4">
+            <div className="mt-6">
               <button
                 type="button"
-                className="inline-flex justify-center px-4 py-2 text-sm font-medium text-primary bg-blue-100 border border-transparent rounded-md hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-blue-500"
+                className="float-right inline-flex justify-center px-4 py-2 text-sm font-medium text-primary bg-blue-100 border border-transparent rounded-md hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-blue-500"
                 onClick={click}
               >
                 Got it, thanks!
@@ -42,7 +47,9 @@ function Auth(props) {
       <div className="w-full flex flex-wrap">
         <div className="w-full md:w-1/2 flex flex-col">
           <div className="flex flex-col justify-center md:justify-start my-auto pt-8 md:pt-0 px-8 md:px-24 lg:px-32">
-            <p className="text-center font-bold text-3xl" onClick={click}>
+            <p
+              className="text-center font-bold text-3xl"
+            >
               Welcome Readers.
             </p>
             {props.authState === "login" ? (

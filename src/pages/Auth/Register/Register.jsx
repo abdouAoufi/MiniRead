@@ -2,9 +2,11 @@ import React, { useState } from "react";
 import { useFormik } from "formik";
 import RegisterHandler from "./RegisterHandler";
 import { signup } from "../../../api/authservice";
+import Loading from "../../../components/Loading";
 const { validate } = RegisterHandler();
 
 function Register(props) {
+  const [loading, setLoading] = useState(false);
   const formik = useFormik({
     initialValues: {
       firstName: "",
@@ -15,16 +17,20 @@ function Register(props) {
     },
     validate,
     onSubmit: (values) => {
-      signup(values)
-        .then((result) => {
-          return result.json();
-        })
-        .then((data) => {
-          props.setOpenModal(data);
-        })
-        .catch((err) => {
-          throw Error(err);
-        });
+      setLoading(true);
+      setTimeout(() => {
+        signup(values)
+          .then((result) => {
+            setLoading(false);
+            return result.json();
+          })
+          .then((data) => {
+            props.setOpenModal(data);
+          })
+          .catch((err) => {
+            throw Error(err);
+          });
+      }, 2000);
     },
   });
   return (
@@ -130,13 +136,17 @@ function Register(props) {
         ) : null}
       </div>
 
-      <button
-        type="submit"
-        defaultValue="Log In"
-        className="bg-black rounded-sm text-white font-bold text-lg hover:bg-gray-700 p-2 mt-8"
-      >
-        Sign up
-      </button>
+      {!loading ? (
+        <button
+          type="submit"
+          defaultValue="Log In"
+          className="bg-black rounded-sm text-white font-bold text-lg hover:bg-gray-700 p-2 mt-8"
+        >
+          Sign up
+        </button>
+      ) : (
+        <Loading />
+      )}
     </form>
   );
 }

@@ -3,7 +3,7 @@ import Transition from "../Transition/Transition";
 
 function Modal(props) {
   const modalPosition = props.center
-    ? "fixed inset-0 z-100 overflow-hidden  top-56 flex items-start mb-4 justify-center transform px-4 sm:px-6"
+    ? "fixed inset-0 z-50 overflow-hidden  top-56 flex items-start mb-4 justify-center transform px-4 sm:px-6"
     : " fixed inset-0 z-50 overflow-hidden  top-14 flex items-start mb-4 justify-center transform px-4 sm:px-6";
   return (
     <div className="" onClick={props.click}>
