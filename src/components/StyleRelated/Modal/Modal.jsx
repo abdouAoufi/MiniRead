@@ -2,10 +2,13 @@ import React from "react";
 import Transition from "../Transition/Transition";
 
 function Modal(props) {
+  const modalPosition = props.center
+    ? "fixed inset-0 z-100 overflow-hidden  top-56 flex items-start mb-4 justify-center transform px-4 sm:px-6"
+    : " fixed inset-0 z-50 overflow-hidden  top-14 flex items-start mb-4 justify-center transform px-4 sm:px-6";
   return (
     <div className="" onClick={props.click}>
       <Transition
-        className="fixed  inset-0 bg-black bg-opacity-50 z-10 transition-opacity"
+        className="fixed  inset-0 bg-black bg-opacity-70 z-100 transition-opacity"
         show={props.openModal}
         appear={props.openModal}
         enter="transition ease-out duration-200"
@@ -18,7 +21,7 @@ function Modal(props) {
       />
       <Transition
         id="search-modal"
-        className="  fixed inset-0 z-50 overflow-hidden  top-14 flex items-start mb-4 justify-center transform px-4 sm:px-6"
+        className={modalPosition}
         role="dialog"
         aria-modal="true"
         show={props.openModal}
@@ -30,14 +33,7 @@ function Modal(props) {
         leaveStart="opacity-100 translate-y-0"
         leaveEnd="opacity-0 translate-y-4"
       >
-        <div
-          onClick={(e) => {
-            e.stopPropagation();
-          }}
-          className="rounded-b-md bg-white w-full min-h-1/4 md:w-5/6 lg:w-1/2"
-        >
-          {props.children}
-        </div>
+        {props.children}
       </Transition>
     </div>
   );

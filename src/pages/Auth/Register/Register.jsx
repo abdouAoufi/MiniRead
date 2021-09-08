@@ -4,7 +4,7 @@ import RegisterHandler from "./RegisterHandler";
 import { signup } from "../../../api/authservice";
 const { validate } = RegisterHandler();
 
-function Register() {
+function Register(props) {
   const formik = useFormik({
     initialValues: {
       firstName: "",
@@ -15,7 +15,16 @@ function Register() {
     },
     validate,
     onSubmit: (values) => {
-      signup(values);
+      signup(values)
+        .then((result) => {
+          return result.json();
+        })
+        .then((data) => {
+          props.setOpenModal(data);
+        })
+        .catch((err) => {
+          throw Error(err);
+        });
     },
   });
   return (

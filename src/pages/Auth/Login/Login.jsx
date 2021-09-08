@@ -3,7 +3,10 @@ import { useFormik } from "formik";
 import LoginHandler from "./LoginHandler";
 import { ICONS } from "../../../assets/assets";
 
-function Login() {
+function Login(props) {
+  const openModal = () => {
+    props.setOpenModal();
+  };
   const { validate } = LoginHandler();
   const formik = useFormik({
     initialValues: {

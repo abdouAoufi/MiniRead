@@ -2,27 +2,27 @@ import React, { useState } from "react";
 import Navbar from "../../components/Navbar";
 import Footer from "../../components/Footer";
 import AuthHandler from "../AuthHandler";
+import ModalLogic from "./modal";
 import Modal from "../../components/StyleRelated/Modal/Modal";
 import Suggesion from "../../components/Navbar/Suggesion/Suggesion";
 
 function Layout(props) {
-  const click = () => {
-    setOpenModal(!openModal);
-  };
-
-  const insideModalHandler = () => {
-    console.log("Inside modal cliked ");
-  };
-
   // controlling the navbar from app when is shared
   const { authState, switchAuthState } = AuthHandler();
+  const { openModal, click, insideModalHandler } = ModalLogic();
 
-  const [openModal, setOpenModal] = useState(false);
   return (
     <div>
       <Modal click={click} openModal={openModal}>
         <div onClick={insideModalHandler}>
-          <Suggesion />
+          <div
+            onClick={(e) => {
+              e.stopPropagation();
+            }}
+            className="rounded-b-md bg-white  min-h-1/4 w-full md:w-120 "
+          >
+            <Suggesion />
+          </div>
         </div>
       </Modal>
       <Navbar
