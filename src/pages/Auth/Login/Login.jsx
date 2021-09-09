@@ -1,11 +1,13 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { useFormik } from "formik";
 import LoginHandler from "./LoginHandler";
 import { ICONS } from "../../../assets/assets";
 import Loading from "../../../components/Loading";
 import { login } from "../../../api/authservice";
+import { AuthContext } from "../../../contexts/AuthContext";
 
 function Login(props) {
+  const { userName, setUserName } = useContext(AuthContext);
   const [loading, setLoading] = useState(false);
   const openModal = () => {
     props.setOpenModal();
@@ -27,6 +29,11 @@ function Login(props) {
           })
           .then((data) => {
             props.setOpenModal(data);
+            let updatedUserName = { ...userName };
+            updatedUserName.firstName = data.user.firstName;
+            updatedUserName.lastName = data.user.lastName;
+            console.log(updatedUserName);
+            setUserName(updatedUserName);
           })
           .catch((err) => {
             throw Error(err);

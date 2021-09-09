@@ -1,5 +1,6 @@
 import { ADRESS } from "../utils/messages";
 
+
 export const signup = (credenials) => {
   return fetch(ADRESS + "/auth/signup", {
     method: "POST",
@@ -11,6 +12,7 @@ export const signup = (credenials) => {
 };
 
 export const login = (credenials) => {
+  
   return fetch(ADRESS + "/auth/login", {
     method: "POST",
     headers: {
