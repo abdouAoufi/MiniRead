@@ -1,4 +1,4 @@
-import React, { useEffect , useContext} from "react";
+import React, { useEffect, useContext, useState } from "react";
 import Tags from "../../components/Tags/TagsHome";
 import { TAGS } from "../../assets/assets";
 import ProfilePic from "../../components/ProfilePicture/ProfilePic";
@@ -14,14 +14,20 @@ import Following from "./Temp/Following";
 import Recomended from "./Temp/Recomended";
 import { Switch, Route } from "react-router-dom";
 import { LayoutContext } from "../../contexts/LayoutContext";
+import { getTages } from "../../api/homeservice";
 
 function Home() {
   const { TABS, switchTabs, classes } = HomeHandler();
   const { showFooter, setShowFooter } = useContext(LayoutContext);
-  useEffect(() => {
+  const [tags, setTags] = useState([]);
+
+  useEffect(async () => {
     if (showFooter) {
       setShowFooter(false);
     }
+    const retrivedTags = await (await getTages()).json();
+    setTags(retrivedTags.tags);
+    console.log(retrivedTags.tags)
   }, []);
   return (
     <section className="md:flex mt-4 flex-wrap width-full  px-4">
@@ -31,7 +37,7 @@ function Home() {
           <p className="text-black-light font-medium text-base">
             You're may be inressted by{" "}
           </p>
-          <Tags tags={TAGS} />
+          <Tags tags={tags} />
         </div>
         <div className="mt-4 ">
           <p className="text-black-light font-medium text-base">
