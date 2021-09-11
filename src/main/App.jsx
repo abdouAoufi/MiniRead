@@ -10,28 +10,34 @@ import AuthHandler from "./AuthHandler";
 import Auth from "../pages/Auth/Auth";
 import Layout from "./Layout/Layout";
 import { AuthContextProvider } from "../contexts/AuthContext";
+import { LayoutContextProvider } from "../contexts/LayoutContext";
 function App() {
   const { authState, switchAuthState } = AuthHandler();
   return (
-    <AuthContextProvider>
-      <Router>
-        <Layout>
-          <main>
-            <Switch>
-              <Route path="/" exact>
-                <Home />
-              </Route>
-              <Route path="/auth">
-                <Auth authState={authState} switchAuthState={switchAuthState} />
-              </Route>
-              <Route path="/article">
-                <Article />
-              </Route>
-            </Switch>
-          </main>
-        </Layout>
-      </Router>
-    </AuthContextProvider>
+    <LayoutContextProvider>
+      <AuthContextProvider>
+        <Router>
+          <Layout>
+            <main>
+              <Switch>
+                <Route path="/" exact>
+                  <Home />
+                </Route>
+                <Route path="/auth">
+                  <Auth
+                    authState={authState}
+                    switchAuthState={switchAuthState}
+                  />
+                </Route>
+                <Route path="/article">
+                  <Article />
+                </Route>
+              </Switch>
+            </main>
+          </Layout>
+        </Router>
+      </AuthContextProvider>
+    </LayoutContextProvider>
   );
 }
 
