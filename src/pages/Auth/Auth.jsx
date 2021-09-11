@@ -1,10 +1,17 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import Login from "./Login/Login";
 import Register from "./Register/Register";
 import Modal from "../../components/StyleRelated/Modal/Modal";
 import ModalLogic from "../../main/Layout/modal";
+import { LayoutContext } from "../../contexts/LayoutContext";
 
 function Auth(props) {
+  const { showFooter, setShowFooter } = useContext(LayoutContext);
+  useEffect(() => {
+    if (showFooter) {
+      setShowFooter(false);
+    }
+  }, []);
   const { openModal, insideModalHandler, click } = ModalLogic();
   const [message, setMessage] = useState({ title: "", message: "" });
   const setModal = (msg) => {
@@ -47,11 +54,7 @@ function Auth(props) {
       <div className="w-full flex flex-wrap">
         <div className="w-full md:w-1/2 flex flex-col">
           <div className="flex flex-col justify-center md:justify-start my-auto pt-8 md:pt-0 px-8 md:px-24 lg:px-32">
-            <p
-              className="text-center font-bold text-3xl"
-            >
-              Welcome Readers.
-            </p>
+            <p className="text-center font-bold text-3xl">Welcome Readers.</p>
             {props.authState === "login" ? (
               <Login setOpenModal={setModal} />
             ) : (

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect , useContext} from "react";
 import Tags from "../../components/Tags/TagsHome";
 import { TAGS } from "../../assets/assets";
 import ProfilePic from "../../components/ProfilePicture/ProfilePic";
@@ -13,9 +13,16 @@ import { Link } from "react-router-dom";
 import Following from "./Temp/Following";
 import Recomended from "./Temp/Recomended";
 import { Switch, Route } from "react-router-dom";
+import { LayoutContext } from "../../contexts/LayoutContext";
 
 function Home() {
   const { TABS, switchTabs, classes } = HomeHandler();
+  const { showFooter, setShowFooter } = useContext(LayoutContext);
+  useEffect(() => {
+    if (showFooter) {
+      setShowFooter(false);
+    }
+  }, []);
   return (
     <section className="md:flex mt-4 flex-wrap width-full  px-4">
       {/* feed CONTAINER */}

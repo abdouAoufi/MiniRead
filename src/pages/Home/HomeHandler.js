@@ -38,6 +38,8 @@ const HomeHandler = () => {
     setTABS(newTab);
   };
   return { TABS, switchTabs , classes };
+
+  
 };
 
 export default HomeHandler;
