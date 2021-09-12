@@ -8,3 +8,12 @@ export const getTages = () => {
     },
   });
 };
+
+export const getTrendPost = () => {
+  return fetch(ADRESS + "/trends", {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+};

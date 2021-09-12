@@ -9,35 +9,69 @@ import AlsoRead from "../../components/AlsoRead/AlsoReadMd";
 import ProfileSide from "../../components/ProfileCard/ProfileSide";
 import ArticleSlide from "../../components/Article/ArticleSlide";
 import HomeHandler from "./HomeHandler";
-import { Link } from "react-router-dom";
-import Following from "./Temp/Following";
-import Recomended from "./Temp/Recomended";
-import { Switch, Route } from "react-router-dom";
+import ErrorBoundary from "../../components/ErrorBoundary/ErrorBoundary";
 import { LayoutContext } from "../../contexts/LayoutContext";
-import { getTages } from "../../api/homeservice";
+import { getTages, getTrendPost } from "../../api/homeservice";
+import Window from "../../components/Window/Window";
 
 function Home() {
   const { TABS, switchTabs, classes } = HomeHandler();
   const { showFooter, setShowFooter } = useContext(LayoutContext);
   const [tags, setTags] = useState([]);
-
+  const [messageModal, setMessageModal] = useState({
+    title: "title",
+    message: "message",
+  });
+  const [modalDisplay, setModalDisplay] = useState(false);
+  const [trendPosts, setTrendPosts] = useState([]);
   useEffect(async () => {
     if (showFooter) {
       setShowFooter(false);
     }
-    const retrivedTags = await (await getTages()).json();
-    setTags(retrivedTags.tags);
-    console.log(retrivedTags.tags)
+    let fetchedTags = await getTages();
+    let fetchedTrendPosts = await getTrendPost();
+    if (!fetchedTags.ok || !fetchedTrendPosts.ok) {
+      return setMessageWindow(
+        "Something went wrong!",
+        "There was a problem to connect with server! please try again later"
+      );
+    }
+    fetchedTags = await fetchedTags.json();
+    fetchedTrendPosts = await fetchedTrendPosts.json();
+    setTrendPosts(fetchedTrendPosts.posts);
+    setTags(fetchedTags.tags);
   }, []);
+  const changeModalState = () => {
+    setModalDisplay(!modalDisplay);
+  };
+
+  const setMessageWindow = (title, message) => {
+    let updatedMessage = { ...messageModal };
+    updatedMessage.title = title;
+    updatedMessage.message = message;
+    setMessageModal(updatedMessage);
+    changeModalState();
+  };
+
   return (
     <section className="md:flex mt-4 flex-wrap width-full  px-4">
+      <Window
+        openModal={modalDisplay}
+        click={changeModalState}
+        message={messageModal}
+      />
       {/* feed CONTAINER */}
       <div className="p-4 flex-column overflow-scroll justify-start lg:w-2/3">
         <div>
-          <p className="text-black-light font-medium text-base">
+          <p
+            onClick={changeModalState}
+            className="text-black-light font-medium text-base"
+          >
             You're may be inressted by{" "}
           </p>
-          <Tags tags={tags} />
+          <ErrorBoundary>
+            <Tags tags={tags} />
+          </ErrorBoundary>
         </div>
         <div className="mt-4 ">
           <p className="text-black-light font-medium text-base">
@@ -80,14 +114,8 @@ function Home() {
       <div className="hidden md:block lg:w-1/3 px-8">
         <div className="mt-6">
           <div className="5/6 h-48 shadow-sm  text-primary rounded relative p-6 bg-accent">
-            <img
-              src={ICONS.deltee}
-              className="w-4 h-4 absolute top-4 right-4"
-              alt="close"
-            />
             <div className="flex-column items-center justify-center h-full">
               <h3 className=" text-md   focus: ">Welcome to MiniRead </h3>
-
               <div className="mt-5">
                 <p className=" font-bold   mt-2">Read articles you like </p>
                 <p className=" font-bold   mt-2">Write articles and share </p>
@@ -97,14 +125,14 @@ function Home() {
           </div>
         </div>
         <div className="mt-8 border-b pb-8">
-          <AlsoRead headTitle="Trends this week " />
+          <AlsoRead posts={trendPosts} headTitle="Trends this week " />
         </div>
 
         <div className="mt-8 border-b pb-8">
           <h2 className="text-md font-semibold text-primary uppercase">
             Who to follow
           </h2>
-          <div className="mt-4">
+          <div className="mt-4 hover:border rounded">
             <ProfileSide />
             <ProfileSide />
             <ProfileSide />

@@ -23,7 +23,7 @@ function Layout(props) {
             onClick={(e) => {
               e.stopPropagation();
             }}
-            className="rounded-b-md bg-white  min-h-1/4 w-full md:w-120 "
+            className="rounded-b-md bg-white  min-h-1/4 w-screen md:w-120 "
           >
             <Suggesion />
           </div>

@@ -3,7 +3,7 @@ import React, { createContext, useState } from "react";
 export const AuthContext = createContext();
 
 export const AuthContextProvider = (props) => {
-  const [isLogged, setLogged] = useState(false);
+  const [isLogged, setLogged] = useState(true);
   const [userName, setUserName] = useState({ firstName: "", lastName: "" });
   return (
     <AuthContext.Provider

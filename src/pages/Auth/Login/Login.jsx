@@ -25,68 +25,64 @@ function Login(props) {
         login(values)
           .then((result) => {
             setLoading(false);
+            console.log(result)
             return result.json();
           })
           .then((data) => {
             props.setOpenModal(data);
+            if(data.status === 200 || data.status === 201 ){
             let updatedUserName = { ...userName };
             updatedUserName.firstName = data.user.firstName;
             updatedUserName.lastName = data.user.lastName;
-            console.log(updatedUserName);
             setUserName(updatedUserName);
+            }          
           })
           .catch((err) => {
             throw Error(err);
           });
-      }, 2000);
+      }, 300);
     },
   });
   return (
     <form onSubmit={formik.handleSubmit} className="flex flex-col pt-3 md:pt-8">
-      <label className="flex flex-col-reverse relative mt-12 focus group">
+    <div className="flex flex-col pt-2">
+        <label htmlFor="name" className="text-lg">
+          Email adress
+        </label>
         <input
           id="email"
           name="email"
           type="email"
           onChange={formik.handleChange}
           value={formik.values.email}
-          placeholder="your@email.com"
-          className="border-2  rounded-sm border-primary outline-none  px-4 py-3  leading-9"
+          placeholder="Johnsmith@email.com"
+          className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mt-1 leading-tight focus:outline-none focus:shadow-outline"
         />
-
         {formik.errors.email ? (
-          <span className="ml-auto leading-10  text-red-400 font-semibold">
-            {" "}
+          <div className="text-red-400 pt-2 font-medium">
             {formik.errors.email}
-          </span>
-        ) : (
-          <span className="ml-auto leading-10  text-red-400 opacity-0 font-semibold">
-            hidden ared
-          </span>
-        )}
-      </label>
-      <label className="  flex flex-col-reverse relative mt-6 focus group">
+          </div>
+        ) : null}
+      </div>
+      <div className="flex flex-col pt-2">
+        <label htmlFor="name" className="text-lg">
+          Password
+        </label>
         <input
           id="password"
           name="password"
           type="password"
           onChange={formik.handleChange}
           value={formik.values.password}
-          placeholder="password"
-          className="border-2 rounded-sm border-primary outline-none  px-4 py-3 leading-9"
+          placeholder="Your password"
+          className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mt-1 leading-tight focus:outline-none focus:shadow-outline"
         />
-
         {formik.errors.password ? (
-          <span className="ml-auto leading-10 text-red-400 font-semibold">
-            {" "}
+          <div className="text-red-400 pt-2 font-medium">
             {formik.errors.password}
-          </span>
-        ) : (
-          <span className="ml-auto leading-10  text-red-400 opacity-0 font-semibold">
-            hidden ared
-          </span>
-        )}
-      </label>
+          </div>
+        ) : null}
+      </div>
 
       {!loading ? (
         <button

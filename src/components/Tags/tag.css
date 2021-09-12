@@ -1,3 +1,0 @@
-.tag {
-  @apply px-3 py-1 text-sm mr-2  font-bold text-black transition-colors duration-200 transform bg-black-lighterr rounded cursor-pointer hover:bg-secondary hover:text-white;
-}

@@ -8,7 +8,7 @@ function Modal(props) {
   return (
     <div className="" onClick={props.click}>
       <Transition
-        className="fixed  inset-0 bg-black bg-opacity-70 z-100 transition-opacity"
+        className="fixed z-50 inset-0 bg-black bg-opacity-70 z-100 transition-opacity"
         show={props.openModal}
         appear={props.openModal}
         enter="transition ease-out duration-200"
