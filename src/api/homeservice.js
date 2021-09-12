@@ -17,3 +17,12 @@ export const getTrendPost = () => {
     },
   });
 };
+
+export const getHomePosts = () => {
+  return fetch(ADRESS + "/posts", {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+};

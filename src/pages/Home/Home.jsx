@@ -11,7 +11,7 @@ import ArticleSlide from "../../components/Article/ArticleSlide";
 import HomeHandler from "./HomeHandler";
 import ErrorBoundary from "../../components/ErrorBoundary/ErrorBoundary";
 import { LayoutContext } from "../../contexts/LayoutContext";
-import { getTages, getTrendPost } from "../../api/homeservice";
+import { getTages, getTrendPost, getHomePosts } from "../../api/homeservice";
 import Window from "../../components/Window/Window";
 
 function Home() {
@@ -24,13 +24,19 @@ function Home() {
   });
   const [modalDisplay, setModalDisplay] = useState(false);
   const [trendPosts, setTrendPosts] = useState([]);
+  const [homePosts, setHomePosts] = useState([]);
   useEffect(async () => {
     if (showFooter) {
       setShowFooter(false);
     }
+  }, []);
+
+  const fetchResources = async () => {
     let fetchedTags = await getTages();
     let fetchedTrendPosts = await getTrendPost();
-    if (!fetchedTags.ok || !fetchedTrendPosts.ok) {
+    let fetchedPosts = await getHomePosts();
+
+    if (!fetchedTags.ok || !fetchedTrendPosts.ok || !fetchedPosts.ok) {
       return setMessageWindow(
         "Something went wrong!",
         "There was a problem to connect with server! please try again later"
@@ -38,9 +44,13 @@ function Home() {
     }
     fetchedTags = await fetchedTags.json();
     fetchedTrendPosts = await fetchedTrendPosts.json();
+    fetchedPosts = await fetchedPosts.json();
+    console.log(fetchedPosts)
+    setHomePosts(fetchedPosts.posts);
     setTrendPosts(fetchedTrendPosts.posts);
     setTags(fetchedTags.tags);
-  }, []);
+  };
+
   const changeModalState = () => {
     setModalDisplay(!modalDisplay);
   };
@@ -64,10 +74,10 @@ function Home() {
       <div className="p-4 flex-column overflow-scroll justify-start lg:w-2/3">
         <div>
           <p
-            onClick={changeModalState}
+            onClick={fetchResources}
             className="text-black-light font-medium text-base"
           >
-            You're may be inressted by{" "}
+            You're may be inressted by <span className="cursor-pointer text-red-300">[fetch data]</span>{" "}
           </p>
           <ErrorBoundary>
             <Tags tags={tags} />
@@ -103,8 +113,8 @@ function Home() {
             })}
           </ul>
         </div>
-        <div className="">
-          {ARTICLES.map((article, index) => {
+        <div className="w-full">
+          {homePosts.map((article, index) => {
             return <ArticleCard article={article} key={index} />;
           })}
         </div>
