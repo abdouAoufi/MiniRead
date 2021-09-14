@@ -1,9 +1,10 @@
 import React, { useEffect, useContext, useState } from "react";
 import Tags from "../../components/Tags/TagsHome";
 import { TAGS } from "../../assets/assets";
-import ProfilePic from "../../components/ProfilePicture/ProfilePic";
+import useUpdateEffect from "../../utils/useUpdateEffect";
 import ArticleCard from "../../components/Article/ArticleCard";
 import Loading from "../../components/Loading";
+import LoadingPost from "../../components/Loading/LoadingPost";
 import AlsoRead from "../../components/AlsoRead/AlsoReadMd";
 import ProfileSide from "../../components/ProfileCard/ProfileSide";
 import ArticleSlide from "../../components/Article/ArticleSlide";
@@ -28,7 +29,10 @@ function Home() {
     if (showFooter) {
       setShowFooter(false);
     }
+    fetchResources();
   }, []);
+
+  // useUpdateEffect(() => alert("Tags loaded successfully"), [tags]);
 
   const fetchResources = async () => {
     let fetchedTags, fetchedTrendPosts, fetchedPosts;
@@ -40,7 +44,7 @@ function Home() {
       return setMessageWindow(
         "Something went wrong!",
         err.message ??
-          "There was a problem to connect with server! please try again later"
+          "There is a problem to connect with server! please try again later"
       );
     }
 
@@ -60,23 +64,19 @@ function Home() {
     setTags(fetchedTags.tags);
   };
 
-  const changeModalState = () => {
-    setModalDisplay(!modalDisplay);
-  };
-
   const setMessageWindow = (title, message) => {
     let updatedMessage = { ...messageModal };
     updatedMessage.title = title;
     updatedMessage.message = message;
     setMessageModal(updatedMessage);
-    changeModalState();
+    setModalDisplay(!modalDisplay);
   };
 
   return (
-    <section className="md:flex mt-4 flex-wrap width-full  px-4">
+    <section className="relative md:flex mt-4 flex-wrap width-full  px-4">
       <Window
         openModal={modalDisplay}
-        click={changeModalState}
+        click={() => setModalDisplay(!modalDisplay)}
         message={messageModal}
       />
       {/* feed CONTAINER */}
@@ -93,7 +93,8 @@ function Home() {
         </div>
         <div className="mt-4 ">
           <p className="text-black-light font-medium text-base">
-            Last article you've read
+            Last article you've read{" "}
+            <span className="cursor-pointer text-red-300">[nothing]</span>{" "}
           </p>
           <div>
             <div className="flex w-full items-center mt-4 overflow-scroll">
@@ -107,7 +108,9 @@ function Home() {
             {TABS.map((i) => {
               return (
                 <li
-                  onClick={() => switchTabs(i.name)}
+                  onClick={() => {
+                    switchTabs(i.name);
+                  }}
                   key={i.name}
                   className={
                     i.current === true
@@ -122,14 +125,19 @@ function Home() {
           </ul>
         </div>
         <div className="w-full">
-          {homePosts.map((article, index) => {
-            return <ArticleCard article={article} key={index} />;
-          })}
+          {homePosts.length > 0 ? (
+            homePosts.map((article, index) => {
+              return <ArticleCard article={article} key={index} />;
+            })
+          ) : (
+            <div>
+              <LoadingPost />
+              <LoadingPost />
+            </div>
+          )}
         </div>
-        {/* ARTICLES */}
       </div>
-      {/* information CONTAINER */}
-      <div className="hidden md:block lg:w-1/3 px-8">
+      <div className="hidden fixed top-20 right-0 lg:block lg:w-1/3 px-8">
         <div className="mt-6">
           <div className="5/6 h-48 shadow-sm  text-primary rounded relative p-6 bg-accent">
             <div className="flex-column items-center justify-center h-full">

@@ -5,21 +5,16 @@ const HomeHandler = () => {
     {
       name: "Recommended for you",
       to: "/recommended",
-      current: false,
-    },
-    {
-      name: "Following",
-      to: "/following",
       current: true,
-    },
+    }
   ];
 
   const classes = [
     {
       tabs: {
         active:
-          "pr-4 py-2 font-semibol border-b-2  border-secondary text-gray-800 rounded-t opacity-50",
-        idle: "pr-4 py-2 font-semibol  text-gray-800 rounded-t opacity-50",
+          "mr-2 py-2 font-semibol border-b-2 text-center border-secondary text-gray-800 rounded-t opacity-50",
+        idle: "mr-2 py-2 font-semibol  text-center text-gray-800 rounded-t opacity-50",
       },
     },
   ];

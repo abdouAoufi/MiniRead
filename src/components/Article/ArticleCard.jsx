@@ -1,17 +1,19 @@
 import React from "react";
 import ProfilePic from "../ProfilePicture/ProfilePic";
-import { ICONS } from "../../assets/assets";
+import { IMAGES } from "../../assets/assets";
 import ArticleInfo from "./ArticleInfo";
 
 function ArticleCard(props) {
   return (
-    <article className="min-w-full p-0 m-0 items-center">
+    <article className="min-w-full p-0 m-0 items-center overflow-hidden">
       <div className="flex justify-between items-center w-full">
         <div className="my-2 py-2  dark:bg-gray-800">
           <div className="flex">
-            <ProfilePic />
+            <ProfilePic size="small" />
             <a className="px-3  text-sm mr-2 font-semibold text-black transition-colors duration-200 transform cursor-pointer  hover:text-secondary">
-              {props.article?.creator.firstName + " " + props.article?.creator.lastName}
+              {props.article?.creator.firstName +
+                " " +
+                props.article?.creator.lastName}
             </a>
           </div>
           <div className="mt-2">
@@ -25,17 +27,19 @@ function ArticleCard(props) {
               {props.article?.summary}
             </p>
           </div>
-          <ArticleInfo date={props.article?.createdAt} topic={props.article?.postinfo.topic} />
+          <ArticleInfo
+            date={props.article?.createdAt}
+            topic={props.article?.postinfo.topic}
+          />
         </div>
         <div className="overflow-hidden rounded-md ml-8 h-32 w-48">
           <img
-            src="https://miro.medium.com/fit/c/200/134/0*uFpxUEweapysDtOl"
+            src={IMAGES.suggestion}
             alt="article header"
             className="h-full w-full"
           />
         </div>
       </div>
-      
     </article>
   );
 }

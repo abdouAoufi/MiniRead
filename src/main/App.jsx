@@ -9,6 +9,7 @@ import Home from "../pages/Home/Home";
 import AuthHandler from "./AuthHandler";
 import Auth from "../pages/Auth/Auth";
 import Layout from "./Layout/Layout";
+import PostCreateTemp from "../components/PostCreateTemp/PostCreateTemp";
 import { AuthContextProvider } from "../contexts/AuthContext";
 import { LayoutContextProvider } from "../contexts/LayoutContext";
 function App() {
@@ -31,6 +32,9 @@ function App() {
                 </Route>
                 <Route path="/article">
                   <Article />
+                </Route>
+                <Route path="/create-post">
+                  <PostCreateTemp />
                 </Route>
               </Switch>
             </main>

@@ -1,4 +1,5 @@
 import React from "react";
+import { IMAGES } from "../../assets/assets";
 
 function ProfileSide() {
   return (
@@ -7,12 +8,12 @@ function ProfileSide() {
         <div className="mr-4">
           <img
             className="shadow sm:w-12 sm:h-12 w-14 h-14 rounded-full"
-            src="http://tailwindtemplates.io/wp-content/uploads/2019/03/link.jpg"
+            src={IMAGES.boy}
             alt="Avatar"
           />
         </div>
         <div>
-          <h1 className="text-md font-medium text-gray-700">Link</h1>
+          <h1 className="text-md font-medium text-gray-700">Crestopher joe</h1>
           <p className="text-black-light text-xs">UX Designer at Hyrule</p>
         </div>
       </div>

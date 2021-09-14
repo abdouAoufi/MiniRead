@@ -3,6 +3,7 @@ import Modal from "../StyleRelated/Modal/Modal";
 import ModalLogic from "../../main/Layout/modal";
 
 function Window(props) {
+  console.log(props);
   const { click, openModal, insideModalHandler } = ModalLogic();
   return (
     <Modal center openModal={props.openModal}>

@@ -1,7 +1,8 @@
 import logo from "./images/svg/logo.svg";
 import logo_mini from "./images/svg/logo-mini.svg";
 import portait from "./images/jpeg/port.jpg";
-import suggestion from "./images/jpeg/port.jpg";
+import suggestion from "./images/jpeg/sugg.jpg";
+import boy from "./images/png/boy.png";
 // icons
 import document from "./images/svg/document.svg";
 import like from "./images/svg/like.svg";
@@ -27,11 +28,12 @@ export const LOGO = {
 export const IMAGES = {
   portait,
   suggestion,
+  boy,
 };
 
 export const LINKS_NAVBAR = [
   {
-    name: "trend",
+    name: "login",
     to: "/auth",
     current: false,
   },
@@ -41,13 +43,13 @@ export const LINKS_NAVBAR = [
     current: false,
   },
   {
-    name: "Blogs",
+    name: "article",
     to: "/article",
     current: false,
   },
   {
-    name: "Quizes",
-    to: "/course",
+    name: "create post",
+    to: "/create-post",
     current: false,
   },
 ];

@@ -3,7 +3,7 @@ import { ICONS } from "../../assets/assets";
 
 function ArticleInfo(props) {
   return (
-    <div className="flex items-center justify-between mt-4  ">
+    <div className="flex items-center justify-between pr-12 md:pr-0 md:justify-between mt-4  ">
       <div className="flex items-baseline relative">
         <span className="text-xs font-bold mr-2 text-black-light dark:text-gray-400">
           {props.date}

@@ -1,4 +1,5 @@
 import React from "react";
+import { IMAGES } from "../../assets/assets";
 
 function ProfilePic(props) {
   let size =
@@ -11,8 +12,8 @@ function ProfilePic(props) {
     <div>
       <div className={size}>
         <img
-          className="rounded-full shadow-sm"
-          src="https://randomuser.me/api/portraits/women/81.jpg"
+          className="rounded-full p-0.5"
+          src={props.url ?? IMAGES.boy}
           alt="user image"
         />
       </div>
