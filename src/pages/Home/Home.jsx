@@ -3,8 +3,7 @@ import Tags from "../../components/Tags/TagsHome";
 import { TAGS } from "../../assets/assets";
 import ProfilePic from "../../components/ProfilePicture/ProfilePic";
 import ArticleCard from "../../components/Article/ArticleCard";
-import { ARTICLES } from "../../assets/data";
-import { ICONS } from "../../assets/assets";
+import Loading from "../../components/Loading";
 import AlsoRead from "../../components/AlsoRead/AlsoReadMd";
 import ProfileSide from "../../components/ProfileCard/ProfileSide";
 import ArticleSlide from "../../components/Article/ArticleSlide";
@@ -32,9 +31,18 @@ function Home() {
   }, []);
 
   const fetchResources = async () => {
-    let fetchedTags = await getTages();
-    let fetchedTrendPosts = await getTrendPost();
-    let fetchedPosts = await getHomePosts();
+    let fetchedTags, fetchedTrendPosts, fetchedPosts;
+    try {
+      fetchedTags = await getTages();
+      fetchedTrendPosts = await getTrendPost();
+      fetchedPosts = await getHomePosts();
+    } catch (err) {
+      return setMessageWindow(
+        "Something went wrong!",
+        err.message ??
+          "There was a problem to connect with server! please try again later"
+      );
+    }
 
     if (!fetchedTags.ok || !fetchedTrendPosts.ok || !fetchedPosts.ok) {
       return setMessageWindow(
@@ -42,10 +50,11 @@ function Home() {
         "There was a problem to connect with server! please try again later"
       );
     }
+
     fetchedTags = await fetchedTags.json();
     fetchedTrendPosts = await fetchedTrendPosts.json();
     fetchedPosts = await fetchedPosts.json();
-    console.log(fetchedPosts)
+
     setHomePosts(fetchedPosts.posts);
     setTrendPosts(fetchedTrendPosts.posts);
     setTags(fetchedTags.tags);
@@ -77,11 +86,10 @@ function Home() {
             onClick={fetchResources}
             className="text-black-light font-medium text-base"
           >
-            You're may be inressted by <span className="cursor-pointer text-red-300">[fetch data]</span>{" "}
+            You're may be inressted by{" "}
+            <span className="cursor-pointer text-red-300">[fetch data]</span>{" "}
           </p>
-          <ErrorBoundary>
-            <Tags tags={tags} />
-          </ErrorBoundary>
+          {tags.length > 0 ? <Tags tags={tags} /> : <Loading />}
         </div>
         <div className="mt-4 ">
           <p className="text-black-light font-medium text-base">
@@ -135,7 +143,11 @@ function Home() {
           </div>
         </div>
         <div className="mt-8 border-b pb-8">
-          <AlsoRead posts={trendPosts} headTitle="Trends this week " />
+          {trendPosts.length > 0 ? (
+            <AlsoRead posts={trendPosts} headTitle="Trends this week " />
+          ) : (
+            <Loading />
+          )}
         </div>
 
         <div className="mt-8 border-b pb-8">

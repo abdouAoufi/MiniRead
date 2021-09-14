@@ -5,8 +5,8 @@ import ModalLogic from "../../main/Layout/modal";
 function Window(props) {
   const { click, openModal, insideModalHandler } = ModalLogic();
   return (
-    <Modal center   openModal={props.openModal}>
-      <div onClick={insideModalHandler}>
+    <Modal center openModal={props.openModal}>
+      <div>
         <div className="inline-block   max-w-md p-6 my-8 w-120 overflow-hidden text-left align-middle transition-all transform bg-white shadow-xl rounded-xl">
           <p as="h2" className="text-xl font-semibold leading-6 text-gray-900">
             {props.message?.title}

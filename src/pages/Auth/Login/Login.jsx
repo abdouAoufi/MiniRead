@@ -25,27 +25,30 @@ function Login(props) {
         login(values)
           .then((result) => {
             setLoading(false);
-            console.log(result)
+            console.log(result);
             return result.json();
           })
           .then((data) => {
             props.setOpenModal(data);
-            if(data.status === 200 || data.status === 201 ){
-            let updatedUserName = { ...userName };
-            updatedUserName.firstName = data.user.firstName;
-            updatedUserName.lastName = data.user.lastName;
-            setUserName(updatedUserName);
-            }          
+            if (data.status === 200 || data.status === 201) {
+              let updatedUserName = { ...userName };
+              updatedUserName.firstName = data.user.firstName;
+              updatedUserName.lastName = data.user.lastName;
+              setUserName(updatedUserName);
+            }
           })
           .catch((err) => {
-            throw Error(err);
+            props.setOpenModal({
+              title: "Something went wrong!",
+              message: err.message ?? "There is potentially error in network",
+            });
           });
       }, 300);
     },
   });
   return (
     <form onSubmit={formik.handleSubmit} className="flex flex-col pt-3 md:pt-8">
-    <div className="flex flex-col pt-2">
+      <div className="flex flex-col pt-2">
         <label htmlFor="name" className="text-lg">
           Email adress
         </label>

@@ -14,6 +14,7 @@ function Auth(props) {
   }, []);
   const { openModal, insideModalHandler, click } = ModalLogic();
   const [message, setMessage] = useState({ title: "", message: "" });
+  
   const setModal = (msg) => {
     const newMessage = { ...message };
     newMessage.title = msg.title;
