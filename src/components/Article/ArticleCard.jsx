@@ -34,9 +34,10 @@ function ArticleCard(props) {
         </div>
         <div className="overflow-hidden rounded-md ml-8 h-32 w-48">
           <img
-            src={IMAGES.suggestion}
+            src={props.article.imageHeaderUrl ?? IMAGES.suggestion}
             alt="article header"
-            className="h-full w-full"
+            loading="lazy"
+            className="h-full w-full object-cover"
           />
         </div>
       </div>

@@ -5,7 +5,7 @@ function ArticleSlide() {
   return (
     <div className="w-full flex">
       <div className="flex md:w-1/2 bg-white   overflow-hidden">
-        <img className="h-32" src={IMAGES.suggestion} />
+        <img className="h-32" src={IMAGES.suggestion} loading="lazy" />
         <div className="w-2/3 ml-3 p-2">
           <h1 className="text-black font-bold text-xl">Tomorow</h1>
           <p className="mt-2 text-gray-600 text-sm break-words">

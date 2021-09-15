@@ -1,1 +1,2 @@
-export const ADRESS = "http://192.168.1.109:1337"
+
+export const ADRESS = "https://mini-read.herokuapp.com"
