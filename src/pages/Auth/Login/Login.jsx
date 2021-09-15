@@ -1,18 +1,17 @@
 import React, { useState, useContext } from "react";
 import { useFormik } from "formik";
 import LoginHandler from "./LoginHandler";
-import { ICONS } from "../../../assets/assets";
 import Loading from "../../../components/Loading";
 import { login } from "../../../api/authservice";
 import { AuthContext } from "../../../contexts/AuthContext";
+import { WindowContext } from "../../../contexts/Windowcontenxt";
 
-function Login(props) {
+function Login() {
   const { userName, setUserName } = useContext(AuthContext);
+  const { setMessageWindow } = useContext(WindowContext);
   const [loading, setLoading] = useState(false);
-  const openModal = () => {
-    props.setOpenModal();
-  };
   const { validate } = LoginHandler();
+
   const formik = useFormik({
     initialValues: {
       email: "",
@@ -25,11 +24,10 @@ function Login(props) {
         login(values)
           .then((result) => {
             setLoading(false);
-            console.log(result);
             return result.json();
           })
           .then((data) => {
-            props.setOpenModal(data);
+            setMessageWindow(data.title, data.message);
             if (data.status === 200 || data.status === 201) {
               let updatedUserName = { ...userName };
               updatedUserName.firstName = data.user.firstName;
@@ -38,14 +36,15 @@ function Login(props) {
             }
           })
           .catch((err) => {
-            props.setOpenModal({
-              title: "Something went wrong!",
-              message: err.message ?? "There is potentially error in network",
-            });
+            setMessageWindow(
+              "Sorry something went wrong!",
+              err.message ?? "There is potentially error in network"
+            );
           });
       }, 300);
     },
   });
+
   return (
     <form onSubmit={formik.handleSubmit} className="flex flex-col pt-3 md:pt-8">
       <div className="flex flex-col pt-2">

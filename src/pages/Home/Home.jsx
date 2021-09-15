@@ -1,6 +1,5 @@
 import React, { useEffect, useContext, useState } from "react";
 import Tags from "../../components/Tags/TagsHome";
-import { TAGS } from "../../assets/assets";
 import useUpdateEffect from "../../utils/useUpdateEffect";
 import ArticleCard from "../../components/Article/ArticleCard";
 import Loading from "../../components/Loading";
@@ -9,20 +8,15 @@ import AlsoRead from "../../components/AlsoRead/AlsoReadMd";
 import ProfileSide from "../../components/ProfileCard/ProfileSide";
 import ArticleSlide from "../../components/Article/ArticleSlide";
 import HomeHandler from "./HomeHandler";
-import ErrorBoundary from "../../components/ErrorBoundary/ErrorBoundary";
 import { LayoutContext } from "../../contexts/LayoutContext";
 import { getTages, getTrendPost, getHomePosts } from "../../api/homeservice";
-import Window from "../../components/Window/Window";
+import { WindowContext } from "../../contexts/Windowcontenxt";
 
 function Home() {
   const { TABS, switchTabs, classes } = HomeHandler();
   const { showFooter, setShowFooter } = useContext(LayoutContext);
   const [tags, setTags] = useState([]);
-  const [modalDisplay, setModalDisplay] = useState(false);
-  const [messageModal, setMessageModal] = useState({
-    title: "title",
-    message: "message",
-  });
+  const { setMessageWindow } = useContext(WindowContext);
   const [trendPosts, setTrendPosts] = useState([]);
   const [homePosts, setHomePosts] = useState([]);
   useEffect(async () => {
@@ -41,7 +35,7 @@ function Home() {
       fetchedTrendPosts = await getTrendPost();
       fetchedPosts = await getHomePosts();
     } catch (err) {
-      return setMessageWindow(
+      setMessageWindow(
         "Something went wrong!",
         err.message ??
           "There is a problem to connect with server! please try again later"
@@ -49,7 +43,7 @@ function Home() {
     }
 
     if (!fetchedTags.ok || !fetchedTrendPosts.ok || !fetchedPosts.ok) {
-      return setMessageWindow(
+      setMessageWindow(
         "Something went wrong!",
         "There was a problem to connect with server! please try again later"
       );
@@ -59,28 +53,13 @@ function Home() {
     fetchedTrendPosts = await fetchedTrendPosts.json();
     fetchedPosts = await fetchedPosts.json();
 
-    // console.log(fetchedPosts)
-
     setHomePosts(fetchedPosts.posts);
     setTrendPosts(fetchedTrendPosts.posts);
     setTags(fetchedTags.tags);
   };
 
-  const setMessageWindow = (title, message) => {
-    let updatedMessage = { ...messageModal };
-    updatedMessage.title = title;
-    updatedMessage.message = message;
-    setMessageModal(updatedMessage);
-    setModalDisplay(!modalDisplay);
-  };
-
   return (
     <section className="relative md:flex mt-4 flex-wrap width-full  px-4">
-      <Window
-        openModal={modalDisplay}
-        click={() => setModalDisplay(!modalDisplay)}
-        message={messageModal}
-      />
       {/* feed CONTAINER */}
       <div className="p-4 flex-column overflow-scroll justify-start lg:w-2/3">
         <div>

@@ -9,7 +9,6 @@ export const WindowProvider = (props) => {
     message: "message",
   });
   const setMessageWindow = (title, message) => {
-    console.log(title, message);
     let updatedMessage = { ...messageModal };
     updatedMessage.title = title;
     updatedMessage.message = message;

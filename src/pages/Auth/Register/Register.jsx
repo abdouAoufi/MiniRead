@@ -1,12 +1,14 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { useFormik } from "formik";
 import RegisterHandler from "./RegisterHandler";
 import { signup } from "../../../api/authservice";
 import Loading from "../../../components/Loading";
+import { WindowContext } from "../../../contexts/Windowcontenxt";
 const { validate } = RegisterHandler();
 
-function Register(props) {
+function Register() {
   const [loading, setLoading] = useState(false);
+  const { setMessageWindow } = useContext(WindowContext);
   const formik = useFormik({
     initialValues: {
       firstName: "",
@@ -25,10 +27,13 @@ function Register(props) {
             return result.json();
           })
           .then((data) => {
-            props.setOpenModal(data);
+            setMessageWindow(data.title, data.message);
           })
           .catch((err) => {
-            throw Error(err);
+            return setMessageWindow(
+              "Error something went wrong!",
+              err.message || "Error something went wrong!"
+            );
           });
       }, 2000);
     },
@@ -50,7 +55,7 @@ function Register(props) {
           className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mt-1 leading-tight focus:outline-none focus:shadow-outline"
         />
         {formik.errors.firstName ? (
-          <div className="text-red-400 pt-2 font-medium">
+          <div className="text-red-400 pt-2">
             {formik.errors.firstName}
           </div>
         ) : null}
@@ -70,7 +75,7 @@ function Register(props) {
           className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mt-1 leading-tight focus:outline-none focus:shadow-outline"
         />
         {formik.errors.lastName ? (
-          <div className="text-red-400 pt-2 font-medium">
+          <div className="text-red-400 pt-2">
             {formik.errors.lastName}
           </div>
         ) : null}
@@ -90,7 +95,7 @@ function Register(props) {
           className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mt-1 leading-tight focus:outline-none focus:shadow-outline"
         />
         {formik.errors.email ? (
-          <div className="text-red-400 pt-2 font-medium">
+          <div className="text-red-400 pt-2">
             {formik.errors.email}
           </div>
         ) : null}
@@ -110,7 +115,7 @@ function Register(props) {
           className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mt-1 leading-tight focus:outline-none focus:shadow-outline"
         />
         {formik.errors.password ? (
-          <div className="text-red-400 pt-2 font-medium">
+          <div className="text-red-400 pt-2">
             {formik.errors.password}
           </div>
         ) : null}
@@ -130,7 +135,7 @@ function Register(props) {
           className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mt-1 leading-tight focus:outline-none focus:shadow-outline"
         />
         {formik.errors.confirmPassword ? (
-          <div className="text-red-400 pt-2 font-medium">
+          <div className="text-red-400 pt-2 ">
             {formik.errors.confirmPassword}
           </div>
         ) : null}

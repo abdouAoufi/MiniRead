@@ -5,17 +5,14 @@ import Modal from "../../components/StyleRelated/Modal/Modal";
 import ModalLogic from "../../main/Layout/modal";
 import { LayoutContext } from "../../contexts/LayoutContext";
 import AuthHandler from "../../main/AuthHandler";
-import { WindowContext } from "../../contexts/Windowcontenxt";
 
 function Auth() {
   const { authState, switchAuthState } = AuthHandler();
   const { showFooter, setShowFooter } = useContext(LayoutContext);
-  const { setMessageWindow } = useContext(WindowContext);
   useEffect(() => {
     if (showFooter) {
       setShowFooter(false);
     }
-    setMessageWindow("title", "message");
   }, []);
 
   return (
