@@ -59,6 +59,8 @@ function Home() {
     fetchedTrendPosts = await fetchedTrendPosts.json();
     fetchedPosts = await fetchedPosts.json();
 
+    // console.log(fetchedPosts)
+
     setHomePosts(fetchedPosts.posts);
     setTrendPosts(fetchedTrendPosts.posts);
     setTags(fetchedTags.tags);
