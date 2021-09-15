@@ -1,7 +1,40 @@
 import React from "react";
 import { ICONS } from "../../assets/assets";
 
-function Article() {
+/* 
+{
+    "content": {
+        "data": {
+            "paragraph_1": "When products are made for you, you never realise how their design can be exclusionary towards people of color.",
+            "imageUrl_1": "https://images.unsplash.com/photo-1593642702821-c8da6771f0c6?ixid=MnwxMjA3fDF8MHxlZGl0b3JpYWwtZmVlZHwxfHx8ZW58MHx8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
+        }
+    },
+    "postinfo": {
+        "timeReading": "5 min",
+        "topic": "Design",
+        "likes": "257",
+        "comments": []
+    },
+    "_id": "6141048a68be832b2c12b0e1",
+    "creator": "613998ea9b0ae7d836cade11",
+    "tags": [
+        {
+            "name": "Design",
+            "_id": "6141048a68be832b2c12b0e2"
+        }
+    ],
+    "title": "Six Designs That White People Never Notice Are Racist",
+    "summary": "When products are made for you, you never realise how their design can be exclusionary towards people of color.",
+    "conclusion": "Designers have an important role in fighting discrimination, and making products that work for everyone. This is just one of the reasons we need more diversity in the design world, as well as raising awareness in the field for issues such as racism and sexism.",
+    "imageHeaderUrl": "https://images.unsplash.com/photo-1593642702821-c8da6771f0c6?ixid=MnwxMjA3fDF8MHxlZGl0b3JpYWwtZmVlZHwxfHx8ZW58MHx8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
+    "createdAt": "2021-09-14T20:22:34.304Z",
+    "updatedAt": "2021-09-14T20:22:34.304Z",
+    "__v": 0
+}
+*/
+
+function Article({ post }) {
+  
   return (
     <div className="lg:mr-8">
       {/* ARTICLE CONTENT */}
@@ -9,64 +42,35 @@ function Article() {
         <p className="tracking-wide text-secondary-dark font-normal text-sm">
           Trend{" "}
           <span>
-            <img src={ICONS.trend} alt="trends" className="ml-2 w-6 h-6 inline-block" />
+            <img
+              src={ICONS.trend}
+              alt="trends"
+              className="ml-2 w-6 h-6 inline-block"
+            />
           </span>
         </p>
         {/* TITLE */}
         <h1 className="mt-3 text-black-dark tracking-wider font-bold md:font-medium text-4xl ">
-          Highway to Inferno: On the Road with the Oregon Proud Boys
+          {post?.title}
         </h1>
 
-        <p className="mt-4 text-black font-normal ">
-          Law-and-order rebels. Freedom-loving fascists. What makes the far
-          right tick? Law-and-order rebels. Freedom-loving fascists. What makes
-          the far right tick? loving fascists. What makes the far right tick?
-          Law-and-order rebels.
-        </p>
+        <p className="mt-4 text-black font-normal ">{post?.summary}</p>
 
         {/* IMAGE */}
         <div className="my-3 w-full  rounded-md overflow-hidden ">
           <img
-            src="https://miro.medium.com/max/2800/1*MmX0jjHnpxCX-Z7uV2cJ5w.png"
+            src={post?.content.data.imageUrl_1}
             alt="article header"
             className=" w-full"
           />
           <p className="text-sm font-light text-center text-black-light mt-1">
-            Volume with the windows rolled down
+            {post?.title}
           </p>
         </div>
         <p className="mt-2 text-black font-normal">
-          Toby Keith’s daddy isn’t the only one. I’m idling on a sun-baked
-          Oregon interstate just south of Portland, surrounded by lifted trucks
-          carrying on the Keith tradition. The light summer breeze makes the
-          countless flags dance in the shimmering heat. Trump 2020. Blue Lives
-          Matter. American. Punisher. Gadsden. Confederate. I don’t have flags
-          myself, but Toby Keith at full volume with the windows rolled down
-          seems like a decent substitute. …
+          {post?.content.data.paragraph_1}
         </p>
         {/* IMAGE */}
-        <div className="my-3 w-full  rounded-md overflow-hidden ">
-          <img
-            src="https://miro.medium.com/max/2800/1*Ws7mmN6YiwNqwA3xfWN4FA.png"
-            alt="article header"
-            className=" w-full"
-          />
-          <p className="text-sm font-light text-center text-black-light mt-1">
-            Volume with the windows rolled down
-          </p>
-        </div>
-        <p className="mt-2 text-black font-normal">
-          And here comes press, wandering in to ask uncomfortable questions
-          about the thing that just happened. The Proud Boys swarm, rush across
-          the green of the State Capital lawn to challenge this new opponent.
-          “Fake press!” someone shouts, and the cry catches on throughout the
-          crowd that rapidly surrounds three of the journalists: “Hide behind
-          your press pass!” “Bye, Antifa!” “We know what side you’re on!”
-          Chandler Pappas, the man present when a fellow far-right protester
-          Aaron “Jay” Danielson was shot and killed in Portland two weeks back,
-          shoves a megaphone into a journalist’s face. “Tell me what happened to
-          my partner wasn’t an execution!” he screams. Red-faced and furious.
-        </p>
       </div>
     </div>
   );

@@ -4,33 +4,43 @@ import ProfileCardMobile from "../../components/ProfileCard/ProfileCardMobile";
 import ProfileCartMd from "../../components/ProfileCard/ProfileCartMd";
 import Tags from "../../components/Tags/Tags";
 import AlsoReadMd from "../../components/AlsoRead/AlsoReadMd";
-import Footer from "../../components/Footer/Footer";
 import PostInteraction from "../../components/PostInteraction/PostInteraction";
 import { TAGS } from "../../assets/assets";
 import { LayoutContext } from "../../contexts/LayoutContext";
 import { useParams } from "react-router-dom";
 import { getSinglePostDB } from "../../api/articleservice";
 import Window from "../../components/Window/Window";
+import LoadingPost from "../../components/Loading/LoadingPost";
 
 function ArticleFn() {
   let articleID = useParams("id");
   const { setShowFooter } = useContext(LayoutContext);
-  const [openModal, setOpenModal] = useState(true);
+  const [postInfo, setPostInfo] = useState(null);
+  const [openModal, setOpenModal] = useState(false);
   const [messageModal, setMessageModal] = useState({
-    title: "title",
-    message: "message",
+    title: "Something went wrong!",
+    message:
+      "There is a problem to connect with server! please try again later",
   });
-  // TODO : fetch single article
   useEffect(() => {
     setShowFooter(true);
     getSingleArticle();
   }, []);
 
   const getSingleArticle = async () => {
-    let post;
+    let fetchedPost;
     try {
       const response = await getSinglePostDB(articleID.id);
-      post = await response.json();
+      if (!response.ok) {
+        response.json().then((res) => {
+          return setMessageWindow(
+            res.title || "Something went wrong!",
+            res.message ||
+              "There is a problem to connect with server! please try again later"
+          );
+        });
+      }
+      fetchedPost = await response.json();
     } catch (err) {
       return setMessageWindow(
         "Something went wrong!",
@@ -38,7 +48,7 @@ function ArticleFn() {
           "There is a problem to connect with server! please try again later"
       );
     }
-    console.log(post);
+    setPostInfo(fetchedPost);
   };
 
   const setMessageWindow = (title, message) => {
@@ -46,7 +56,7 @@ function ArticleFn() {
     updatedMessage.title = title;
     updatedMessage.message = message;
     setMessageModal(updatedMessage);
-    setModalDisplay(!openModal);
+    setOpenModal(!openModal);
   };
 
   return (
@@ -68,7 +78,7 @@ function ArticleFn() {
           </div>
         </div>
         <div>
-          <Article />
+          {!postInfo ? <LoadingPost /> : <Article post={postInfo.post} />}
           <PostInteraction />
         </div>
 
