@@ -18,11 +18,11 @@ function Home() {
   const { TABS, switchTabs, classes } = HomeHandler();
   const { showFooter, setShowFooter } = useContext(LayoutContext);
   const [tags, setTags] = useState([]);
+  const [modalDisplay, setModalDisplay] = useState(false);
   const [messageModal, setMessageModal] = useState({
     title: "title",
     message: "message",
   });
-  const [modalDisplay, setModalDisplay] = useState(false);
   const [trendPosts, setTrendPosts] = useState([]);
   const [homePosts, setHomePosts] = useState([]);
   useEffect(async () => {

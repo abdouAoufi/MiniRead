@@ -30,7 +30,7 @@ function App() {
                     switchAuthState={switchAuthState}
                   />
                 </Route>
-                <Route path="/article">
+                <Route path="/article/:id">
                   <Article />
                 </Route>
                 <Route path="/create-post">

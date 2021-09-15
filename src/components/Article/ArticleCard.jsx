@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useEffect } from "react";
 import ProfilePic from "../ProfilePicture/ProfilePic";
 import { IMAGES } from "../../assets/assets";
 import ArticleInfo from "./ArticleInfo";
+import { Link } from "react-router-dom";
 
 function ArticleCard(props) {
+
   return (
     <article className="min-w-full p-0 m-0 items-center overflow-hidden">
       <div className="flex justify-between items-center w-full">
@@ -17,12 +19,12 @@ function ArticleCard(props) {
             </a>
           </div>
           <div className="mt-2">
-            <a
-              href="#"
+            <Link
+              to={`/article/${props.article._id}`}
               className="text-xl max-w-xl uppercase block font-bold text-gray-700 dark:text-white hover:text-gray-600 dark:hover:text-gray-200 hover:underline"
             >
               {props.article?.title}
-            </a>
+            </Link>
             <p className="mt-2 max-w-xl  text-gray-600   truncate dark:text-gray-300">
               {props.article?.summary}
             </p>
