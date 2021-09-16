@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { ADRESS } from "../../utils/messages";
+import { ADRESS, templateArticle } from "../../utils/messages";
 import Window from "../Window/Window";
 
 function PostCreateTemp() {
@@ -15,23 +15,7 @@ function PostCreateTemp() {
     setMessageModal(updatedMessage);
     setOpenModal(!openModal);
   };
-  const [articleData, setArticleData] = useState({
-    creator: "613998ea9b0ae7d836cade11",
-    title: "default value",
-    imageHeaderUrl: "default value",
-    summary: "default value",
-    tags: [{ name: "default value" }],
-    conclusion: "default value",
-    postinfo: {
-      timeReading: "default value",
-      topic: "default value",
-      likes: "12",
-      comments: [],
-    },
-    content: {
-      data: { paragraph_1: "default value", imageUrl_1: "default value" },
-    },
-  });
+  const [articleData, setArticleData] = useState(templateArticle);
 
   const updateTagArticleData = (e) => {
     let updatedData = { ...articleData };

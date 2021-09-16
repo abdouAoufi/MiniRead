@@ -1,5 +1,6 @@
 import React from "react";
-import {Link} from "react-router-dom"
+import { Link } from "react-router-dom";
+import Loading from "../Loading/Loading";
 
 function AlsoReadMd(props) {
   return (
@@ -8,13 +9,21 @@ function AlsoReadMd(props) {
         {props.headTitle}
       </h2>
       <div className="">
-        {props.posts?.map((post) => {
-          return (
-            <Link  to={`/article/${post._id}`} key={post._id} className="block text-sm mt-2 text-black-light">
-              {post.title}
-            </Link>
-          );
-        })}
+        {props.posts ? (
+          props.posts?.map((post) => {
+            return (
+              <Link
+                to={`/article/${post._id}`}
+                key={post._id}
+                className="block text-sm mt-2 text-black-light"
+              >
+                {post.title}
+              </Link>
+            );
+          })
+        ) : (
+          <Loading />
+        )}
       </div>
     </div>
   );

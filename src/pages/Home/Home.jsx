@@ -83,7 +83,6 @@ function Home() {
             </div>
           </div>
         </div>
-        {/* TABS */}
         <div>
           <ul id="tabs" className="inline-flex w-full  pt-2 ">
             {TABS.map((i) => {
@@ -114,13 +113,14 @@ function Home() {
             <div>
               <LoadingPost />
               <LoadingPost />
+              <LoadingPost />
             </div>
           )}
         </div>
       </div>
       <div className="hidden lg:block lg:w-1/3 px-8 lg:px-12">
         <div className="mt-6">
-          <div className="5/6 h-48 shadow-sm  text-primary rounded relative p-6 bg-accent">
+          <div className=" h-48 shadow-sm  text-primary rounded relative p-6 bg-accent">
             <div className="flex-column items-center justify-center h-full">
               <h3 className=" text-md   focus: ">Welcome to MiniRead </h3>
               <div className="mt-5">

@@ -1,16 +1,17 @@
 import React from "react";
 import { ICONS } from "../../assets/assets";
 
-function ProfileCartMd() {
+function ProfileCartMd(props) {
+  console.log(props.author);
   return (
     <div className=" w-72 md:border-b lg:border-0 border-gray-200 pb-5 p-3">
       <div className="flex justify-between items-center border-b border-gray-100 pb-3">
         <div>
           <p className="text-black font-semibold text-md  ">
-            Aoufi Abderahmane
+            {props.author.firstName + " " + props.author.lastName}
           </p>
           <p className="text-black-light font-normal text-sm ">
-            full stack developper
+            {props.author.work}
           </p>
         </div>
         <div className="relative w-12 h-12 ">
@@ -30,7 +31,7 @@ function ProfileCartMd() {
             <p className="text-black text-sm font-medium">Blogs</p>
           </div>
           <div className="text-sm font-semibold px-1 h-6 grid place-items-center rounded-md bg-black-lighterr text-secondary">
-            12
+            {props.author.postInfo.postCount}
           </div>
         </div>
         {/* single info */}

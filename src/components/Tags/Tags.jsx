@@ -7,8 +7,8 @@ function Tags(props) {
       <div className="mt-2 ">
         {props.tags?.map((tag,index) => {
           return (
-            <div key={index} className="block py-1 px-4 mr-3 my-1 rounded-md bg-gray-100 text-sm text-black-light">
-              {tag}
+            <div key={index} className="inline-block py-1 px-4 mr-3 my-1 rounded-md bg-gray-100 text-sm text-black-light">
+              {tag.name}
             </div>
           );
         })}

@@ -34,7 +34,6 @@ import { ICONS } from "../../assets/assets";
 */
 
 function Article({ post }) {
-  
   return (
     <div className="lg:mr-8">
       {/* ARTICLE CONTENT */}
@@ -57,19 +56,37 @@ function Article({ post }) {
         <p className="mt-4 text-black font-normal ">{post?.summary}</p>
 
         {/* IMAGE */}
-        <div className="my-3 w-full  rounded-md overflow-hidden ">
-          <img
-            src={post?.content.data.imageUrl_1}
-            alt="article header"
-            className=" w-full"
-          />
-          <p className="text-sm font-light text-center text-black-light mt-1">
-            {post?.title}
+        <div>
+          <div className="my-3 w-full  rounded-md overflow-hidden ">
+            <img
+              src={post?.content.data.imageUrl_1}
+              alt="article header"
+              className=" w-full"
+            />
+            <p className="text-sm font-light text-center text-black-light mt-1">
+              {post?.title}
+            </p>
+          </div>
+          <p className="mt-2 text-black font-normal">
+            {post?.content.data.paragraph_1}
           </p>
         </div>
-        <p className="mt-2 text-black font-normal">
-          {post?.content.data.paragraph_1}
-        </p>
+        <div>
+          <div className="my-3 w-full  rounded-md overflow-hidden ">
+            <img
+              src={post?.content.data.imageUrl_2}
+              alt="article header"
+              className=" w-full"
+            />
+            <p className="text-sm font-light text-center text-black-light mt-1">
+              {post?.title}
+            </p>
+          </div>
+          <p className="mt-2 text-black font-normal">
+            {post?.content.data.paragraph_2}
+          </p>
+        </div>
+
         {/* IMAGE */}
       </div>
     </div>

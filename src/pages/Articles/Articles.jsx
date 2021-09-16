@@ -11,6 +11,7 @@ import { useParams } from "react-router-dom";
 import { getSinglePostDB } from "../../api/articleservice";
 import Window from "../../components/Window/Window";
 import LoadingPost from "../../components/Loading/LoadingPost";
+import Loading from "../../components/Loading/Loading";
 
 function ArticleFn() {
   let articleID = useParams("id");
@@ -24,7 +25,7 @@ function ArticleFn() {
   });
   useEffect(() => {
     setShowFooter(true);
-    getSingleArticle();
+    setTimeout(getSingleArticle, 2000);
   }, []);
 
   const getSingleArticle = async () => {
@@ -44,8 +45,8 @@ function ArticleFn() {
       setPostInfo(fetchedPost);
     } catch (err) {
       return setMessageWindow(
-          "Something went wrong!",
-          err.message ??
+        "Something went wrong!",
+        err.message ??
           "There is a problem to connect with server! please try again later"
       );
     }
@@ -68,24 +69,32 @@ function ArticleFn() {
       />
       <div className="md:flex flex-column justify-center items-start md:px-4 md:justify-between px-4 py-6  ">
         <div className="md:hidden">
-          <ProfileCardMobile />
+          {postInfo ? (
+            <ProfileCardMobile author={postInfo.post.creator} />
+          ) : (
+            <Loading />
+          )}
         </div>
         <div className="hidden md:block mr-8 ">
-          <ProfileCartMd />
+          {postInfo ? (
+            <ProfileCartMd author={postInfo.post.creator} />
+          ) : (
+            <Loading />
+          )}
           <div className="hidden md:block mt-4 lg:hidden ">
             <Tags tags={TAGS} />
             <AlsoReadMd />
           </div>
         </div>
         <div>
-          {postInfo ? <Article post={postInfo.post} />: <LoadingPost /> }
-          <PostInteraction />
+          {postInfo ? <Article post={postInfo.post} /> : <LoadingPost />}
+          {/*<PostInteraction />*/}
         </div>
 
         <div className="hidden lg:block ">
-          <Tags tags={TAGS} />
+          {postInfo ? <Tags tags={postInfo.post.tags} /> : <Loading />}
           <div className="hidden lg:block ">
-            <AlsoReadMd />
+            <AlsoReadMd headTitle="People also read" />
           </div>
         </div>
       </div>
