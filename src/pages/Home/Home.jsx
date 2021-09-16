@@ -35,7 +35,7 @@ function Home() {
       fetchedTrendPosts = await getTrendPost();
       fetchedPosts = await getHomePosts();
     } catch (err) {
-      setMessageWindow(
+      return setMessageWindow(
         "Something went wrong!",
         err.message ??
           "There is a problem to connect with server! please try again later"
@@ -43,7 +43,7 @@ function Home() {
     }
 
     if (!fetchedTags.ok || !fetchedTrendPosts.ok || !fetchedPosts.ok) {
-      setMessageWindow(
+      return setMessageWindow(
         "Something went wrong!",
         "There was a problem to connect with server! please try again later"
       );
@@ -118,7 +118,7 @@ function Home() {
           )}
         </div>
       </div>
-      <div className="hidden fixed top-20 right-0 lg:block lg:w-1/3 px-8">
+      <div className="hidden lg:block lg:w-1/3 px-8 lg:px-12">
         <div className="mt-6">
           <div className="5/6 h-48 shadow-sm  text-primary rounded relative p-6 bg-accent">
             <div className="flex-column items-center justify-center h-full">

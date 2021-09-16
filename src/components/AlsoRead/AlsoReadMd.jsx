@@ -1,4 +1,5 @@
 import React from "react";
+import {Link} from "react-router-dom"
 
 function AlsoReadMd(props) {
   return (
@@ -9,9 +10,9 @@ function AlsoReadMd(props) {
       <div className="">
         {props.posts?.map((post) => {
           return (
-            <p key={post._id} className="block text-sm mt-2 text-black-light">
+            <Link  to={`/article/${post._id}`} key={post._id} className="block text-sm mt-2 text-black-light">
               {post.title}
-            </p>
+            </Link>
           );
         })}
       </div>

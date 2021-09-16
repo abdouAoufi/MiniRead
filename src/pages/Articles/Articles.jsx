@@ -41,14 +41,14 @@ function ArticleFn() {
         });
       }
       fetchedPost = await response.json();
+      setPostInfo(fetchedPost);
     } catch (err) {
       return setMessageWindow(
-        "Something went wrong!",
-        err.message ??
+          "Something went wrong!",
+          err.message ??
           "There is a problem to connect with server! please try again later"
       );
     }
-    setPostInfo(fetchedPost);
   };
 
   const setMessageWindow = (title, message) => {
@@ -78,7 +78,7 @@ function ArticleFn() {
           </div>
         </div>
         <div>
-          {!postInfo ? <LoadingPost /> : <Article post={postInfo.post} />}
+          {postInfo ? <Article post={postInfo.post} />: <LoadingPost /> }
           <PostInteraction />
         </div>
 
