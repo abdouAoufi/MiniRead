@@ -67,7 +67,7 @@ function ArticleFn() {
         click={() => setOpenModal(!setOpenModal)}
         message={messageModal}
       />
-      <div className="md:flex flex-column justify-center items-start md:px-4 md:justify-between px-4 py-6  ">
+      <div className="md:flex flex-column justify-center items-around px-4 md:justify-between  py-6  ">
         <div className="md:hidden">
           {postInfo ? (
             <ProfileCardMobile author={postInfo.post.creator} />
@@ -75,24 +75,41 @@ function ArticleFn() {
             <Loading />
           )}
         </div>
-        <div className="hidden md:block mr-8 ">
-          {postInfo ? (
-            <ProfileCartMd author={postInfo.post.creator} />
-          ) : (
-            <Loading />
-          )}
+        <div className="hidden md:block ">
+          <div className="w-72">
+            {postInfo ? (
+              <ProfileCartMd author={postInfo.post.creator} />
+            ) : (
+              <Loading />
+            )}
+          </div>
           <div className="hidden md:block mt-4 lg:hidden ">
-            <Tags tags={TAGS} />
-            <AlsoReadMd />
+            {postInfo ? (
+              <div className="border">
+                <Tags tags={postInfo.post.tags} />
+                <AlsoReadMd headTitle="People also read" />
+              </div>
+            ) : (
+              <div className="w-72">
+                <Loading />
+              </div>
+            )}
           </div>
         </div>
         <div>
-          {postInfo ? <Article post={postInfo.post} /> : <LoadingPost />}
+          {postInfo ? (
+            <Article post={postInfo.post} />
+          ) : (
+            <div className="w-120 mx-12">
+              <LoadingPost />
+            </div>
+          )}
           {/*<PostInteraction />*/}
         </div>
-
         <div className="hidden lg:block ">
-          {postInfo ? <Tags tags={postInfo.post.tags} /> : <Loading />}
+          <div className="w-72">
+            {postInfo ? <Tags tags={postInfo.post.tags} /> : <Loading />}
+          </div>
           <div className="hidden lg:block ">
             <AlsoReadMd headTitle="People also read" />
           </div>

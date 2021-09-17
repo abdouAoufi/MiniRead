@@ -35,7 +35,7 @@ import { ICONS } from "../../assets/assets";
 
 function Article({ post }) {
   return (
-    <div className="lg:mr-8">
+    <div className="lg:mx-8 px-4">
       {/* ARTICLE CONTENT */}
       <div>
         <p className="tracking-wide text-secondary-dark font-normal text-sm">
@@ -49,11 +49,11 @@ function Article({ post }) {
           </span>
         </p>
         {/* TITLE */}
-        <h1 className="mt-3 text-black-dark tracking-wider font-bold md:font-medium text-4xl ">
+        <h1 className="mt-3 text-black-dark tracking-wider font-bold md:font-bold text-4xl ">
           {post?.title}
         </h1>
 
-        <p className="mt-4 text-black font-normal ">{post?.summary}</p>
+        <p className="mt-4 text-black font-normal text-lg ">{post?.summary}</p>
 
         {/* IMAGE */}
         <div>

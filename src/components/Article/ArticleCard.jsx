@@ -30,6 +30,7 @@ function ArticleCard(props) {
             </p>
           </div>
           <ArticleInfo
+            timeReading={props.article?.postinfo.timeReading}
             date={props.article?.createdAt}
             topic={props.article?.postinfo.topic}
           />

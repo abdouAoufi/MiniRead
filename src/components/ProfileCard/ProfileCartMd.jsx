@@ -2,9 +2,8 @@ import React from "react";
 import { ICONS } from "../../assets/assets";
 
 function ProfileCartMd(props) {
-  console.log(props.author);
   return (
-    <div className=" w-72 md:border-b lg:border-0 border-gray-200 pb-5 p-3">
+    <div className="md:border-b border-gray-200 pb-5 p-3">
       <div className="flex justify-between items-center border-b border-gray-100 pb-3">
         <div>
           <p className="text-black font-semibold text-md  ">
