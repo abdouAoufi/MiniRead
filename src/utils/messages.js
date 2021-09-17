@@ -1,6 +1,6 @@
-// export const ADRESS = "https://mini-read.herokuapp.com"
+export const ADRESS = "https://mini-read.herokuapp.com"
 // export const ADRESS = "http://192.168.1.109:1337"
-export const ADRESS = "http://localhost:1337";
+// export const ADRESS = "http://localhost:1337";
 
 export const templateArticle = {
   creator: "6143b12d6e551a0717d7beb6",
