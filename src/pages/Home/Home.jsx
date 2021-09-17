@@ -1,6 +1,6 @@
 import React, { useEffect, useContext, useState } from "react";
 import Tags from "../../components/Tags/TagsHome";
-import useUpdateEffect from "../../utils/useUpdateEffect";
+// import useUpdateEffect from "../../utils/useupdateeffect";
 import ArticleCard from "../../components/Article/ArticleCard";
 import Loading from "../../components/Loading";
 import LoadingPost from "../../components/Loading/LoadingPost";
@@ -65,17 +65,17 @@ function Home() {
         <div>
           <p
             onClick={fetchResources}
-            className="text-black-light font-medium text-base"
+            className="text-black font-medium text-base"
           >
             You're may be inressted by{" "}
-            <span className="cursor-pointer text-red-300">[fetch data]</span>{" "}
+            {/* <span className="cursor-pointer text-red-300">[fetch data]</span>{" "} */}
           </p>
           {tags.length > 0 ? <Tags tags={tags} /> : <Loading />}
         </div>
         <div className="mt-4 ">
-          <p className="text-black-light font-medium text-base">
+          <p className="text-black font-medium text-base">
             Last article you've read{" "}
-            <span className="cursor-pointer text-red-300">[nothing]</span>{" "}
+            {/* <span className="cursor-pointer text-red-300">[nothing]</span>{" "} */}
           </p>
           <div>
             <div className="flex w-full items-center mt-4 overflow-scroll">

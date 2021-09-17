@@ -3,7 +3,7 @@ import { ADRESS, templateArticle } from "../../utils/messages";
 import Window from "../Window/Window";
 
 function PostCreateTemp() {
-  const [openModal, setOpenModal] = useState(true);
+  const [openModal, setOpenModal] = useState(false);
   const [messageModal, setMessageModal] = useState({
     title: "title",
     message: "message",

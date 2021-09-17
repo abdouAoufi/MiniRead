@@ -5,18 +5,17 @@ import ArticleInfo from "./ArticleInfo";
 import { Link } from "react-router-dom";
 
 function ArticleCard(props) {
-
   return (
     <article className="min-w-full p-0 m-0 items-center overflow-hidden">
       <div className="flex justify-between items-center w-full">
         <div className="my-2 py-2  dark:bg-gray-800">
           <div className="flex">
             <ProfilePic size="small" />
-            <a className="px-3  text-sm mr-2 font-semibold text-black transition-colors duration-200 transform cursor-pointer  hover:text-secondary">
+            <Link to={`/user/${props.article?.creator._id}`} className="px-3  text-sm mr-2 font-semibold text-black transition-colors duration-200 transform cursor-pointer  hover:text-secondary">
               {props.article?.creator.firstName +
                 " " +
                 props.article?.creator.lastName}
-            </a>
+            </Link>
           </div>
           <div className="mt-2">
             <Link
