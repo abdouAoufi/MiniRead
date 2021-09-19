@@ -8,12 +8,15 @@ export const WindowProvider = (props) => {
     title: "title",
     message: "message",
   });
-  const setMessageWindow = (title, message) => {
+  const setMessageWindow = (title, message, cb) => {
     let updatedMessage = { ...messageModal };
     updatedMessage.title = title;
     updatedMessage.message = message;
     setMessageModal(updatedMessage);
     setModalDisplay(!modalDisplay);
+    if (cb !== undefined) {
+      cb();
+    }
   };
   return (
     <WindowContext.Provider value={{ modalDisplay, setMessageWindow }}>

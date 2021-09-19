@@ -5,8 +5,11 @@ import Loading from "../../../components/Loading";
 import { login } from "../../../api/authservice";
 import { AuthContext } from "../../../contexts/AuthContext";
 import { WindowContext } from "../../../contexts/Windowcontenxt";
+import { print } from "../../../utils/function";
+import {useHistory} from "react-router-dom";
 
-function Login() {
+function Login({ switchAuthState }) {
+  const history = useHistory();
   const { userName, setUserName } = useContext(AuthContext);
   const { setMessageWindow } = useContext(WindowContext);
   const [loading, setLoading] = useState(false);
@@ -18,86 +21,105 @@ function Login() {
       password: "",
     },
     validate,
-    onSubmit: (values) => {
+    onSubmit: async (values) => {
+      let status = 0;
       setLoading(true);
-      setTimeout(() => {
-        login(values)
-          .then((result) => {
-            setLoading(false);
-            return result.json();
-          })
-          .then((data) => {
-            setMessageWindow(data.title, data.message);
-            if (data.status === 200 || data.status === 201) {
-              let updatedUserName = { ...userName };
-              updatedUserName.firstName = data.user.firstName;
-              updatedUserName.lastName = data.user.lastName;
-              setUserName(updatedUserName);
-            }
-          })
-          .catch((err) => {
-            setMessageWindow(
-              "Sorry something went wrong!",
-              err.message ?? "There is potentially error in network"
-            );
-          });
-      }, 300);
+      try {
+        const response = await login(values);
+        if (response) {
+          setLoading(false);
+          status = response.status;
+        }
+        const responceData = await response.json();
+        if (status >= 400) {
+          return setMessageWindow(responceData.title, responceData.message);
+        }
+        print(responceData);
+        history.replace("/")
+      } catch (err) {
+        setMessageWindow(
+          "Error something went wrong!",
+          err.message || "Error something went wrong!"
+        );
+      }
     },
   });
 
-  return (
-    <form onSubmit={formik.handleSubmit} className="flex flex-col pt-3 md:pt-8">
-      <div className="flex flex-col pt-2">
-        <label htmlFor="name" className="text-lg">
-          Email adress
-        </label>
-        <input
-          id="email"
-          name="email"
-          type="email"
-          onChange={formik.handleChange}
-          value={formik.values.email}
-          placeholder="Johnsmith@email.com"
-          className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mt-1 leading-tight focus:outline-none focus:shadow-outline"
-        />
-        {formik.errors.email ? (
-          <div className="text-red-400 pt-2 font-medium">
-            {formik.errors.email}
-          </div>
-        ) : null}
-      </div>
-      <div className="flex flex-col pt-2">
-        <label htmlFor="name" className="text-lg">
-          Password
-        </label>
-        <input
-          id="password"
-          name="password"
-          type="password"
-          onChange={formik.handleChange}
-          value={formik.values.password}
-          placeholder="Your password"
-          className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mt-1 leading-tight focus:outline-none focus:shadow-outline"
-        />
-        {formik.errors.password ? (
-          <div className="text-red-400 pt-2 font-medium">
-            {formik.errors.password}
-          </div>
-        ) : null}
-      </div>
+  const setUserInfo = (user) => {
+    let updatedUserName = { ...userName };
+    updatedUserName.firstName = user.firstName;
+    updatedUserName.lastName = user.lastName;
+    setUserName(updatedUserName);
+  };
 
-      {!loading ? (
-        <button
-          type="submit"
-          defaultValue="Log In"
-          className="bg-black rounded-sm text-white font-bold text-lg hover:bg-gray-700 p-2 mt-8"
+  return (
+    <div>
+      <form
+        onSubmit={formik.handleSubmit}
+        className="flex flex-col pt-3 md:pt-8"
+      >
+        <div className="flex flex-col pt-2">
+          <label htmlFor="name" className="text-lg">
+            Email adress
+          </label>
+          <input
+            id="email"
+            name="email"
+            type="email"
+            onChange={formik.handleChange}
+            value={formik.values.email}
+            placeholder="Johnsmith@email.com"
+            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mt-1 leading-tight focus:outline-none focus:shadow-outline"
+          />
+          {formik.errors.email ? (
+            <div className="text-red-400 pt-2 font-medium">
+              {formik.errors.email}
+            </div>
+          ) : null}
+        </div>
+        <div className="flex flex-col pt-2">
+          <label htmlFor="name" className="text-lg">
+            Password
+          </label>
+          <input
+            id="password"
+            name="password"
+            type="password"
+            onChange={formik.handleChange}
+            value={formik.values.password}
+            placeholder="Your password"
+            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mt-1 leading-tight focus:outline-none focus:shadow-outline"
+          />
+          {formik.errors.password ? (
+            <div className="text-red-400 pt-2 font-medium">
+              {formik.errors.password}
+            </div>
+          ) : null}
+        </div>
+
+        {!loading ? (
+          <button
+            type="submit"
+            defaultValue="Log In"
+            className="bg-black rounded-sm text-white font-bold text-lg hover:bg-gray-700 p-2 mt-8"
+          >
+            Log in
+          </button>
+        ) : (
+          <Loading />
+        )}
+      </form>
+      <p className="mt-6 text-center font-medium text-black">
+        If you dont have account you can{" "}
+        <span
+          className="text-secondary-dark font-bold cursor-pointer"
+          onClick={switchAuthState}
         >
-          Log in
-        </button>
-      ) : (
-        <Loading />
-      )}
-    </form>
+          Register
+        </span>{" "}
+        now{" "}
+      </p>
+    </div>
   );
 }
 

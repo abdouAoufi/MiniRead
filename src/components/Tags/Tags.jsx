@@ -1,7 +1,6 @@
 import React from "react";
 
 function Tags({tags}) {
-  console.log(tags)
   return (
     <div className="z-0 border-b  border-gray-200 pb-4 w-64 p-2">
       <p className="text-md font-bold text-primary">Topics related :</p>

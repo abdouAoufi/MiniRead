@@ -1,9 +1,9 @@
 import React from "react";
 import { ICONS } from "../../assets/assets";
 import ArticleInteraction from "./ArticleInteraction";
-import { FaShare } from "react-icons/fa";
-
+import {print} from "../../utils/function"
 function Article({ article }) {
+  print(article)
   return (
     <div className="lg:mx-8 px-4">
       {/* ARTICLE CONTENT */}
@@ -59,10 +59,7 @@ function Article({ article }) {
           </p>
         </div>
 
-        <ArticleInteraction
-          likes={article.articleinfo.likes}
-          comments={article.articleinfo.comments}
-        />
+        <ArticleInteraction likes={article.articleinfo.likes} comments={article.articleinfo.comments} />
       </div>
     </div>
   );

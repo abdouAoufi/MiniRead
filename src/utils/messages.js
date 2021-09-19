@@ -2,8 +2,11 @@
 // export const ADRESS = "http://192.168.1.109:1337"
 export const ADRESS = "http://localhost:1337";
 
+
+
+
 export const templateArticle = {
-  creator: "6143b12d6e551a0717d7beb6",
+  creator: "6146627616adb77dd0a51828",
   title: "Lorem, ipsum dolor sit amet consectetur adipisicing.",
   imageHeaderUrl: "default value",
   summary:
@@ -18,7 +21,13 @@ export const templateArticle = {
     timeReading: 5,
     topic: "default value",
     likes: "12",
-    comments: [],
+    comments: [
+      {
+        userID: "6146627616adb77dd0a51828",
+        userInfo: { firstName: "test", lastName: "test" },
+        comment: "Realy good job!",
+      },
+    ],
   },
   content: {
     data: {
