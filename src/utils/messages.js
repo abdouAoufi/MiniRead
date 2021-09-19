@@ -2,13 +2,11 @@
 // export const ADRESS = "http://192.168.1.109:1337"
 export const ADRESS = "http://localhost:1337";
 
-
-
-
 export const templateArticle = {
   creator: "6146627616adb77dd0a51828",
   title: "Lorem, ipsum dolor sit amet consectetur adipisicing.",
-  imageHeaderUrl: "default value",
+  imageHeaderUrl:
+    "https://images.unsplash.com/photo-1631936156950-cceaff421624?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=334&q=80",
   summary:
     " Lorem ipsum dolor, sit amet consectetur adipisicing elit. Beatae in,\
   possimus error saepe placeat, repellat sequi, voluptatibus odit voluptate\
@@ -39,7 +37,7 @@ export const templateArticle = {
     minus! Cupiditate, earum. Excepturi vel quam, quisquam pariatur tempora,\
     aperiam illo vero in laborum culpa temporibus perspiciatis.",
       imageUrl_1:
-        "https://images.unsplash.com/photo-1631739350913-816a3ee8f837?ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHw0MXx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
+        "https://images.unsplash.com/photo-1544629937-a001f36752e9?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1yZWxhdGVkfDF8fHxlbnwwfHx8fA%3D%3D&auto=format&fit=crop&w=500&q=60",
       paragraph_2:
         " Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo magni error\
       veritatis nobis beatae quaerat, modi obcaecati hic eum tenetur saepe\

@@ -17,14 +17,18 @@ function Auth() {
     }
   }, []);
   useEffect(() => {
-    checkForAuth(token).then((result) => {
-      if (result.status === 200) {
-        setLogged(true);
-        history.replace("/");
-      } else {
-        setLogged(false);
-      }
-    });
+    if (token) {
+      checkForAuth(token).then((result) => {
+        if (result.status === 200) {
+          setLogged(true);
+          history.replace("/");
+        } else {
+          setLogged(false);
+        }
+      });
+    } else {
+      setLogged(false);
+    }
   }, []);
   return (
     <div className="h-screen">

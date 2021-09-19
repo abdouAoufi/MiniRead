@@ -2,7 +2,6 @@ import React, { useState, useEffect, Fragment, useContext } from "react";
 import logo from "../../assets/images/svg/logo.svg";
 import Search from "../icons/Search";
 import MenuBurger from "../icons/Menu";
-import { Link } from "react-router-dom";
 import ProfileMenus from "./Menus/ProfileMenus";
 import NotifMenu from "./Menus/NotifMenu";
 import { LINKS_NAVBAR } from "../../assets/assets";
@@ -10,6 +9,7 @@ import { AuthContext, AuthContextProvider } from "../../contexts/AuthContext";
 import { FaSearch, FaBell } from "react-icons/fa";
 import { IconContext } from "react-icons/lib";
 import Icon from "../Icon/Icon";
+import { Link } from "react-router-dom";
 
 function header(props) {
   const { isLogged, setLogged, userName } = useContext(AuthContext);
@@ -85,13 +85,9 @@ function header(props) {
             </div>
             {/* // ! LOGO */}
             <div className="cursor-pointer">
-              <img
-                className="inline"
-                onClick={click}
-                src={logo}
-                alt="logo"
-                height="25"
-              />
+              <Link to={"/"}> 
+                <img className="inline" src={logo} alt="logo" height="25" />
+              </Link>
               <p className="pl-4 inline-block">
                 {userName.firstName + userName.lastName}
               </p>
@@ -133,12 +129,14 @@ function header(props) {
               </div>
             ) : (
               <div className="flex">
-                <button
-                  onClick={props.switchAuthState}
-                  className="text-black-light text-sm hover:opacity-75 border-black-\light border rounded-full px-4 py-2"
-                >
-                  {props.authState === "login" ? "Sign up" : "Login"}
-                </button>
+                <Link to="/auth">
+                  <button
+                    onClick={props.switchAuthState}
+                    className="text-black-light text-sm hover:opacity-75 border-black-\light border rounded-full px-4 py-2"
+                  >
+                    Login
+                  </button>
+                </Link>
               </div>
             )}
           </div>

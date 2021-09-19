@@ -1,14 +1,27 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useContext } from "react";
 import { Menu, Transition } from "@headlessui/react";
 import Profile from "../../../assets/images/jpeg/port.jpg";
 import { Link } from "react-router-dom";
-import { ICONS } from "../../../assets/assets";
+import Icon from "../../Icon/Icon";
+import { FaUserCog, FaPen, FaBookmark, FaSignOutAlt } from "react-icons/fa";
+import { deleteToken } from "../../../services/tokenservice";
+import { AuthContext } from "../../../contexts/AuthContext";
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
 function ProfileMenus() {
+  const { isLogged, setLogged, setToken } = useContext(AuthContext);
+  const logout = () => {
+    if (isLogged) {
+      deleteToken();
+      setLogged(false);
+      setToken(null);
+      location.reload(true);
+    }
+  };
+
   return (
     <div>
       <Menu as="div" className="cursor-pointer mx-3 md:mx-4 relative ">
@@ -19,7 +32,11 @@ function ProfileMenus() {
                 <span className="sr-only">Open user menu</span>
                 {/* IMAGE-PROFILE */}
                 <div>
-                  <img src={Profile} alt="p" className="w-8 h-8 rounded-full" />
+                  <img
+                    src={Profile}
+                    alt="profile picture"
+                    className="w-8 h-8 rounded-full"
+                  />
                 </div>
               </Menu.Button>
             </div>
@@ -78,32 +95,10 @@ function ProfileMenus() {
                       )}
                     >
                       <div className="my-1 flex items-center text-sm">
-                        <img
-                          src={ICONS.write}
-                          alt="write article"
-                          className="w-4 h-4 mr-3 "
-                        />
-                        Write article
-                      </div>
-                    </Link>
-                  )}
-                </Menu.Item>
-                <Menu.Item>
-                  {({ active }) => (
-                    <Link
-                      to="/"
-                      className={classNames(
-                        active ? "bg-gray-100" : "",
-                        "block px-4 py-2 text-sm text-gray-700"
-                      )}
-                    >
-                      <div className="my-1 flex items-center text-sm">
-                        <img
-                          src={ICONS.stats}
-                          alt="write article"
-                          className="w-4 h-4 mr-3 "
-                        />
-                        Your statistic
+                        <Icon>
+                          <FaPen />
+                        </Icon>
+                        <span className="ml-3">Write article</span>
                       </div>
                     </Link>
                   )}
@@ -119,12 +114,50 @@ function ProfileMenus() {
                       )}
                     >
                       <div className="my-1 flex items-center text-sm">
-                        <img
-                          src={ICONS.save}
-                          alt="write article"
-                          className="w-4 h-4 mr-3 "
-                        />
-                        Saved posts
+                        <Icon>
+                          <FaBookmark />
+                        </Icon>
+                        <span className="ml-3">Saved articles</span>
+                      </div>
+                    </Link>
+                  )}
+                </Menu.Item>
+                <Menu.Item>
+                  {({ active }) => (
+                    <Link
+                      to="/"
+                      className={classNames(
+                        active ? "bg-gray-100" : "",
+                        "block px-4 py-2 text-sm text-gray-700"
+                      )}
+                    >
+                      <div className="my-1 flex items-center text-sm">
+                        <Icon>
+                          <FaUserCog />
+                        </Icon>
+                        <span className="ml-3">Settings</span>
+                      </div>
+                    </Link>
+                  )}
+                </Menu.Item>
+
+                <Menu.Item>
+                  {({ active }) => (
+                    <Link
+                      to="/"
+                      className={classNames(
+                        active ? "bg-gray-100" : "",
+                        "block px-4 py-2 text-sm text-gray-700"
+                      )}
+                    >
+                      <div
+                        className="my-1 flex items-center text-sm"
+                        onClick={logout}
+                      >
+                        <Icon>
+                          <FaSignOutAlt />
+                        </Icon>
+                        <span className="ml-3">Log out</span>
                       </div>
                     </Link>
                   )}

@@ -21,12 +21,13 @@ import { AuthContext } from "../../contexts/AuthContext";
 
 function Home() {
   const { TABS, switchTabs, classes } = HomeHandler();
-  const { token, setLogged } = useContext(AuthContext);
+  const { token, setLogged, userID } = useContext(AuthContext);
   const { showFooter, setShowFooter } = useContext(LayoutContext);
   const [tags, setTags] = useState([]);
   const { setMessageWindow } = useContext(WindowContext);
   const [trendPosts, setTrendPosts] = useState([]);
   const [homePosts, setHomePosts] = useState([]);
+  console.log(userID);
   useEffect(async () => {
     if (showFooter) {
       setShowFooter(false);
@@ -35,11 +36,18 @@ function Home() {
   }, []);
 
   useEffect(() => {
-    checkForAuth(token).then((result) => {
-      if (result.status === 200) {
-        setLogged(true);
-      }
-    });
+    print(token);
+    if (token) {
+      checkForAuth(token).then((result) => {
+        if (result.status === 200) {
+          setLogged(true);
+        } else {
+          setLogged(false);
+        }
+      });
+    } else {
+      setLogged(false);
+    }
   }, []);
   // useUpdateEffect(() => alert("Tags loaded successfully"), [tags]);
 
@@ -72,8 +80,6 @@ function Home() {
     fetchedTags = await fetchedTags.json();
     fetchedTrendPosts = await fetchedTrendPosts.json();
     fetchedPosts = await fetchedPosts.json();
-
-    print(fetchedTags, fetchedPosts, fetchedPosts);
 
     setHomePosts(fetchedPosts.articles);
     setTrendPosts(fetchedTrendPosts.articles);

@@ -29,7 +29,7 @@ export const getHomePosts = () => {
 
 export const checkForAuth = (token) => {
   return fetch(ADRESS + "/auth/isauth", {
-    method: "GET",
+    method: "POST",
     headers: {
       "Content-Type": "application/json",
       Authorization: "Bearer " + token,

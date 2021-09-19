@@ -3,7 +3,6 @@ import { ICONS } from "../../assets/assets";
 import ArticleInteraction from "./ArticleInteraction";
 import {print} from "../../utils/function"
 function Article({ article }) {
-  print(article)
   return (
     <div className="lg:mx-8 px-4">
       {/* ARTICLE CONTENT */}

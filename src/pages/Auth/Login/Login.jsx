@@ -39,6 +39,7 @@ function Login({ switchAuthState }) {
         if (status >= 400) {
           return setMessageWindow(responceData.title, responceData.message);
         }
+
         setUserInfo(responceData.user, responceData.token);
         history.replace("/");
       } catch (err) {
@@ -54,7 +55,7 @@ function Login({ switchAuthState }) {
     let updatedUserName = { ...userName };
     updatedUserName.firstName = user.firstName;
     updatedUserName.lastName = user.lastName;
-    saveToken(token, user._id);
+    saveToken(token, user.userID);
     setUserName(updatedUserName);
     setToken(token);
     setLogged(true);
