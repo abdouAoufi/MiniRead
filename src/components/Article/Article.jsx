@@ -1,5 +1,7 @@
 import React from "react";
 import { ICONS } from "../../assets/assets";
+import ArticleInteraction from "./ArticleInteraction";
+import { FaShare } from "react-icons/fa";
 
 function Article({ article }) {
   return (
@@ -21,7 +23,9 @@ function Article({ article }) {
           {article?.title}
         </h1>
 
-        <p className="mt-4 text-black font-normal text-lg ">{article?.summary}</p>
+        <p className="mt-4 text-black font-normal text-lg ">
+          {article?.summary}
+        </p>
 
         {/* IMAGE */}
         <div>
@@ -55,7 +59,10 @@ function Article({ article }) {
           </p>
         </div>
 
-        {/* IMAGE */}
+        <ArticleInteraction
+          likes={article.articleinfo.likes}
+          comments={article.articleinfo.comments}
+        />
       </div>
     </div>
   );

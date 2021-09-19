@@ -9,6 +9,7 @@ import { LINKS_NAVBAR } from "../../assets/assets";
 import { AuthContext, AuthContextProvider } from "../../contexts/AuthContext";
 import { FaSearch, FaBell } from "react-icons/fa";
 import { IconContext } from "react-icons/lib";
+import Icon from "../Icon/Icon";
 
 function header(props) {
   const { isLogged, setLogged, userName } = useContext(AuthContext);
@@ -63,16 +64,9 @@ function header(props) {
             <div className="flex items-center lg:w:1/2">
               {/* SEARCH ICON */}
               <div className="mx-4 md:mx-4 cursor-pointer">
-                <IconContext.Provider
-                  value={{
-                    size: "1.35rem",
-                    style: {
-                      color: "#6b7280",
-                    },
-                  }}
-                >
+                <Icon>
                   <FaSearch />
-                </IconContext.Provider>
+                </Icon>
               </div>
               {/* INPUT */}
               <input
@@ -128,16 +122,9 @@ function header(props) {
             {isLogged === true ? (
               <div className="flex items-center">
                 <div className="mx-2 cursor-pointer" onClick={displaySearchBar}>
-                  <IconContext.Provider
-                    value={{
-                      size: "1.35rem",
-                      style: {
-                        color: "#6b7280",
-                      },
-                    }}
-                  >
+                  <Icon>
                     <FaSearch />
-                  </IconContext.Provider>
+                  </Icon>
                 </div>
                 <NotifMenu />
                 <div className="hidden md:block">

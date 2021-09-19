@@ -1,10 +1,9 @@
 import React, { Fragment } from "react";
 import { Menu, Transition } from "@headlessui/react";
-import Bell from "../../icons/Bell";
 import { Link } from "react-router-dom";
 import Notification from "../Notification/Notification";
 import { FaBell } from "react-icons/fa";
-import { IconContext } from "react-icons/lib";
+import Icon from "../../Icon/Icon";
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
@@ -23,16 +22,9 @@ function NotifMenu() {
                 <span className="absolute -top-2 -right-2 rounded-md font-semibold shadow-sm px-1 bg-secondary text-white">
                   4
                 </span>
-                <IconContext.Provider
-                  value={{
-                    size: "1.35rem",
-                    style: {
-                      color: "#6b7280",
-                    },
-                  }}
-                >
+                <Icon>
                   <FaBell />
-                </IconContext.Provider>
+                </Icon>
               </div>
             </Menu.Button>
           </div>
