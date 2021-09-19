@@ -2,14 +2,29 @@ import React, { useState, useEffect, useContext } from "react";
 import Login from "./Login/Login";
 import Register from "./Register/Register";
 import { LayoutContext } from "../../contexts/LayoutContext";
+import { checkForAuth } from "../../api/homeservice";
+import { AuthContext } from "../../contexts/AuthContext";
+import { useHistory } from "react-router-dom";
 
 function Auth() {
+  const history = useHistory();
+  const { token, setLogged } = useContext(AuthContext);
   const [authState, setAuthState] = useState("login");
   const { showFooter, setShowFooter } = useContext(LayoutContext);
   useEffect(() => {
     if (showFooter) {
       setShowFooter(false);
     }
+  }, []);
+  useEffect(() => {
+    checkForAuth(token).then((result) => {
+      if (result.status === 200) {
+        setLogged(true);
+        history.replace("/");
+      } else {
+        setLogged(false);
+      }
+    });
   }, []);
   return (
     <div className="h-screen">

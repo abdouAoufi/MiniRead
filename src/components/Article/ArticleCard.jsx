@@ -5,7 +5,6 @@ import ArticleInfo from "./ArticleInfo";
 import { Link } from "react-router-dom";
 
 function ArticleCard(props) {
-  console.log(props.article)
   return (
     <article className="min-w-full p-0 m-0 items-center overflow-hidden">
       <div className="flex justify-between items-center w-full">

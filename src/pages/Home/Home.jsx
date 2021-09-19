@@ -10,11 +10,18 @@ import ProfileSide from "../../components/ProfileCard/ProfileSide";
 import ArticleSlide from "../../components/Article/ArticleSlide";
 import HomeHandler from "./HomeHandler";
 import { LayoutContext } from "../../contexts/LayoutContext";
-import { getTages, getTrendPost, getHomePosts } from "../../api/homeservice";
+import {
+  getTages,
+  getTrendPost,
+  getHomePosts,
+  checkForAuth,
+} from "../../api/homeservice";
 import { WindowContext } from "../../contexts/Windowcontenxt";
+import { AuthContext } from "../../contexts/AuthContext";
 
 function Home() {
   const { TABS, switchTabs, classes } = HomeHandler();
+  const { token, setLogged } = useContext(AuthContext);
   const { showFooter, setShowFooter } = useContext(LayoutContext);
   const [tags, setTags] = useState([]);
   const { setMessageWindow } = useContext(WindowContext);
@@ -27,6 +34,13 @@ function Home() {
     fetchResources();
   }, []);
 
+  useEffect(() => {
+    checkForAuth(token).then((result) => {
+      if (result.status === 200) {
+        setLogged(true);
+      }
+    });
+  }, []);
   // useUpdateEffect(() => alert("Tags loaded successfully"), [tags]);
 
   const fetchResources = async () => {

@@ -6,11 +6,16 @@ import { login } from "../../../api/authservice";
 import { AuthContext } from "../../../contexts/AuthContext";
 import { WindowContext } from "../../../contexts/Windowcontenxt";
 import { print } from "../../../utils/function";
-import {useHistory} from "react-router-dom";
+import { useHistory } from "react-router-dom";
+import { saveToken } from "../../../services/tokenservice";
 
 function Login({ switchAuthState }) {
   const history = useHistory();
-  const { userName, setUserName } = useContext(AuthContext);
+  const { userName, setUserName, setToken, setLogged, isLogged } =
+    useContext(AuthContext);
+  // if (isLogged) {
+  //   history.replace("/");
+  // }
   const { setMessageWindow } = useContext(WindowContext);
   const [loading, setLoading] = useState(false);
   const { validate } = LoginHandler();
@@ -34,8 +39,8 @@ function Login({ switchAuthState }) {
         if (status >= 400) {
           return setMessageWindow(responceData.title, responceData.message);
         }
-        print(responceData);
-        history.replace("/")
+        setUserInfo(responceData.user, responceData.token);
+        history.replace("/");
       } catch (err) {
         setMessageWindow(
           "Error something went wrong!",
@@ -45,11 +50,14 @@ function Login({ switchAuthState }) {
     },
   });
 
-  const setUserInfo = (user) => {
+  const setUserInfo = (user, token) => {
     let updatedUserName = { ...userName };
     updatedUserName.firstName = user.firstName;
     updatedUserName.lastName = user.lastName;
+    saveToken(token, user._id);
     setUserName(updatedUserName);
+    setToken(token);
+    setLogged(true);
   };
 
   return (
