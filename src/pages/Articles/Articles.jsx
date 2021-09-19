@@ -14,7 +14,8 @@ import Loading from "../../components/Loading/Loading";
 
 function ArticleFn() {
   let articleID = useParams("id");
-  const { setShowFooter } = useContext(LayoutContext);
+  const { setShowFooter, showNavbar, setShowNavbar } =
+    useContext(LayoutContext);
   const [article, setArticle] = useState(null);
   const [openModal, setOpenModal] = useState(false);
   const [messageModal, setMessageModal] = useState({
@@ -23,8 +24,9 @@ function ArticleFn() {
       "There is a problem to connect with server! please try again later",
   });
   useEffect(() => {
+    if (!showNavbar) setShowNavbar(true);
     setShowFooter(true);
-    setTimeout(getSingleArticle, 2000);
+    getSingleArticle();
   }, []);
 
   const getSingleArticle = async () => {

@@ -1,9 +1,10 @@
 // export const ADRESS = "https://mini-read.herokuapp.com"
 // export const ADRESS = "http://192.168.1.109:1337"
+
 export const ADRESS = "http://localhost:1337";
 
 export const templateArticle = {
-  creator: "6146627616adb77dd0a51828",
+  creator: "614789f4cb365d28b030be6d",
   title: "Lorem, ipsum dolor sit amet consectetur adipisicing.",
   imageHeaderUrl:
     "https://images.unsplash.com/photo-1631936156950-cceaff421624?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=334&q=80",

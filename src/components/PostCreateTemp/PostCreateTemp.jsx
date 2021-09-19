@@ -1,8 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { ADRESS, templateArticle } from "../../utils/messages";
 import Window from "../Window/Window";
+import { AuthContext } from "../../contexts/AuthContext";
 
 function PostCreateTemp() {
+  const { userID } = useContext(AuthContext);
+  console.log(userID);
   const [openModal, setOpenModal] = useState(false);
   const [messageModal, setMessageModal] = useState({
     title: "title",
@@ -42,6 +45,7 @@ function PostCreateTemp() {
   };
 
   const sendArticleData = () => {
+    setID();
     // console.log(JSON.stringify(articleData, null, 2));
     fetch(ADRESS + "/createarticle", {
       method: "POST",
@@ -60,6 +64,14 @@ function PostCreateTemp() {
         const error = new Error(err);
         throw error;
       });
+  };
+
+  const setID = () => {
+    if (userID) {
+      let updatedData = { ...articleData };
+      updatedData.creator = userID;
+      setArticleData(updatedData);
+    }
   };
 
   const inputClass =

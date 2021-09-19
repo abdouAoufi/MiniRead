@@ -1,23 +1,30 @@
 import React, { useState, useEffect, Fragment, useContext } from "react";
 import logo from "../../assets/images/svg/logo.svg";
-import Search from "../icons/Search";
 import MenuBurger from "../icons/Menu";
 import ProfileMenus from "./Menus/ProfileMenus";
 import NotifMenu from "./Menus/NotifMenu";
 import { LINKS_NAVBAR } from "../../assets/assets";
-import { AuthContext, AuthContextProvider } from "../../contexts/AuthContext";
-import { FaSearch, FaBell } from "react-icons/fa";
-import { IconContext } from "react-icons/lib";
+import { AuthContext } from "../../contexts/AuthContext";
+import { LayoutContext } from "../../contexts/LayoutContext";
+import { FaSearch } from "react-icons/fa";
 import Icon from "../Icon/Icon";
-import { Link } from "react-router-dom";
+import { useHistory , Link } from "react-router-dom";
+import Button from "../Button/Button";
 
 function header(props) {
+  const history = useHistory();
+  const { setShowNavbar } = useContext(LayoutContext);
   const { isLogged, setLogged, userName } = useContext(AuthContext);
   const defaultClasses = {
     searchBar: "hidden",
     navbarItems: "p-4 flex justify-between items-center",
     header:
       "sticky z-50 shadow border-0  right-0 top-0 left-0 bg-white  unset-0  ",
+  };
+
+  const redirectToAuth = () => {
+    setShowNavbar(false);
+    history.replace("/auth");
   };
 
   useEffect(() => {
@@ -85,7 +92,7 @@ function header(props) {
             </div>
             {/* // ! LOGO */}
             <div className="cursor-pointer">
-              <Link to={"/"}> 
+              <Link to={"/"}>
                 <img className="inline" src={logo} alt="logo" height="25" />
               </Link>
               <p className="pl-4 inline-block">
@@ -129,14 +136,11 @@ function header(props) {
               </div>
             ) : (
               <div className="flex">
-                <Link to="/auth">
-                  <button
-                    onClick={props.switchAuthState}
-                    className="text-black-light text-sm hover:opacity-75 border-black-\light border rounded-full px-4 py-2"
-                  >
-                    Login
-                  </button>
-                </Link>
+                <Button
+                  text="Log in"
+                  click={redirectToAuth}
+                  className="text-black-light text-sm hover:opacity-75 border-black-\light border rounded-full px-4 py-2"
+                />
               </div>
             )}
           </div>

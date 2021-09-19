@@ -14,7 +14,7 @@ function Layout(props) {
   // controlling the navbar from app when is shared
   const { authState, switchAuthState } = AuthHandler();
   const { openModal, click, insideModalHandler } = ModalLogic();
-  const { showFooter } = useContext(LayoutContext);
+  const { showFooter, showNavbar } = useContext(LayoutContext);
   return (
     <div>
       <Modal click={click} openModal={openModal}>
@@ -29,15 +29,17 @@ function Layout(props) {
           </div>
         </div>
       </Modal>
-      <Navbar
-        authState={authState}
-        switchAuthState={switchAuthState}
-        isAuth={true}
-        setOpenModal={click}
-        closing={openModal}
-      />
+      {showNavbar ? (
+        <Navbar
+          authState={authState}
+          switchAuthState={switchAuthState}
+          isAuth={true}
+          setOpenModal={click}
+          closing={openModal}
+        />
+      ) : null}
       {props.children}
-      {showFooter ? <Footer /> : ""}
+      {showFooter ? <Footer /> : null}
     </div>
   );
 }

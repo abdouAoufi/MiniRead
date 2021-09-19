@@ -22,7 +22,8 @@ import { AuthContext } from "../../contexts/AuthContext";
 function Home() {
   const { TABS, switchTabs, classes } = HomeHandler();
   const { token, setLogged, userID } = useContext(AuthContext);
-  const { showFooter, setShowFooter } = useContext(LayoutContext);
+  const { showFooter, setShowFooter, showNavbar, setShowNavbar } =
+    useContext(LayoutContext);
   const [tags, setTags] = useState([]);
   const { setMessageWindow } = useContext(WindowContext);
   const [trendPosts, setTrendPosts] = useState([]);
@@ -31,6 +32,9 @@ function Home() {
   useEffect(async () => {
     if (showFooter) {
       setShowFooter(false);
+    }
+    if (!showNavbar) {
+      setShowNavbar(true);
     }
     fetchResources();
   }, []);

@@ -43,6 +43,7 @@ function Login({ switchAuthState }) {
         setUserInfo(responceData.user, responceData.token);
         history.replace("/");
       } catch (err) {
+        setLoading(false);
         setMessageWindow(
           "Error something went wrong!",
           err.message || "Error something went wrong!"

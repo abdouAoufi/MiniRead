@@ -10,10 +10,12 @@ function Auth() {
   const history = useHistory();
   const { token, setLogged } = useContext(AuthContext);
   const [authState, setAuthState] = useState("login");
-  const { showFooter, setShowFooter } = useContext(LayoutContext);
+  const { showFooter, setShowFooter, showNavbar, setShowNavbar } =
+    useContext(LayoutContext);
   useEffect(() => {
-    if (showFooter) {
+    if (showFooter && showNavbar) {
       setShowFooter(false);
+      setShowNavbar(false);
     }
   }, []);
   useEffect(() => {
