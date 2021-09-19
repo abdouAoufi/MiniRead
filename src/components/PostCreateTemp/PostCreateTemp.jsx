@@ -25,7 +25,7 @@ function PostCreateTemp() {
 
   const updateInfoArticleData = (e) => {
     let updatedData = { ...articleData };
-    updatedData.postinfo[e.target.name] = e.target.value;
+    updatedData.articleinfo[e.target.name] = e.target.value;
     setArticleData(updatedData);
   };
 
@@ -43,7 +43,7 @@ function PostCreateTemp() {
 
   const sendArticleData = () => {
     // console.log(JSON.stringify(articleData, null, 2));
-    fetch(ADRESS + "/createpost", {
+    fetch(ADRESS + "/createarticle", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -71,6 +71,15 @@ function PostCreateTemp() {
         click={() => setOpenModal(!openModal)}
         message={messageModal}
       />
+
+      <input
+        type="text"
+        placeholder="user id"
+        name="creator"
+        className={inputClass}
+        onChange={(e) => updateArticleData(e)}
+      />
+
       <input
         type="text"
         placeholder="title"

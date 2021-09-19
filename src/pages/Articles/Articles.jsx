@@ -16,7 +16,7 @@ import Loading from "../../components/Loading/Loading";
 function ArticleFn() {
   let articleID = useParams("id");
   const { setShowFooter } = useContext(LayoutContext);
-  const [postInfo, setPostInfo] = useState(null);
+  const [article, setArticle] = useState(null);
   const [openModal, setOpenModal] = useState(false);
   const [messageModal, setMessageModal] = useState({
     title: "Something went wrong!",
@@ -29,7 +29,7 @@ function ArticleFn() {
   }, []);
 
   const getSingleArticle = async () => {
-    let fetchedPost;
+    let fetchedArticle;
     try {
       const response = await getSinglePostDB(articleID.id);
       if (!response.ok) {
@@ -41,8 +41,9 @@ function ArticleFn() {
           );
         });
       }
-      fetchedPost = await response.json();
-      setPostInfo(fetchedPost);
+
+      fetchedArticle = await response.json();
+      setArticle(fetchedArticle.article);
     } catch (err) {
       return setMessageWindow(
         "Something went wrong!",
@@ -69,24 +70,16 @@ function ArticleFn() {
       />
       <div className="md:flex flex-column justify-center items-around px-4 md:justify-between  py-6  ">
         <div className="md:hidden">
-          {postInfo ? (
-            <ProfileCardMobile author={postInfo.post.creator} />
-          ) : (
-            <Loading />
-          )}
+          {article ? <ProfileCardMobile /> : <Loading />}
         </div>
         <div className="hidden md:block ">
           <div className="w-72">
-            {postInfo ? (
-              <ProfileCartMd author={postInfo.post.creator} />
-            ) : (
-              <Loading />
-            )}
+            {article ? <ProfileCartMd author={article.creator} /> : <Loading />}
           </div>
           <div className="hidden md:block mt-4 lg:hidden ">
-            {postInfo ? (
+            {article ? (
               <div className="border">
-                <Tags tags={postInfo.post.tags} />
+                <Tags tags={article.tags} />
                 <AlsoReadMd headTitle="People also read" />
               </div>
             ) : (
@@ -97,8 +90,8 @@ function ArticleFn() {
           </div>
         </div>
         <div>
-          {postInfo ? (
-            <Article post={postInfo.post} />
+          {article ? (
+            <Article article={article} />
           ) : (
             <div className="w-120 mx-12">
               <LoadingPost />
@@ -108,7 +101,7 @@ function ArticleFn() {
         </div>
         <div className="hidden lg:block ">
           <div className="w-72">
-            {postInfo ? <Tags tags={postInfo.post.tags} /> : <Loading />}
+            {article ? <Tags tags={article.tags} /> : <Loading />}
           </div>
           <div className="hidden lg:block ">
             <AlsoReadMd headTitle="People also read" />

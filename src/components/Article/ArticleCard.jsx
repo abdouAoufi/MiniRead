@@ -5,6 +5,7 @@ import ArticleInfo from "./ArticleInfo";
 import { Link } from "react-router-dom";
 
 function ArticleCard(props) {
+  console.log(props.article)
   return (
     <article className="min-w-full p-0 m-0 items-center overflow-hidden">
       <div className="flex justify-between items-center w-full">
@@ -28,11 +29,11 @@ function ArticleCard(props) {
               {props.article?.summary}
             </p>
           </div>
-          <ArticleInfo
-            timeReading={props.article?.postinfo.timeReading}
+           <ArticleInfo
+            timeReading={props.article?.articleinfo.timeReading}
             date={props.article?.createdAt}
-            topic={props.article?.postinfo.topic}
-          />
+            topic={props.article?.articleinfo.topic}
+          />  
         </div>
         <div className="overflow-hidden rounded-md ml-8 h-32 w-48">
           <img

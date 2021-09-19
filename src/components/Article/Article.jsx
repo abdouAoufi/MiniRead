@@ -1,39 +1,7 @@
 import React from "react";
 import { ICONS } from "../../assets/assets";
 
-/* 
-{
-    "content": {
-        "data": {
-            "paragraph_1": "When products are made for you, you never realise how their design can be exclusionary towards people of color.",
-            "imageUrl_1": "https://images.unsplash.com/photo-1593642702821-c8da6771f0c6?ixid=MnwxMjA3fDF8MHxlZGl0b3JpYWwtZmVlZHwxfHx8ZW58MHx8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
-        }
-    },
-    "postinfo": {
-        "timeReading": "5 min",
-        "topic": "Design",
-        "likes": "257",
-        "comments": []
-    },
-    "_id": "6141048a68be832b2c12b0e1",
-    "creator": "613998ea9b0ae7d836cade11",
-    "tags": [
-        {
-            "name": "Design",
-            "_id": "6141048a68be832b2c12b0e2"
-        }
-    ],
-    "title": "Six Designs That White People Never Notice Are Racist",
-    "summary": "When products are made for you, you never realise how their design can be exclusionary towards people of color.",
-    "conclusion": "Designers have an important role in fighting discrimination, and making products that work for everyone. This is just one of the reasons we need more diversity in the design world, as well as raising awareness in the field for issues such as racism and sexism.",
-    "imageHeaderUrl": "https://images.unsplash.com/photo-1593642702821-c8da6771f0c6?ixid=MnwxMjA3fDF8MHxlZGl0b3JpYWwtZmVlZHwxfHx8ZW58MHx8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
-    "createdAt": "2021-09-14T20:22:34.304Z",
-    "updatedAt": "2021-09-14T20:22:34.304Z",
-    "__v": 0
-}
-*/
-
-function Article({ post }) {
+function Article({ article }) {
   return (
     <div className="lg:mx-8 px-4">
       {/* ARTICLE CONTENT */}
@@ -50,40 +18,40 @@ function Article({ post }) {
         </p>
         {/* TITLE */}
         <h1 className="mt-3 text-black-dark tracking-wider font-bold md:font-bold text-4xl ">
-          {post?.title}
+          {article?.title}
         </h1>
 
-        <p className="mt-4 text-black font-normal text-lg ">{post?.summary}</p>
+        <p className="mt-4 text-black font-normal text-lg ">{article?.summary}</p>
 
         {/* IMAGE */}
         <div>
           <div className="my-3 w-full  rounded-md overflow-hidden ">
             <img
-              src={post?.content.data.imageUrl_1}
+              src={article?.content.data.imageUrl_1}
               alt="article header"
               className=" w-full"
             />
             <p className="text-sm font-light text-center text-black-light mt-1">
-              {post?.title}
+              {article?.title}
             </p>
           </div>
           <p className="mt-2 text-black font-normal">
-            {post?.content.data.paragraph_1}
+            {article?.content.data.paragraph_1}
           </p>
         </div>
         <div>
           <div className="my-3 w-full  rounded-md overflow-hidden ">
             <img
-              src={post?.content.data.imageUrl_2}
+              src={article?.content.data.imageUrl_2}
               alt="article header"
               className=" w-full"
             />
             <p className="text-sm font-light text-center text-black-light mt-1">
-              {post?.title}
+              {article?.title}
             </p>
           </div>
           <p className="mt-2 text-black font-normal">
-            {post?.content.data.paragraph_2}
+            {article?.content.data.paragraph_2}
           </p>
         </div>
 

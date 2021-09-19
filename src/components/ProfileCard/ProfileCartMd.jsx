@@ -2,6 +2,7 @@ import React from "react";
 import { ICONS } from "../../assets/assets";
 
 function ProfileCartMd(props) {
+  console.log(props)
   return (
     <div className="md:border-b border-gray-200 pb-5 p-3">
       <div className="flex justify-between items-center border-b border-gray-100 pb-3">
@@ -30,7 +31,7 @@ function ProfileCartMd(props) {
             <p className="text-black text-sm font-medium">Blogs</p>
           </div>
           <div className="text-sm font-semibold px-1 h-6 grid place-items-center rounded-md bg-black-lighterr text-secondary">
-            {props.author.postInfo.postCount}
+            {props.author.articleInfo.articleCount}
           </div>
         </div>
         {/* single info */}

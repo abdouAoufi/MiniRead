@@ -1,5 +1,6 @@
 import React, { useEffect, useContext, useState } from "react";
 import Tags from "../../components/Tags/TagsHome";
+import { print } from "../../utils/function";
 // import useUpdateEffect from "../../utils/useupdateeffect";
 import ArticleCard from "../../components/Article/ArticleCard";
 import Loading from "../../components/Loading";
@@ -42,7 +43,12 @@ function Home() {
       );
     }
 
-    if (!fetchedTags.ok || !fetchedTrendPosts.ok || !fetchedPosts.ok) {
+    if (
+      !fetchedTags.ok ||
+      !fetchedTrendPosts.ok ||
+      !fetchedPosts.ok ||
+      fetchedPosts.length === 0
+    ) {
       return setMessageWindow(
         "Something went wrong!",
         "There was a problem to connect with server! please try again later"
@@ -53,8 +59,10 @@ function Home() {
     fetchedTrendPosts = await fetchedTrendPosts.json();
     fetchedPosts = await fetchedPosts.json();
 
-    setHomePosts(fetchedPosts.posts);
-    setTrendPosts(fetchedTrendPosts.posts);
+    print(fetchedTags, fetchedPosts, fetchedPosts);
+
+    setHomePosts(fetchedPosts.articles);
+    setTrendPosts(fetchedTrendPosts.articles);
     setTags(fetchedTags.tags);
   };
 
@@ -105,7 +113,7 @@ function Home() {
           </ul>
         </div>
         <div className="w-full">
-          {homePosts.length > 0 ? (
+          {homePosts?.length > 0 ? (
             homePosts.map((article, index) => {
               return <ArticleCard article={article} key={index} />;
             })
@@ -132,7 +140,7 @@ function Home() {
           </div>
         </div>
         <div className="mt-8 border-b pb-8">
-          {trendPosts.length > 0 ? (
+          {trendPosts?.length > 0 ? (
             <AlsoRead posts={trendPosts} headTitle="Trends this week " />
           ) : (
             <Loading />
