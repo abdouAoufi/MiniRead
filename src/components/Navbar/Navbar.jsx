@@ -8,7 +8,7 @@ import { AuthContext } from "../../contexts/AuthContext";
 import { LayoutContext } from "../../contexts/LayoutContext";
 import { FaSearch } from "react-icons/fa";
 import Icon from "../Icon/Icon";
-import { useHistory , Link } from "react-router-dom";
+import { useHistory, Link } from "react-router-dom";
 import Button from "../Button/Button";
 
 function header(props) {
@@ -87,40 +87,36 @@ function header(props) {
           </div>
           <div className={`${menuItems}`}>
             {/* BURGER MENU ONLY FOR TABLET */}
-            <div className="hidden cursor-pointer md:block lg:hidden">
-              <MenuBurger className="hidden" />
+            <div className=" cursor-pointer md:block lg:hidden">
+              <MenuBurger  />
             </div>
             {/* // ! LOGO */}
             <div className="cursor-pointer">
               <Link to={"/"}>
                 <img className="inline" src={logo} alt="logo" height="25" />
               </Link>
-              <p className="pl-4 inline-block">
-                {userName.firstName + userName.lastName}
-              </p>
+              
             </div>
             {/*// ! LINKS LIST */}
-            {isLogged === true ? (
-              <ul className="hidden md:hidden lg:flex">
-                {LINKS_NAVBAR.map((item) => (
-                  <Link
-                    key={item.name}
-                    to={item.to}
-                    className={classNames(
-                      item.current
-                        ? "bg-gray-900 text-white capitalize"
-                        : "text-black hover:bg-secondary hover:text-white capitalize",
-                      "px-3 py-2 mx-3 rounded-sm text-base font-semibold capitalize"
-                    )}
-                    aria-current={item.current ? "page" : undefined}
-                  >
-                    {item.name}
-                  </Link>
-                ))}
-              </ul>
-            ) : (
-              ""
-            )}
+
+            <ul className="hidden md:hidden lg:flex">
+              {LINKS_NAVBAR.map((item) => (
+                <Link
+                  key={item.name}
+                  to={item.to}
+                  className={classNames(
+                    item.current
+                      ? "bg-gray-900 text-white capitalize"
+                      : "text-black hover:bg-secondary hover:text-white capitalize",
+                    "px-3 py-2 mx-3 rounded-sm text-base font-semibold capitalize"
+                  )}
+                  aria-current={item.current ? "page" : undefined}
+                >
+                  {item.name}
+                </Link>
+              ))}
+            </ul>
+
             {/*// ! ICONS CONTAINER */}
             {isLogged === true ? (
               <div className="flex items-center">
@@ -129,15 +125,14 @@ function header(props) {
                     <FaSearch />
                   </Icon>
                 </div>
-                <NotifMenu />
-                <div className="hidden md:block">
+                <div className="">
                   <ProfileMenus />
                 </div>
               </div>
             ) : (
               <div className="flex">
                 <Button
-                  text="Log in"
+                  text="Sign in"
                   click={redirectToAuth}
                   className="text-black-light text-sm hover:opacity-75 border-black-\light border rounded-full px-4 py-2"
                 />

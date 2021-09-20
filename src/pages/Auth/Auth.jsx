@@ -4,7 +4,7 @@ import Register from "./Register/Register";
 import { LayoutContext } from "../../contexts/LayoutContext";
 import { checkForAuth } from "../../api/homeservice";
 import { AuthContext } from "../../contexts/AuthContext";
-import { useHistory } from "react-router-dom";
+import { useHistory, Link } from "react-router-dom";
 
 function Auth() {
   const history = useHistory();
@@ -43,6 +43,13 @@ function Auth() {
             ) : (
               <Register switchAuthState={() => setAuthState("login")} />
             )}
+            <p className="mt-8 text-center  ">
+              No thanks i just want to{" "}
+              <Link className="text-secondary font-bold cursor-pointer" to="/">
+                explore
+              </Link>{" "}
+              now{" "}
+            </p>
           </div>
         </div>
         <div className="w-1/2 shadow-2xl">

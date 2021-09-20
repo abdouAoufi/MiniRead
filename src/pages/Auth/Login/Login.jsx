@@ -11,11 +11,8 @@ import { saveToken } from "../../../services/tokenservice";
 
 function Login({ switchAuthState }) {
   const history = useHistory();
-  const { userName, setUserName, setToken, setLogged, isLogged } =
+  const { userName, setUserName, setToken, setLogged } =
     useContext(AuthContext);
-  // if (isLogged) {
-  //   history.replace("/");
-  // }
   const { setMessageWindow } = useContext(WindowContext);
   const [loading, setLoading] = useState(false);
   const { validate } = LoginHandler();

@@ -18,8 +18,10 @@ import {
 } from "../../api/homeservice";
 import { WindowContext } from "../../contexts/Windowcontenxt";
 import { AuthContext } from "../../contexts/AuthContext";
+import {useHistory} from "react-router-dom"
 
 function Home() {
+  const history = useHistory();
   const { TABS, switchTabs, classes } = HomeHandler();
   const { token, setLogged, userID } = useContext(AuthContext);
   const { showFooter, setShowFooter, showNavbar, setShowNavbar } =
@@ -28,6 +30,9 @@ function Home() {
   const { setMessageWindow } = useContext(WindowContext);
   const [trendPosts, setTrendPosts] = useState([]);
   const [homePosts, setHomePosts] = useState([]);
+  const [loadingArticles, setLoadingArticles] = useState(true);
+  const [loadingSmall, setLoadingSmall] = useState(true);
+  const [errorFetching, setErrorFetching] = useState(false);
   console.log(userID);
   useEffect(async () => {
     if (showFooter) {
@@ -56,12 +61,14 @@ function Home() {
   // useUpdateEffect(() => alert("Tags loaded successfully"), [tags]);
 
   const fetchResources = async () => {
+    setLoadingArticles(true);
     let fetchedTags, fetchedTrendPosts, fetchedPosts;
     try {
       fetchedTags = await getTages();
       fetchedTrendPosts = await getTrendPost();
       fetchedPosts = await getHomePosts();
     } catch (err) {
+      history.replace("/404")
       return setMessageWindow(
         "Something went wrong!",
         err.message ??
@@ -75,6 +82,9 @@ function Home() {
       !fetchedPosts.ok ||
       fetchedPosts.length === 0
     ) {
+      setLoadingArticles(false);
+      setLoadingSmall(false);
+      history.replace("/404")
       return setMessageWindow(
         "Something went wrong!",
         "There was a problem to connect with server! please try again later"
@@ -88,10 +98,12 @@ function Home() {
     setHomePosts(fetchedPosts.articles);
     setTrendPosts(fetchedTrendPosts.articles);
     setTags(fetchedTags.tags);
+    setLoadingArticles(false);
+    setLoadingSmall(false);
   };
 
   return (
-    <section className="relative md:flex mt-4 flex-wrap width-full  px-4">
+    <section className="relative md:flex mt-2 flex-wrap width-full  px-4">
       {/* feed CONTAINER */}
       <div className="p-4 flex-column overflow-scroll justify-start lg:w-2/3">
         <div>
@@ -102,18 +114,11 @@ function Home() {
             You're may be inressted by{" "}
             {/* <span className="cursor-pointer text-red-300">[fetch data]</span>{" "} */}
           </p>
-          {tags.length > 0 ? <Tags tags={tags} /> : <Loading />}
+          {loadingSmall ? <Loading /> : null}
+          {<Tags tags={tags} />}
         </div>
         <div className="mt-4 ">
-          <p className="text-black font-medium text-base">
-            Last article you've read{" "}
-            {/* <span className="cursor-pointer text-red-300">[nothing]</span>{" "} */}
-          </p>
-          <div>
-            <div className="flex w-full items-center mt-4 overflow-scroll">
-              <ArticleSlide />
-            </div>
-          </div>
+          <ArticleSlide />
         </div>
         <div>
           <ul id="tabs" className="inline-flex w-full  pt-2 ">
@@ -137,17 +142,10 @@ function Home() {
           </ul>
         </div>
         <div className="w-full">
-          {homePosts?.length > 0 ? (
-            homePosts.map((article, index) => {
-              return <ArticleCard article={article} key={index} />;
-            })
-          ) : (
-            <div>
-              <LoadingPost />
-              <LoadingPost />
-              <LoadingPost />
-            </div>
-          )}
+          {loadingArticles ? <LoadingPost /> : null}
+          {homePosts.map((article, index) => {
+            return <ArticleCard article={article} key={index} />;
+          })}
         </div>
       </div>
       <div className="hidden lg:block lg:w-1/3 px-8 lg:px-12">
@@ -176,8 +174,6 @@ function Home() {
             Who to follow
           </h2>
           <div className="mt-4 hover:border rounded">
-            <ProfileSide />
-            <ProfileSide />
             <ProfileSide />
             <ProfileSide />
           </div>
