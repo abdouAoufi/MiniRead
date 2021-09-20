@@ -6,12 +6,15 @@ import { Link } from "react-router-dom";
 
 function ArticleCard(props) {
   return (
-    <article className="min-w-full p-0 m-0 items-center overflow-hidden">
+    <article className="min-w-full py-4 m-0 items-center overflow-hidden  ">
       <div className="flex justify-between items-center w-full">
         <div className="my-2 py-2  dark:bg-gray-800">
           <div className="flex">
             <ProfilePic size="small" />
-            <Link to={`/user/${props.article?.creator._id}`} className="px-3  text-sm mr-2 font-semibold text-black transition-colors duration-200 transform cursor-pointer  hover:text-secondary">
+            <Link
+              to={`/user/${props.article?.creator._id}`}
+              className="px-3  text-sm mr-2 font-semibold text-black transition-colors duration-200 transform cursor-pointer  hover:text-secondary"
+            >
               {props.article?.creator.firstName +
                 " " +
                 props.article?.creator.lastName}
@@ -28,20 +31,23 @@ function ArticleCard(props) {
               {props.article?.summary}
             </p>
           </div>
-           <ArticleInfo
-            timeReading={props.article?.articleinfo.timeReading}
-            date={props.article?.createdAt}
-            topic={props.article?.articleinfo.topic}
-          />  
         </div>
-        <div className="overflow-hidden rounded-md ml-8 h-32 w-48">
+        <div className="overflow-hidden hidden md:block rounded-md  h-32 w-48">
           <img
-            src={props.article.imageHeaderUrl ?? IMAGES.suggestion}
+            // src={props.article.imageHeaderUrl ?? IMAGES.suggestion}
+            src={IMAGES.suggestion}
             alt="article header"
             loading="lazy"
             className="h-full w-full object-cover"
           />
         </div>
+      </div>
+      <div>
+        <ArticleInfo
+          timeReading={props.article?.articleinfo.timeReading}
+          date={props.article?.createdAt}
+          topic={props.article?.articleinfo.topic}
+        />
       </div>
     </article>
   );

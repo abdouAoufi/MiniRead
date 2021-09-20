@@ -19,6 +19,7 @@ import share from "./images/svg/share.svg";
 import write from "./images/svg/write.svg";
 import stats from "./images/svg/stats.svg";
 import validate from "./images/svg/validate.svg";
+import error from "./images/svg/error.svg";
 
 export const LOGO = {
   logo,
@@ -70,6 +71,7 @@ export const ICONS = {
   write,
   stats,
   validate,
+  error,
 };
 
 export const TAGS = [

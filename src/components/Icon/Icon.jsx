@@ -11,7 +11,9 @@ function Icon(props) {
         },
       }}
     >
+      <div className="mx-2 cursor-pointer"> 
       {props.children}
+      </div>
     </IconContext.Provider>
   );
 }

@@ -18,7 +18,7 @@ import {
 } from "../../api/homeservice";
 import { WindowContext } from "../../contexts/Windowcontenxt";
 import { AuthContext } from "../../contexts/AuthContext";
-import {useHistory} from "react-router-dom"
+import { useHistory } from "react-router-dom";
 
 function Home() {
   const history = useHistory();
@@ -32,8 +32,6 @@ function Home() {
   const [homePosts, setHomePosts] = useState([]);
   const [loadingArticles, setLoadingArticles] = useState(true);
   const [loadingSmall, setLoadingSmall] = useState(true);
-  const [errorFetching, setErrorFetching] = useState(false);
-  console.log(userID);
   useEffect(async () => {
     if (showFooter) {
       setShowFooter(false);
@@ -68,7 +66,7 @@ function Home() {
       fetchedTrendPosts = await getTrendPost();
       fetchedPosts = await getHomePosts();
     } catch (err) {
-      history.replace("/404")
+      history.replace("/404");
       return setMessageWindow(
         "Something went wrong!",
         err.message ??
@@ -84,7 +82,7 @@ function Home() {
     ) {
       setLoadingArticles(false);
       setLoadingSmall(false);
-      history.replace("/404")
+      history.replace("/404");
       return setMessageWindow(
         "Something went wrong!",
         "There was a problem to connect with server! please try again later"
@@ -162,11 +160,8 @@ function Home() {
           </div>
         </div>
         <div className="mt-8 border-b pb-8">
-          {trendPosts?.length > 0 ? (
-            <AlsoRead posts={trendPosts} headTitle="Trends this week " />
-          ) : (
-            <Loading />
-          )}
+          {loadingSmall ? <Loading /> : null}
+          <AlsoRead posts={trendPosts} headTitle="Trends this week " />
         </div>
 
         <div className="mt-8 border-b pb-8">

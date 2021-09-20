@@ -1,15 +1,17 @@
 import React from "react";
 import { ICONS } from "../../assets/assets";
+import { FaBookmark, FaShare } from "react-icons/fa";
+import Icon from "../Icon/Icon";
 
 function ArticleInfo(props) {
   // TODO : convert date
   const date = new Date(props.date);
-  let d = date.getDate()+1;
-  let m = date.getMonth()+1;
+  let d = date.getDate() + 1;
+  let m = date.getMonth() + 1;
   let y = date.getFullYear();
-  let fullDate = `${d} - ${m} - ${y}`
+  let fullDate = `${d} - ${m} - ${y}`;
   return (
-    <div className="flex items-center justify-between pr-12 md:pr-0 md:justify-between mt-4  ">
+    <div className="flex items-center justify-between  md:pr-0 md:justify-between   ">
       <div className="flex items-baseline relative">
         <span className="text-xs font-bold mr-2 text-black-light dark:text-gray-400">
           {fullDate}
@@ -27,9 +29,13 @@ function ArticleInfo(props) {
           {props.topic}
         </p>
       </div>
-      <div className="flex px-2 mr-3">
-        <img className="h-5 w-5 inline-block ml-4 p-0.5" src={ICONS.share} />
-        <img className="h-5 w-5 inline-block ml-4 p-0.5" src={ICONS.save} />
+      <div className="flex px-2">
+        <Icon>
+          <FaShare />
+        </Icon>
+        <Icon>
+          <FaBookmark />
+        </Icon>
       </div>
     </div>
   );

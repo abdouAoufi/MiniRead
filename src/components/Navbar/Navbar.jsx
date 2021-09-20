@@ -57,10 +57,6 @@ function header(props) {
     setSearchBarPrams("hidden");
   };
 
-  const click = function () {
-    setLogged(!isLogged);
-  };
-
   return (
     <header className={defaultClasses.header}>
       <nav>
@@ -88,14 +84,13 @@ function header(props) {
           <div className={`${menuItems}`}>
             {/* BURGER MENU ONLY FOR TABLET */}
             <div className=" cursor-pointer md:block lg:hidden">
-              <MenuBurger  />
+              <MenuBurger />
             </div>
             {/* // ! LOGO */}
             <div className="cursor-pointer">
               <Link to={"/"}>
                 <img className="inline" src={logo} alt="logo" height="25" />
               </Link>
-              
             </div>
             {/*// ! LINKS LIST */}
 
@@ -120,7 +115,7 @@ function header(props) {
             {/*// ! ICONS CONTAINER */}
             {isLogged === true ? (
               <div className="flex items-center">
-                <div className="mx-2 cursor-pointer" onClick={displaySearchBar}>
+                <div className="" onClick={displaySearchBar}>
                   <Icon>
                     <FaSearch />
                   </Icon>
@@ -130,7 +125,12 @@ function header(props) {
                 </div>
               </div>
             ) : (
-              <div className="flex">
+              <div className="flex items-center">
+                <div className="mx-2 hidden md:block cursor-pointer" onClick={displaySearchBar}>
+                  <Icon>
+                    <FaSearch />
+                  </Icon>
+                </div>
                 <Button
                   text="Sign in"
                   click={redirectToAuth}
