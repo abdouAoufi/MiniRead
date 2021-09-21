@@ -8,8 +8,9 @@ import {
 import Article from "../pages/Articles/Articles";
 import Home from "../pages/Home/Home";
 import Auth from "../pages/Auth/Auth";
-import Layout from "./Layout/Layout";
 import ErrorPage from "../pages/404/404";
+import CompleteProfile from "../pages/CompleteProfile/CompleteProfile";
+import Layout from "./Layout/Layout";
 import PostCreateTemp from "../components/PostCreateTemp/PostCreateTemp";
 import Context from "./ContextHolder/ContextHolder";
 
@@ -31,6 +32,9 @@ function App() {
               </Route>
               <Route path="/create-post">
                 <PostCreateTemp />
+              </Route>
+              <Route path="/add-userinfo">
+                <CompleteProfile />
               </Route>
               <Route path="/404">
                 <ErrorPage />

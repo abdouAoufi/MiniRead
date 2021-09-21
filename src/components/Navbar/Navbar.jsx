@@ -132,6 +132,7 @@ function header(props) {
                   </Icon>
                 </div>
                 <Button
+                  primary
                   text="Sign in"
                   click={redirectToAuth}
                   className="text-black-light text-sm hover:opacity-75 border-black-\light border rounded-full px-4 py-2"

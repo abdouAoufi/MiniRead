@@ -46,7 +46,7 @@ function Home() {
     print(token);
     if (token) {
       checkForAuth(token).then((result) => {
-        if (result.status === 200) {
+        if (result.status === 200 || result.status === 201) {
           setLogged(true);
         } else {
           setLogged(false);

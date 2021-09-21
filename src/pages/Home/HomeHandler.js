@@ -3,18 +3,18 @@ import { useState } from "react";
 const HomeHandler = () => {
   const MYTABS = [
     {
-      name: "Recommended for you",
+      name: "Recommended topics",
       to: "/recommended",
       current: true,
-    }
+    },
   ];
 
   const classes = [
     {
       tabs: {
         active:
-          "mr-2 py-2 font-semibol border-b-2 text-center border-secondary text-gray-800 rounded-t opacity-50",
-        idle: "mr-2 py-2 font-semibol  text-center text-gray-800 rounded-t opacity-50",
+          "mr-2 py-2 font-semibol border-b-2 text-center border-secondary   rounded-t text-black font-medium text-base",
+        idle: "mr-2 py-2 font-semibol  text-center   rounded-t text-black font-medium text-base",
       },
     },
   ];
@@ -32,9 +32,7 @@ const HomeHandler = () => {
     });
     setTABS(newTab);
   };
-  return { TABS, switchTabs , classes };
-
-  
+  return { TABS, switchTabs, classes };
 };
 
 export default HomeHandler;

@@ -23,7 +23,7 @@ function ArticleCard(props) {
           <div className="mt-2">
             <Link
               to={`/article/${props.article._id}`}
-              className="text-xl max-w-xl uppercase block font-bold text-gray-700 dark:text-white hover:text-gray-600 dark:hover:text-gray-200 hover:underline"
+              className="text-xl max-w-xl uppercase block font-bold text-gray-700 dark:text-white dark:hover:text-gray-200 hover:text-secondary-dark"
             >
               {props.article?.title}
             </Link>

@@ -12,7 +12,8 @@ function Tags({tags}) {
               className="px-3 inline-block mr-2 py-1 text-sm  h-8 font-semibold 
               text-black transition-colors duration-200 transform 
               bg-black-lighterr rounded cursor-pointer 
-              hover:bg-secondary hover:text-white"
+              hover:bg-secondary hover:text-white 
+              active:bg-secondary ective:text-white"
             >
               {tag.name}
             </div>

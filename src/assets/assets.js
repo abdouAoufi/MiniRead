@@ -44,8 +44,8 @@ export const LINKS_NAVBAR = [
     current: false,
   },
   {
-    name: "article",
-    to: "/article",
+    name: "adduserinfo",
+    to: "/add-userinfo",
     current: false,
   },
   {
