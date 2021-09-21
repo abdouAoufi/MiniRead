@@ -7,7 +7,7 @@ import { WindowContext } from "../../../contexts/Windowcontenxt";
 const { validate } = RegisterHandler();
 import { print } from "../../../utils/function";
 
-function Register({ switchAuthState }) {
+function Register({ switchAuthState, update }) {
   const [loading, setLoading] = useState(false);
   const { setMessageWindow } = useContext(WindowContext);
   const formik = useFormik({
@@ -16,10 +16,10 @@ function Register({ switchAuthState }) {
       lastName: "",
       email: "",
       password: "",
-      confirmPassword: "",
+      confirmPassword: ""
     },
     validate,
-    onSubmit: async (values) => {
+    onSubmit: async values => {
       let status = 0;
       setLoading(true);
       try {
@@ -43,10 +43,10 @@ function Register({ switchAuthState }) {
           err.message || "Error something went wrong!"
         );
       }
-    },
+    }
   });
   return (
-    <div>
+    <div className="">
       <form
         className="flex flex-col pt-3 md:pt-6"
         onSubmit={formik.handleSubmit}
@@ -150,12 +150,13 @@ function Register({ switchAuthState }) {
             defaultValue="Log In"
             className="bg-black rounded-sm text-white font-bold text-lg hover:bg-gray-700 p-2 mt-8"
           >
-            Sign up
+            {!update ? " Sign up" : "update"}
           </button>
         ) : (
           <Loading />
         )}
       </form>
+
       <p className="mt-6 text-center font-medium text-black">
         If you have account you can{" "}
         <span
