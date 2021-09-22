@@ -90,7 +90,10 @@ export const topicList = [
   "psychology",
   "travels",
   "politics",
-  "photography"
+  "photography",
 ];
 
 export const jobsList = [{ name: "Writer" }, { name: "Programmer" }];
+
+export const defaultprofileurl =
+  "https://images.unsplash.com/photo-1631701119265-33ca2b80d00d?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=453&q=80";

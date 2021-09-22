@@ -6,10 +6,8 @@ import Loading from "../../../components/Loading";
 import { WindowContext } from "../../../contexts/Windowcontenxt";
 const { validate } = RegisterHandler();
 import { print } from "../../../utils/function";
-import { useHistory } from "react-router-dom";
 
 function Register({ switchAuthState }) {
-  const history = useHistory();
   const [loading, setLoading] = useState(false);
   const { setMessageWindow } = useContext(WindowContext);
   const formik = useFormik({

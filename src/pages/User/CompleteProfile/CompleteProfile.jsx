@@ -1,12 +1,12 @@
 import React, { useContext, useState } from "react";
-import Button from "../../components/Button/Button";
-import HeadBig from "../../components/TypoComponent/Headings/HeadBig";
-import Subtitle from "../../components/TypoComponent/Subtitle/Subtitle";
-import CompletingTags from "../../components/Tags/CompletingTags";
-import { topicList, jobsList } from "../../assets";
-import DropDown from "../../components/DropDown/DropDown";
-import { addUserInfo } from "../../api/uerservice";
-import { AuthContext } from "../../contexts/AuthContext";
+import Button from "../../../components/Button/Button";
+import HeadBig from "../../../components/TypoComponent/Headings/HeadBig";
+import Subtitle from "../../../components/TypoComponent/Subtitle/Subtitle";
+import CompletingTags from "../../../components/Tags/CompletingTags";
+import { topicList, jobsList, defaultprofileurl } from "../../../assets";
+import DropDown from "../../../components/DropDown/DropDown";
+import { addUserInfo } from "../../../api/uerservice";
+import { AuthContext } from "../../../contexts/AuthContext";
 
 function CompleteProfile() {
   const { token, userID } = useContext(AuthContext);
@@ -33,12 +33,14 @@ function CompleteProfile() {
       userInfo: {
         work: otherJob || selectedJob,
         interest: topics,
-        profileImageUrl:
-          "https://images.unsplash.com/photo-1631701119265-33ca2b80d00d?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=453&q=80",
+        profileImageUrl: defaultprofileurl,
       },
     };
+    sendData(finalPayLoad.userInfo);
+  };
 
-    addUserInfo(finalPayLoad.userInfo, userID, token).then((result) => {
+  const sendData = (userInfo) => {
+    addUserInfo(userInfo, userID, token).then((result) => {
       result.json().then((data) => console.log(data));
     });
   };

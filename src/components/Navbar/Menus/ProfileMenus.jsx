@@ -125,7 +125,7 @@ function ProfileMenus() {
                 <Menu.Item>
                   {({ active }) => (
                     <Link
-                      to="/"
+                      to="/add-userinfo"
                       className={classNames(
                         active ? "bg-gray-100" : "",
                         "block px-4 py-2 text-sm text-gray-700"
@@ -135,7 +135,7 @@ function ProfileMenus() {
                         <Icon>
                           <FaUserCog />
                         </Icon>
-                        <span className="ml-3">Settings</span>
+                        <span className="ml-3">Setting account</span>
                       </div>
                     </Link>
                   )}
@@ -143,7 +143,7 @@ function ProfileMenus() {
 
                 <Menu.Item>
                   {({ active }) => (
-                    <Link
+                    <p
                       to="/"
                       className={classNames(
                         active ? "bg-gray-100" : "",
@@ -159,7 +159,7 @@ function ProfileMenus() {
                         </Icon>
                         <span className="ml-3">Log out</span>
                       </div>
-                    </Link>
+                    </p>
                   )}
                 </Menu.Item>
               </Menu.Items>
