@@ -36,9 +36,12 @@ function Login({ switchAuthState }) {
         if (status >= 400) {
           return setMessageWindow(responceData.title, responceData.message);
         }
-
         setUserInfo(responceData.user, responceData.token);
-        history.replace("/");
+        if(!responceData.user.isCompleted){
+          history.replace("/add-userinfo");
+        }else{
+          history.replace("/");
+        }
       } catch (err) {
         setLoading(false);
         setMessageWindow(

@@ -1,16 +1,53 @@
-import React from "react";
+import React, { useContext, useState } from "react";
 import Button from "../../components/Button/Button";
+import HeadBig from "../../components/TypoComponent/Headings/HeadBig";
+import Subtitle from "../../components/TypoComponent/Subtitle/Subtitle";
 import CompletingTags from "../../components/Tags/CompletingTags";
+import { topicList, jobsList } from "../../assets";
+import DropDown from "../../components/DropDown/DropDown";
+import { addUserInfo } from "../../api/uerservice";
+import { AuthContext } from "../../contexts/AuthContext";
 
 function CompleteProfile() {
+  const { token, userID } = useContext(AuthContext);
+  const [topics, setTopics] = useState([]);
+  const [selectedJob, setSelectedJob] = useState(jobsList[0].name);
+  const [otherJob, setOtherJob] = useState("");
+
+  const generateTopics = (topic) => {
+    let updatedTopic = [...topics];
+    updatedTopic.push(topic);
+    setTopics(updatedTopic);
+  };
+
+  const removeTopic = (topic) => {
+    let updatedTopic = [...topics];
+    updatedTopic = updatedTopic.filter((t) => t !== topic);
+    console.log(updatedTopic);
+    setTopics(updatedTopic);
+  };
+
+  const validInput = () => {
+    if (topics.length === 0) return;
+    const finalPayLoad = {
+      userInfo: {
+        work: otherJob || selectedJob,
+        interest: topics,
+        profileImageUrl:
+          "https://images.unsplash.com/photo-1631701119265-33ca2b80d00d?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=453&q=80",
+      },
+    };
+
+    addUserInfo(finalPayLoad.userInfo, userID, token).then((result) => {
+      result.json().then((data) => console.log(data));
+    });
+  };
   return (
     <div className="h-screen ">
       <div className="w-full flex flex-wrap">
-        <div className="w-full md:w-1/2 relative flex flex-col px-8 py-12">
+        <div className="w-full h-screen relative md:w-1/2  flex flex-col px-8 py-12">
           <div>
-            <h2 className="text-3xl font-bold text-primary">
-              Tell us more about you
-            </h2>
+            <HeadBig text="Hi Abdou tell us more about you" />
             <p className=" md:w-5/6 mt-3 text-lg text-black">
               In order to give you better experience with{" "}
               <span className="font-bold text-secondary-dark">MiniRead. </span>
@@ -18,22 +55,25 @@ function CompleteProfile() {
               We want you to give us some information about you.
             </p>
           </div>
-          <div className="mt-4">
-            <div className="mt-2">
-              <p className="text-base font-semibold text-black">Your job</p>
+          <div className="mt-4 ">
+            <Subtitle text="Your job" />
+            <div className="mt-2 relative flex items-center">
+              <div className="relative z-100 ">
+                <DropDown list={jobsList} setSelected={setSelectedJob} />
+              </div>
               <input
-                className="border outline-none w-full md:w-4/6 mt-2 py-2 px-2 rounded"
+                onChange={(e) => setOtherJob(e.target.value)}
+                placeholder="Other job "
+                className="border ml-4 w-40 outline-none   py-2 px-2 rounded"
                 type="text"
                 name="work"
                 id=""
               />
             </div>
             <div className="mt-4">
-              <p className="text-base font-semibold text-black">
-                Upload your photo
-              </p>
+              <Subtitle text="Upload your photos" />
               <div className="flex  items-center  mt-2 bg-grey-lighter">
-                <label className=" flex px-4 py-2 items-center   bg-white text-blue rounded-sm   uppercase border border-blue cursor-pointer hover:bg-blue hover:text-black">
+                <label className=" flex px-4 py-2 items-center bg-white text-blue rounded uppercase border border-blue cursor-pointer hover:bg-blue hover:text-black">
                   <svg
                     className="w-8 h-8"
                     fill="#00beb0"
@@ -51,14 +91,25 @@ function CompleteProfile() {
             </div>
 
             <div className="mt-2">
-              <p className="text-base font-semibold text-black">
-                What sounds intressting for you?
-              </p>
+              <Subtitle text=" What sounds intressting for you?" />
+              <div className="mt-3">
+                {topicList.map((tpc, idx) => {
+                  return (
+                    <CompletingTags
+                      key={idx}
+                      removeTopic={removeTopic}
+                      addTopic={generateTopics}
+                      topic={tpc}
+                    />
+                  );
+                })}
+              </div>
             </div>
-          </div>
-          <div className="fixed bottom-4 right-4">
-            <Button disabled click={() => alert("Clickable")} text="Skip" />
-            <Button text="Save" primary />
+
+            <div className="absolute right-6 bottom-4 ">
+              <Button text="Skip" />
+              <Button click={validInput} text="Save" primary />
+            </div>
           </div>
         </div>
         <div className="w-1/2 shadow-2xl">

@@ -1,5 +1,5 @@
 import React from "react";
-import { ICONS } from "../../assets/assets";
+import { ICONS } from "../../assets";
 
 function ProfileCartMd(props) {
   return (

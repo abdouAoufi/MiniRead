@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import ProfilePic from "../ProfilePicture/ProfilePic";
-import { IMAGES } from "../../assets/assets";
+import { IMAGES } from "../../assets";
 import ArticleInfo from "./ArticleInfo";
 import { Link } from "react-router-dom";
 

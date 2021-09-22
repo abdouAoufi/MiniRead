@@ -1,5 +1,5 @@
 import React from "react";
-import { IMAGES } from "../../assets/assets";
+import { IMAGES } from "../../assets";
 
 function ProfilePic(props) {
   let size =

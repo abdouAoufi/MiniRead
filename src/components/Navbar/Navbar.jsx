@@ -3,7 +3,7 @@ import logo from "../../assets/images/svg/logo.svg";
 import MenuBurger from "../icons/Menu";
 import ProfileMenus from "./Menus/ProfileMenus";
 import NotifMenu from "./Menus/NotifMenu";
-import { LINKS_NAVBAR } from "../../assets/assets";
+import { LINKS_NAVBAR } from "../../assets";
 import { AuthContext } from "../../contexts/AuthContext";
 import { LayoutContext } from "../../contexts/LayoutContext";
 import { FaSearch } from "react-icons/fa";

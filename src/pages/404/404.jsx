@@ -1,5 +1,5 @@
 import React from "react";
-import { ICONS } from "../../assets/assets";
+import { ICONS } from "../../assets";
 function ErrorPage() {
   return (
     <div className="h-screen -mt-6 w-screen grid place-items-center items-center ">

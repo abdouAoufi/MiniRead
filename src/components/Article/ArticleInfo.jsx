@@ -1,5 +1,4 @@
 import React from "react";
-import { ICONS } from "../../assets/assets";
 import { FaBookmark, FaShare } from "react-icons/fa";
 import Icon from "../Icon/Icon";
 

@@ -4,7 +4,6 @@ import ProfileCardMobile from "../../components/ProfileCard/ProfileCardMobile";
 import ProfileCartMd from "../../components/ProfileCard/ProfileCartMd";
 import Tags from "../../components/Tags/Tags";
 import AlsoReadMd from "../../components/AlsoRead/AlsoReadMd";
-import { TAGS } from "../../assets/assets";
 import { LayoutContext } from "../../contexts/LayoutContext";
 import { useParams } from "react-router-dom";
 import { getSinglePostDB } from "../../api/articleservice";
