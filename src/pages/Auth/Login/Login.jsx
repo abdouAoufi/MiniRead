@@ -7,11 +7,11 @@ import { AuthContext } from "../../../contexts/AuthContext";
 import { WindowContext } from "../../../contexts/Windowcontenxt";
 import { print } from "../../../utils/function";
 import { useHistory } from "react-router-dom";
-import { saveToken } from "../../../services/tokenservice";
+import { saveInfoLocal } from "../../../services/tokenservice";
 
 function Login({ switchAuthState }) {
   const history = useHistory();
-  const { userName, setUserName, setToken, setLogged } =
+  const { userName, setUserInfo, setToken, setLogged } =
     useContext(AuthContext);
   const { setMessageWindow } = useContext(WindowContext);
   const [loading, setLoading] = useState(false);
@@ -36,10 +36,11 @@ function Login({ switchAuthState }) {
         if (status >= 400) {
           return setMessageWindow(responceData.title, responceData.message);
         }
-        setUserInfo(responceData.user, responceData.token);
-        if(!responceData.user.isCompleted){
+
+        updateUser(responceData.user, responceData.token);
+        if (!responceData.user.isCompleted) {
           history.replace("/add-userinfo");
-        }else{
+        } else {
           history.replace("/");
         }
       } catch (err) {
@@ -52,12 +53,13 @@ function Login({ switchAuthState }) {
     },
   });
 
-  const setUserInfo = (user, token) => {
-    let updatedUserName = { ...userName };
-    updatedUserName.firstName = user.firstName;
-    updatedUserName.lastName = user.lastName;
-    saveToken(token, user.userID);
-    setUserName(updatedUserName);
+  const updateUser = (user, token) => {
+    let updatedUser = { ...userName };
+    updatedUser.firstName = user.firstName;
+    updatedUser.lastName = user.lastName;
+    updatedUser.email = user.email;
+    saveInfoLocal(token, user.userID, updatedUser);
+    setUserInfo(updatedUser);
     setToken(token);
     setLogged(true);
   };

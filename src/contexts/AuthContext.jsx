@@ -7,14 +7,14 @@ export const AuthContextProvider = (props) => {
   const [isLogged, setLogged] = useState(false);
   const [token, setToken] = useState(getInfoFromLocal().token);
   const [userID, setUserID] = useState(getInfoFromLocal().userID);
-  const [userName, setUserName] = useState({ firstName: "", lastName: "" });
+  const [userInfo, setUserInfo] = useState(getInfoFromLocal().userInfo);
   return (
     <AuthContext.Provider
       value={{
         isLogged,
         setLogged,
-        userName,
-        setUserName,
+        userInfo,
+        setUserInfo,
         token,
         setToken,
         userID,

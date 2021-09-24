@@ -12,12 +12,14 @@ function classNames(...classes) {
 }
 
 function ProfileMenus() {
-  const { isLogged, setLogged, setToken } = useContext(AuthContext);
+  const { isLogged, setLogged, setToken, setUserInfo } =
+    useContext(AuthContext);
   const logout = () => {
     if (isLogged) {
       deleteToken();
       setLogged(false);
       setToken(null);
+      setUserInfo(null);
       location.reload(true);
     }
   };
@@ -143,8 +145,7 @@ function ProfileMenus() {
 
                 <Menu.Item>
                   {({ active }) => (
-                    <p
-                      to="/"
+                    <div
                       className={classNames(
                         active ? "bg-gray-100" : "",
                         "block px-4 py-2 text-sm text-gray-700"
@@ -159,7 +160,7 @@ function ProfileMenus() {
                         </Icon>
                         <span className="ml-3">Log out</span>
                       </div>
-                    </p>
+                    </div>
                   )}
                 </Menu.Item>
               </Menu.Items>

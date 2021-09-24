@@ -108,7 +108,7 @@ function CompleteProfile() {
               </div>
             </div>
 
-            <div className="absolute right-6 bottom-4 ">
+            <div className="absolute flex right-6 bottom-4 ">
               <Button text="Skip" />
               <Button click={validInput} text="Save" primary />
             </div>
