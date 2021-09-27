@@ -42,7 +42,7 @@ function Basic() {
 
   return (
     <div className="w-full h-full relative">
-      <p className="text-center font-semibold text-lg">Basic information</p>
+      {/* <p className="text-center font-semibold text-lg">Basic information</p> */}
       {loading ? (
         <Loading />
       ) : (

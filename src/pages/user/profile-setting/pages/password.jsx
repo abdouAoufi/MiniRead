@@ -21,7 +21,6 @@ function Basic() {
 
   return (
     <div className="w-full h-full relative">
-      <p className="text-center font-semibold text-lg">Change your password</p>
       <form onSubmit={formik.handleSubmit} className="flex flex-col mt-2 ">
         <div className="flex flex-col pt-1">
           <label htmlFor="name" className="text-lg">
