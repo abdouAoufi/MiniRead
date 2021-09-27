@@ -1,5 +1,7 @@
 import React, { useState, useEffect, Fragment, useContext } from "react";
+import logoMini from "../../../assets/images/svg/logo-mini.svg";
 import logo from "../../../assets/images/svg/logo.svg";
+import user from "../../../assets/images/svg/user.svg";
 import ProfileMenus from "./menu/profile_menu";
 import { LINKS_NAVBAR } from "../../../assets";
 import { AuthContext } from "../../../contexts/auth_context";
@@ -10,55 +12,29 @@ import { useHistory, Link } from "react-router-dom";
 import Button from "../button/button";
 
 function header(props) {
-  const history = useHistory();
-  const { setShowNavbar } = useContext(LayoutContext);
-  const { isLogged } = useContext(AuthContext);
-  const defaultClasses = {
-    searchBar: "hidden",
-    navbarItems: "p-4 flex justify-between items-center",
-    header:
-      "sticky z-50 shadow border-0  right-0 top-0 left-0 bg-white  unset-0  ",
-  };
-
-  const redirectToAuth = () => {
-    setShowNavbar(false);
-    history.replace("/auth");
-  };
-
-  useEffect(() => {
-    if (props.closing === false) {
-      hideSearchBar();
-    }
-  }, [props.closing]);
-
-  const [searchBarParams, setSearchBarPrams] = useState(
-    defaultClasses.searchBar
-  );
-  const [menuItems, setMenuItemsState] = useState(defaultClasses.navbarItems);
-
-  function classNames(...classes) {
-    return classes.filter(Boolean).join(" ");
-  }
-
-  const displaySearchBar = () => {
-    setMenuItemsState("hidden");
-    setSearchBarPrams("flex justify-center items-center h-14  my-auto");
-  };
-
-  const displaySearchSuggestion = () => {
-    props.setOpenModal();
-  };
-
-  const hideSearchBar = () => {
-    console.log("Executed ...");
-    setMenuItemsState("p-4 flex justify-between items-center");
-    setSearchBarPrams("hidden");
-  };
-
   return (
-    <header className={defaultClasses.header}>
+    <header className="sticky z-50 shadow border-0  right-0 top-0 left-0 bg-white  unset-0  border">
       <nav>
-        
+        <div className="flex justify-between px-4 lg:px-8 items-center py-3">
+          <img src={logo} alt="logo" className="mr-2 " />
+          <div className="flex items-center">
+            <div className="flex items-center border-2 rounded-md">
+              <input
+                placeholder="Search"
+                type="text"
+                className=" pl-2 py-2 w-56 md:w-64 outline-none text-black font-semibold"
+              />
+              <div className="border-l-2 ">
+                <Icon>
+                  <FaSearch />
+                </Icon>
+              </div>
+            </div>
+            <div className="md:mx-2">
+              <ProfileMenus />
+            </div>
+          </div>
+        </div>
       </nav>
     </header>
   );

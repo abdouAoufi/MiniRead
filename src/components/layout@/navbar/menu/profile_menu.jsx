@@ -1,6 +1,6 @@
 import React, { Fragment, useContext } from "react";
 import { Menu, Transition } from "@headlessui/react";
-import Profile from "../../../../assets/images/jpeg/port.jpg";
+import userPic from "../../../../assets/images/svg/user.svg";
 import { Link } from "react-router-dom";
 import Icon from "../../icon/icon";
 import { FaUserCog, FaPen, FaBookmark, FaSignOutAlt } from "react-icons/fa";
@@ -35,7 +35,7 @@ function ProfileMenus() {
                 {/* IMAGE-PROFILE */}
                 <div>
                   <img
-                    src={Profile}
+                    src={userPic}
                     alt="profile picture"
                     className="w-8 h-8 rounded-full"
                   />

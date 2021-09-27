@@ -31,30 +31,29 @@ function Home() {
   const [homePosts, setHomePosts] = useState([]);
   const [loadingArticles, setLoadingArticles] = useState(true);
   const [loadingSmall, setLoadingSmall] = useState(true);
-  useEffect(async () => {
-    if (showFooter) {
-      setShowFooter(false);
-    }
-    if (!showNavbar) {
-      setShowNavbar(true);
-    }
-    fetchResources();
-  }, []);
+  // useEffect(async () => {
+  //   if (showFooter) {
+  //     setShowFooter(false);
+  //   }
+  //   if (!showNavbar) {
+  //     setShowNavbar(true);
+  //   }
+  //   // fetchResources();
+  // }, []);
 
-  useEffect(() => {
-    print(token);
-    if (token) {
-      checkForAuth(token).then((result) => {
-        if (result.status === 200 || result.status === 201) {
-          setLogged(true);
-        } else {
-          setLogged(false);
-        }
-      });
-    } else {
-      setLogged(false);
-    }
-  }, []);
+  // useEffect(() => {
+  //   if (token) {
+  //     checkForAuth(token).then((result) => {
+  //       if (result.status === 200 || result.status === 201) {
+  //         setLogged(true);
+  //       } else {
+  //         setLogged(false);
+  //       }
+  //     });
+  //   } else {
+  //     setLogged(false);
+  //   }
+  // }, []);
   // useUpdateEffect(() => alert("Tags loaded successfully"), [tags]);
 
   const fetchResources = async () => {
