@@ -1,10 +1,10 @@
 import React, { useState, useContext } from "react";
 import { useFormik } from "formik";
-import LoginHandler from "./LoginHandler";
-import Loading from "../../../components/Loading";
-import { login } from "../../../api/authservice";
-import { AuthContext } from "../../../contexts/AuthContext";
-import { WindowContext } from "../../../contexts/Windowcontenxt";
+import LoginHandler from "./login-handler";
+import Loading from "../../../components/layout@/loading/Loading";
+import { login } from "../../../api/auth-service";
+import { AuthContext } from "../../../contexts/auth_context";
+import { WindowContext } from "../../../contexts/window_context";
 import { print } from "../../../utils/function";
 import { useHistory } from "react-router-dom";
 import { saveInfoLocal } from "../../../services/tokenservice";

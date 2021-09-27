@@ -1,23 +1,22 @@
 import React, { useEffect, useContext, useState } from "react";
-import Tags from "../../components/Tags/TagsHome";
+import Tags from "../../components/tag/home-tag";
 import { print } from "../../utils/function";
-// import useUpdateEffect from "../../utils/useupdateeffect";
-import ArticleCard from "../../components/Article/ArticleCard";
-import Loading from "../../components/Loading";
-import LoadingPost from "../../components/Loading/LoadingPost";
-import AlsoRead from "../../components/AlsoRead/AlsoReadMd";
-import ProfileSide from "../../components/ProfileCard/ProfileSide";
-import ArticleSlide from "../../components/Article/ArticleSlide";
+import ArticleCard from "../../components/articles/article_card";
+import Loading from "../../components/layout@/loading/Loading";
+import LoadingPost from "../../components/layout@/loading/Loading_post";
+import AlsoRead from "../../components/also-read/also_read";
+import ProfileSide from "../../components/profile-card/card-side";
+import ArticleSlide from "../../components/articles/article_slide";
 import HomeHandler from "./HomeHandler";
-import { LayoutContext } from "../../contexts/LayoutContext";
+import { LayoutContext } from "../../contexts/layout_context";
 import {
   getTages,
   getTrendPost,
   getHomePosts,
   checkForAuth,
-} from "../../api/homeservice";
-import { WindowContext } from "../../contexts/Windowcontenxt";
-import { AuthContext } from "../../contexts/AuthContext";
+} from "../../api/home-service";
+import { WindowContext } from "../../contexts/window_context";
+import { AuthContext } from "../../contexts/auth_context";
 import { useHistory } from "react-router-dom";
 
 function Home() {

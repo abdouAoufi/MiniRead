@@ -4,16 +4,16 @@ import {
   Route,
   Switch,
   Redirect,
-} from "react-router-dom";
-import Article from "../pages/Articles/Articles";
-import Home from "../pages/Home/Home";
-import Auth from "../pages/Auth/Auth";
-import SettingProfile from "../pages/User/SettingProfile/SettingProfile";
+} from "react-router-dom"
+import Article from "../pages/article/article";
+import Home from "../pages/home/home";
+import Auth from "../pages/auth/auth-index";
+import SettingProfile from "../pages/user/profile-setting/profile_setting";
+import CompleteProfile from "../pages/User/add-information/add_informations";
 import ErrorPage from "../pages/404/404";
-import CompleteProfile from "../pages/User/CompleteProfile/CompleteProfile";
-import Layout from "./Layout/Layout";
-import PostCreateTemp from "../components/PostCreateTemp/PostCreateTemp";
-import Context from "./ContextHolder/ContextHolder";
+import Layout from "./layout/layout";
+import PostCreateTemp from "../components/create-post/create-post";
+import Context from "./context/context";
 
 function App() {
   return (

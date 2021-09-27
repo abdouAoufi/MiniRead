@@ -1,18 +1,16 @@
 import React, { useContext } from "react";
-import Navbar from "../../components/Navbar";
-import Footer from "../../components/Footer";
-import AuthHandler from "../AuthHandler";
+import Navbar from "../../components/layout@/navbar";
+import Footer from "../../components/layout@/footer";
 import ModalLogic from "./modal";
-import Modal from "../../components/StyleRelated/Modal/Modal";
-import Suggesion from "../../components/Navbar/Suggesion/Suggesion";
+import Modal from "../../components/modal/modal/modal";
+import Suggesion from "../../components/layout@/navbar/suggestion/suggestion";
 import {
   LayoutContext,
   LayoutContextProvider,
-} from "../../contexts/LayoutContext";
+} from "../../contexts/layout_context";
 
 function Layout(props) {
   // controlling the navbar from app when is shared
-  const { authState, switchAuthState } = AuthHandler();
   const { openModal, click, insideModalHandler } = ModalLogic();
   const { showFooter, showNavbar } = useContext(LayoutContext);
   return (
@@ -31,8 +29,6 @@ function Layout(props) {
       </Modal>
       {showNavbar ? (
         <Navbar
-          authState={authState}
-          switchAuthState={switchAuthState}
           isAuth={true}
           setOpenModal={click}
           closing={openModal}
