@@ -5,18 +5,25 @@ import validationHandler from "./validation/basic";
 import { useHistory } from "react-router-dom";
 import { updateBasicInformation } from "../../../../api/user-service";
 import Loading from "../../../../components/layout@/loading/Loading";
-import { WindowContext } from "../../../../contexts/window_context";
+import Result from "./component/result";
 
 function Basic() {
-  const { setMessageWindow } = useContext(WindowContext);
   const history = useHistory();
   const [loading, setLoading] = useState(false);
+  const [response, setResponse] = useState(false);
+  const [hideForm, setHideForm] = useState(false);
+  const [status, setStatus] = useState(422);
+  const [result, setResult] = useState();
+  const retry = () => {
+    setLoading(false);
+    setResponse(false);
+    setHideForm(false);
+  };
   const { validate } = validationHandler();
   const formik = useFormik({
     initialValues: {
       firstName: "Aoufi",
       lastName: "Abderahmane",
-      work: "Developer",
       password: "",
     },
     validate,
@@ -26,26 +33,28 @@ function Basic() {
   });
 
   const sendData = (info) => {
-    let status = 422;
-    setLoading(false);
+    setLoading(true);
     updateBasicInformation(info)
       .then((response) => {
-        status = response.status;
+        setHideForm(true);
+        setLoading(false);
+        setStatus(response.status);
         return response.json();
       })
       .then((data) => {
-        setLoading(false);
-        setMessageWindow(data.title, data.message);
-        console.log(data);
+        setResponse(true);
+        setResult(data);
       });
   };
 
   return (
     <div className="w-full h-full relative">
-      {/* <p className="text-center font-semibold text-lg">Basic information</p> */}
-      {loading ? (
-        <Loading />
-      ) : (
+      {loading ? <Loading /> : null}
+      {response ? (
+        <Result retry={retry} result={result} status={status} />
+      ) : null}
+
+      {!hideForm ? (
         <form onSubmit={formik.handleSubmit} className="flex flex-col ">
           <div className="flex flex-col ">
             <label htmlFor="name" className="text-sm">
@@ -86,25 +95,6 @@ function Basic() {
               <div className="text-red-400 pt-1">{formik.errors.lastName}</div>
             ) : null}
           </div>
-
-          <div className="flex flex-col pt-2">
-            <label htmlFor="name" className="text-sm">
-              Your job
-            </label>
-            <input
-              id="work"
-              name="work"
-              type="text"
-              onChange={formik.handleChange}
-              value={formik.values.work}
-              placeholder="Writer"
-              required
-              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mt-1 leading-tight focus:outline-none focus:shadow-outline"
-            />
-            {formik.errors.work ? (
-              <div className="text-red-400 pt-2">{formik.errors.work}</div>
-            ) : null}
-          </div>
           <div className="flex flex-col pt-1">
             <label htmlFor="name" className="text-lg">
               Password
@@ -129,7 +119,7 @@ function Basic() {
             <Button text="Update" click={formik.handleSubmit} primary />
           </div>
         </form>
-      )}
+      ) : null}
     </div>
   );
 }

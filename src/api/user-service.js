@@ -24,10 +24,8 @@ export const updateBasicInformation = (userInfo) => {
     updatedInfo: {
       firstName: userInfo.firstName,
       lastName: userInfo.lastName,
-      work: userInfo.work,
     },
   };
-  console.log(payLoad);
   return fetch(ADRESS + "/update-basicinfo", {
     method: "POST",
     headers: {
@@ -38,6 +36,47 @@ export const updateBasicInformation = (userInfo) => {
   });
 };
 
+export const updateEmail = (userInfo) => {
+  const payLoad = {
+    userInfo: {
+      userID: userID,
+      password: userInfo.password,
+    },
+    updatedInfo: {
+      email: userInfo.email,
+    },
+  };
+  console.log(payLoad);
+  return fetch(ADRESS + "/update-email", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: "Bearer " + token,
+    },
+    body: JSON.stringify(payLoad),
+  });
+};
+
+export const updatePassword = (userInfo) => {
+  const payLoad = {
+    userInfo: {
+      userID: userID,
+      password: userInfo.password,
+    },
+    updatedInfo: {
+      password: userInfo.newPassword,
+    },
+  };
+  console.log(payLoad);
+  return fetch(ADRESS + "/update-password", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: "Bearer " + token,
+    },
+    body: JSON.stringify(payLoad),
+  });
+};
 /* 
 {
    "userInfo": {

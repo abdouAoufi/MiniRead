@@ -1,24 +1,23 @@
 import React from "react";
 
-function ProfileCardMobile() {
+function ProfileCardMobile(props) {
   return (
-    <div className="mx-auto md:hidden border-black-lighter mb-6 border-b pb-4">
+    <div className="mx-auto md:hidden  mb-6 border-b pb-4">
       <div className="flex items-center">
-        <div className="relative w-8 h-8 mr-4">
+        <div className="relative w-12 h-12 mr-4">
           <img
-            className="rounded-full  shadow-sm"
+            className="rounded-full  shadow-sm medium"
             src="https://randomuser.me/api/portraits/women/81.jpg"
             alt="user image"
           />
         </div>
         <div className="">
-          <p className="font-semibold text-black">Aoufi abderahmane</p>
-          <span className="font-normal text-xs text-black-light">
-            89 follower
-          </span>
-          <span className="font-bold text-black-light mx-2 ">·</span>
-          <span className="font-bold tracking-wide cursor-pointer text-xs text-secondary">
-            Follow
+          <p className="font-semibold text-black">
+            {props.author?.firstName + " " + props.author?.lastName}
+          </p>
+          <span className=" text-xs text-black-light">
+            {" "}
+            {props.author?.work}
           </span>
         </div>
       </div>

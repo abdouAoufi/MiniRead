@@ -40,7 +40,7 @@ function ProfileCartMd(props) {
             <p className="text-black text-sm font-medium">Followes</p>
           </div>
           <div className="text-sm font-semibold px-1 h-6 grid place-items-center rounded-md bg-black-lighterr text-secondary">
-            89
+            soon
           </div>
         </div>
         {/* single info */}
@@ -50,18 +50,18 @@ function ProfileCartMd(props) {
             <p className="text-black text-sm font-medium">Total likes</p>
           </div>
           <div className="text-sm font-semibold px-1 h-6 grid place-items-center rounded-md bg-black-lighterr text-secondary">
-            122
+            soon
           </div>
         </div>
       </div>
-      <div className="flex items-center">
+      {/* <div className="flex items-center">
         <button className="py-1 px-4 mt-4 mr-4 cursor-pointer text-primary font-semibold tracking-wide rounded-sm text-md bg-gray-200  block md:inline-block">
           Follow{" "}
         </button>
         <div className="py-1 px-4 mt-4 mr-3  cursor-pointer text-primary font-semibold tracking-wide rounded-sm text-md bg-gray-200  block md:inline-block">
           <img src={ICONS.message} alt="message" className="w-6 h-6" />
         </div>
-      </div>
+      </div> */}
     </div>
   );
 }

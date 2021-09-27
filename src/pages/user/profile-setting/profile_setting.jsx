@@ -4,16 +4,26 @@ import Basic from "./pages/basic_information";
 import Email from "./pages/email";
 import Password from "./pages/password";
 import Modal from "../../../components/modal/modal/modal";
+import { IMAGES } from "../../../assets";
+import Subtitle from "../../../components/typographie/subtitle/Subtitle";
+import Icon from "../../../components/layout@/icon/icon";
+import { FaWindowClose } from "react-icons/fa";
 
 function SettingProfile() {
   const [showHeading, setHeading] = useState(true);
   return (
     <Modal openModal>
-      <div className="mt-8 rounded-md bg-white p-6 w-full md:w-5/6 lg:w-1/2 h-120">
-        <h2 className="text-xl text-center font-bold text-black">
+      <div className="mt-8 rounded-md bg-white p-4 w-full md:w-5/6 lg:w-1/2 h-120 relative">
+        <h2 className="text-xl text-center font-semibold text-primary">
           {" "}
           Account setting{" "}
         </h2>
+
+        <Link to="/" className="absolute top-4 right-4">
+          <Icon>
+            <FaWindowClose />
+          </Icon>
+        </Link>
 
         <div className=" flex h-full ">
           <div className="mt-8" onClick={() => setHeading(false)}>
@@ -46,13 +56,14 @@ function SettingProfile() {
                 <Route path="/update-userinfo/update-password">
                   <Password />
                 </Route>
+                <Route>
+                  <div className="h-full w-full grid items-center place-items-center">
+                    <Subtitle text="Here you can update your account" />
+                    <img src={IMAGES.accountSetting} height="45" />
+                  </div>
+                </Route>
               </Switch>
             </div>
-            {showHeading ? (
-              <div className="h-full w-full grid items-center place-items-center">
-                change your
-              </div>
-            ) : null}
           </div>
         </div>
       </div>

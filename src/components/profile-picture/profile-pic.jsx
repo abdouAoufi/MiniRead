@@ -1,5 +1,5 @@
 import React from "react";
-import { IMAGES } from "../../assets";
+import { ICONS } from "../../assets";
 
 function ProfilePic(props) {
   let size =
@@ -13,7 +13,7 @@ function ProfilePic(props) {
       <div className={size}>
         <img
           className="rounded-full p-0.5"
-          src={props.url ?? IMAGES.boy}
+          src={props.url ?? ICONS.user}
           alt="user image"
         />
       </div>

@@ -10,7 +10,7 @@ function Button(props) {
       onClick={props.click}
       className={
         classes +
-        "font-semibold py-2  px-6 mx-2 shadow items-center inline-block rounded "
+        "font-semibold py-2  px-6 mx-2 shadow-sm items-center inline-block rounded "
       }
     >
       {props.text}

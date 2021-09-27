@@ -4,7 +4,7 @@ import Loading from "../layout@/loading/Loading";
 
 function AlsoReadMd(props) {
   return (
-    <div className="mt-6 p-2">
+    <div className="mt-2 p-2">
       <h2 className="text-md font-semibold uppercase text-primary ">
         {props.headTitle}
       </h2>

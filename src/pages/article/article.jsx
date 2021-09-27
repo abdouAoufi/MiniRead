@@ -70,7 +70,7 @@ function ArticleFn() {
       />
       <div className="md:flex flex-column justify-center items-around px-4 md:justify-between  py-6  ">
         <div className="md:hidden">
-          {article ? <ProfileCardMobile /> : <Loading />}
+          {article ? <ProfileCardMobile author={article.creator} /> : <Loading />}
         </div>
         <div className="hidden md:block ">
           <div className="w-72">

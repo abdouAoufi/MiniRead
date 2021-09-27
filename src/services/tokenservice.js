@@ -4,6 +4,10 @@ export const saveInfoLocal = (token, userID, userInfo) => {
   window.localStorage.setItem("userInfo", JSON.stringify(userInfo));
 };
 
+export const updateUserInfo = (updatedInfo) => {
+  window.localStorage.setItem("userInfo", JSON.stringify(updatedInfo));
+};
+
 export const getInfoFromLocal = () => {
   const info = {};
   const token = window.localStorage.getItem("token");

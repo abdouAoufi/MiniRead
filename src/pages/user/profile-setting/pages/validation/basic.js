@@ -11,11 +11,6 @@ const validationHandler = () => {
     } else if (values.lastName.length > 15 || values.lastName.length < 2) {
       errors.lastName = "Invalid last name!";
     }
-    if (!values.work) {
-      errors.work = "Required!";
-    } else if (values.work.length > 15 || values.work.length < 2) {
-      errors.work = "Invalid last name!";
-    }
     if (!values.password) {
       errors.password = "Required!";
     } else if (values.password.length > 15 || values.password.length < 8) {

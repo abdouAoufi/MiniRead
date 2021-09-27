@@ -20,6 +20,10 @@ import write from "./images/svg/write.svg";
 import stats from "./images/svg/stats.svg";
 import validate from "./images/svg/validate.svg";
 import error from "./images/svg/error.svg";
+import accountSetting from "./images/svg/account-setting.svg"
+import update from "./images/svg/update.svg"
+import user from "./images/svg/user.svg"
+ 
 
 export const LOGO = {
   logo,
@@ -30,6 +34,9 @@ export const IMAGES = {
   portait,
   suggestion,
   boy,
+  accountSetting,
+  update,
+  error
 };
 
 export const LINKS_NAVBAR = [
@@ -72,6 +79,7 @@ export const ICONS = {
   stats,
   validate,
   error,
+  user
 };
 
 export const topicList = [

@@ -13,10 +13,8 @@ function Auth() {
   const { showFooter, setShowFooter, showNavbar, setShowNavbar } =
     useContext(LayoutContext);
   useEffect(() => {
-    if (showFooter && showNavbar) {
-      setShowFooter(false);
-      setShowNavbar(false);
-    }
+    setShowFooter(false);
+    setShowNavbar(false);
   }, []);
   useEffect(() => {
     if (token) {

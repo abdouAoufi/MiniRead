@@ -4,7 +4,7 @@ import {
   Route,
   Switch,
   Redirect,
-} from "react-router-dom"
+} from "react-router-dom";
 import Article from "../pages/article/article";
 import Home from "../pages/home/home";
 import Auth from "../pages/auth/auth-index";
@@ -14,6 +14,7 @@ import ErrorPage from "../pages/404/404";
 import Layout from "./layout/layout";
 import PostCreateTemp from "../components/create-post/create-post";
 import Context from "./context/context";
+import { checkForAuth } from "../api/home-service";
 
 function App() {
   return (

@@ -5,7 +5,7 @@ function ArticleSlide() {
   return (
     <div>
       <p className="text-black font-medium text-base">
-        Picked up for you{" "}
+        Article of the day{" "}
         {/* <span className="cursor-pointer text-red-300">[nothing]</span>{" "} */}
       </p>
       <div className="flex w-full items-center mt-4 overflow-scroll">
