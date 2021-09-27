@@ -9,6 +9,7 @@ import ProfileSide from "../../components/profile-card/card-side";
 import ArticleSlide from "../../components/articles/article_slide";
 import HomeHandler from "./HomeHandler";
 import { LayoutContext } from "../../contexts/layout_context";
+import Welcome from "../../components/welcome/welcome";
 import {
   getTages,
   getTrendPost,
@@ -31,32 +32,32 @@ function Home() {
   const [homePosts, setHomePosts] = useState([]);
   const [loadingArticles, setLoadingArticles] = useState(true);
   const [loadingSmall, setLoadingSmall] = useState(true);
-  // useEffect(async () => {
-  //   if (showFooter) {
-  //     setShowFooter(false);
-  //   }
-  //   if (!showNavbar) {
-  //     setShowNavbar(true);
-  //   }
-  //   // fetchResources();
-  // }, []);
+  useEffect(() => {
+    if (token) {
+      checkForAuth(token).then((result) => {
+        if (result.status === 200 || result.status === 201) {
+          setLogged(true);
+        } else {
+          setLogged(false);
+        }
+      });
+    } else {
+      setLogged(false);
+    }
+  }, []);
 
-  // useEffect(() => {
-  //   if (token) {
-  //     checkForAuth(token).then((result) => {
-  //       if (result.status === 200 || result.status === 201) {
-  //         setLogged(true);
-  //       } else {
-  //         setLogged(false);
-  //       }
-  //     });
-  //   } else {
-  //     setLogged(false);
-  //   }
-  // }, []);
-  // useUpdateEffect(() => alert("Tags loaded successfully"), [tags]);
+  useEffect( () => {
+    if (showFooter) {
+      setShowFooter(false);
+    }
+    if (!showNavbar) {
+      setShowNavbar(true);
+    }
+    fetchResources();
+  }, []);
 
   const fetchResources = async () => {
+    console.log("FETCHNG -----");
     setLoadingArticles(true);
     let fetchedTags, fetchedTrendPosts, fetchedPosts;
     try {
@@ -147,14 +148,7 @@ function Home() {
       <div className="hidden lg:block lg:w-1/3 px-8 lg:px-12">
         <div className="mt-6">
           <div className=" h-48 shadow-sm  text-primary rounded relative p-6 bg-accent">
-            <div className="flex-column items-center justify-center h-full">
-              <h3 className=" text-md   focus: ">Welcome to MiniRead </h3>
-              <div className="mt-5">
-                <p className=" font-bold   mt-2">Read articles you like </p>
-                <p className=" font-bold   mt-2">Write articles and share </p>
-                <p className=" font-bold  mt-2">Interact with people </p>
-              </div>
-            </div>
+            <Welcome/>
           </div>
         </div>
         <div className="mt-8 border-b pb-8">
