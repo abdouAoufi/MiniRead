@@ -16,18 +16,17 @@ function Auth() {
   useEffect(() => {
     setShowFooter(false);
     setShowNavbar(false);
-    if (token) {
-      checkForAuth(token).then((result) => {
-        if (result.status === 200) {
-          setLogged(true);
-          goHome();
-        } else {
-          setLogged(false);
-        }
-      });
-    } else {
+    if (!token) {
       setLogged(false);
     }
+    checkForAuth(token).then((result) => {
+      if (result.status === 200) {
+        setLogged(true);
+        goHome();
+      } else {
+        setLogged(false);
+      }
+    });
   }, []);
   const goHome = () => {
     return history.replace("/");
@@ -37,7 +36,7 @@ function Auth() {
       <div className="w-full flex flex-wrap">
         <div className="w-full md:w-1/2 flex flex-col">
           <div className="separator">
-            <h1 className="text">Welcome Readers!</h1>
+            <h1 className="header-title">Welcome Readers!</h1>
             {authState === "login" ? (
               <Login switchAuthState={() => setAuthState("register")} />
             ) : (

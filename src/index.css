@@ -20,7 +20,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 .separator {
-  @apply flex flex-col justify-center md:justify-start my-auto pt-16 md:pt-0 px-8 md:px-24 lg:px-32;
+  @apply flex flex-col justify-center md:justify-start my-auto pt-16 md:pt-0 px-12 md:px-24 lg:px-32;
 }
 
 .img-cover {
@@ -31,8 +31,31 @@ body {
   @apply text-secondary font-bold cursor-pointer;
 }
 
-.text {
+.simple-input {
+  @apply shadow appearance-none border rounded w-full py-3 px-3 text-gray-700 mt-1 leading-tight ;
+}
+
+.error-text{
+  @apply pl-1 text-red-400 pt-2 font-medium;
+}
+
+.header-title {
   @apply text-center text-primary font-bold text-3xl;
+}
+
+.text{
+  @apply text-center font-medium text-black;
+}
+.form{
+  @apply flex flex-col pt-3 md:pt-8;
+}
+
+.highlight-text-dark{
+  @apply text-secondary-dark font-bold cursor-pointer;
+}
+
+.auth-btn{
+  @apply bg-black rounded-sm text-white font-bold text-lg hover:bg-gray-700 p-2 mt-8;
 }
 
 code {

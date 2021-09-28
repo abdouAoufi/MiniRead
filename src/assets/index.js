@@ -109,3 +109,7 @@ export const IMAGES_URL = Object.freeze({
   AUTH_IMAGE:
     "https://images.unsplash.com/photo-1576097492152-4687ccd1c6ec?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1300&q=80",
 });
+
+export const LOGIN_INPUT = Object.freeze({
+  email: { id: "eamil", name: "email", type: "email"  },
+});

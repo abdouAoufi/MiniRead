@@ -3,16 +3,12 @@ import { useFormik } from "formik";
 import LoginHandler from "./login-handler";
 import Loading from "../../../components/layout@/loading/Loading";
 import { login } from "../../../api/auth-service";
-import { AuthContext } from "../../../contexts/auth_context";
 import { WindowContext } from "../../../contexts/window_context";
-import { print } from "../../../utils/function";
 import { useHistory } from "react-router-dom";
-import { saveInfoLocal } from "../../../services/tokenservice";
+import Input from "../../../components/layout@/input/input";
 
 function Login({ switchAuthState }) {
   const history = useHistory();
-  const { userName, setUserInfo, setToken, setLogged } =
-    useContext(AuthContext);
   const { setMessageWindow } = useContext(WindowContext);
   const [loading, setLoading] = useState(false);
   const { validate } = LoginHandler();
@@ -23,111 +19,105 @@ function Login({ switchAuthState }) {
       password: "",
     },
     validate,
-    onSubmit: async (values) => {
-      let status = 0;
-      setLoading(true);
-      try {
-        const response = await login(values);
-        if (response) {
-          setLoading(false);
-          status = response.status;
-        }
-        const responceData = await response.json();
-        if (status >= 400) {
-          return setMessageWindow(responceData.title, responceData.message);
-        }
-
-        updateUser(responceData.user, responceData.token);
-        if (!responceData.user.isCompleted) {
-          history.replace("/add-userinfo");
-        } else {
-          history.replace("/");
-        }
-      } catch (err) {
-        setLoading(false);
-        setMessageWindow(
-          "Error something went wrong!",
-          err.message || "Error something went wrong!"
-        );
-      }
+    onSubmit: (values) => {
+      handleLogin(values);
     },
   });
 
-  const updateUser = (user, token) => {
-    let updatedUser = { ...userName };
-    updatedUser.firstName = user.firstName;
-    updatedUser.lastName = user.lastName;
-    updatedUser.email = user.email;
-    saveInfoLocal(token, user.userID, updatedUser);
-    setUserInfo(updatedUser);
-    setToken(token);
-    setLogged(true);
+  const handleLogin = async (credentials) => {
+    if (!credentials) return;
+    let status = 422;
+    setLoading(true);
+    try {
+      const response = await login(credentials);
+      if (response) {
+        setLoading(false);
+        status = response.status;
+      }
+      const responceData = await response.json();
+      handleResponse(responceData, status);
+    } catch (err) {
+      setLoading(false);
+      setMessageWindow(
+        "Error something went wrong!",
+        err.message || "Error something went wrong!"
+      );
+    }
   };
+
+  const handleResponse = (response, status) => {
+    if (status >= 400) {
+      return setMessageWindow(response.title, response.message);
+    }
+    if (!response.user.isCompleted) {
+      continueSignUp();
+    } else {
+      goHome();
+    }
+  };
+
+  const goHome = () => {
+    return history.replace("/");
+  };
+  const continueSignUp = () => {
+    return history.replace("/add-userinfo");
+  };
+
+  const LOGIN_INPUT = Object.freeze({
+    email: {
+      basic: {
+        label: "Email adress",
+        id: "eamil",
+        name: "email",
+        type: "email",
+        placeholder: "Johnsmith@email.com",
+      },
+      changeProp: {
+        value: formik.values.email,
+        handleChange: formik.handleChange,
+        error: formik.errors.email,
+      },
+    },
+    password: {
+      basic: {
+        label: "Your password",
+        id: "password",
+        name: "password",
+        type: "password",
+        placeholder: "Your password",
+      },
+      changeProp: {
+        value: formik.values.password,
+        handleChange: formik.handleChange,
+        error: formik.errors.password,
+      },
+    },
+  });
 
   return (
     <div>
-      <form
-        onSubmit={formik.handleSubmit}
-        className="flex flex-col pt-3 md:pt-8"
-      >
-        <div className="flex flex-col pt-2">
-          <label htmlFor="name" className="text-lg">
-            Email adress
-          </label>
-          <input
-            id="email"
-            name="email"
-            type="email"
-            onChange={formik.handleChange}
-            value={formik.values.email}
-            placeholder="Johnsmith@email.com"
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mt-1 leading-tight focus:outline-none focus:shadow-outline"
-          />
-          {formik.errors.email ? (
-            <div className="text-red-400 pt-2 font-medium">
-              {formik.errors.email}
-            </div>
-          ) : null}
-        </div>
-        <div className="flex flex-col pt-2">
-          <label htmlFor="name" className="text-lg">
-            Password
-          </label>
-          <input
-            id="password"
-            name="password"
-            type="password"
-            onChange={formik.handleChange}
-            value={formik.values.password}
-            placeholder="Your password"
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mt-1 leading-tight focus:outline-none focus:shadow-outline"
-          />
-          {formik.errors.password ? (
-            <div className="text-red-400 pt-2 font-medium">
-              {formik.errors.password}
-            </div>
-          ) : null}
-        </div>
+      <form onSubmit={formik.handleSubmit} className="form">
+        <Input
+          basic={LOGIN_INPUT.email.basic}
+          changeProp={LOGIN_INPUT.email.changeProp}
+        />
+        <Input
+          basic={LOGIN_INPUT.password.basic}
+          changeProp={LOGIN_INPUT.password.changeProp}
+        />
 
         {!loading ? (
-          <button
-            type="submit"
-            defaultValue="Log In"
-            className="bg-black rounded-sm text-white font-bold text-lg hover:bg-gray-700 p-2 mt-8"
-          >
+          <button type="submit" defaultValue="Log In" className="auth-btn">
             Log in
           </button>
         ) : (
           <Loading />
         )}
       </form>
-      <p className="mt-6 text-center font-medium text-black">
+      <p className="mt-6 text">
         If you dont have account you can{" "}
-        <span
-          className="text-secondary-dark font-bold cursor-pointer"
-          onClick={switchAuthState}
-        >
-          Register
+        <span className="highlight-text-dark" onClick={switchAuthState}>
+          register
         </span>{" "}
         now{" "}
       </p>
