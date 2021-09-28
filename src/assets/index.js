@@ -20,10 +20,9 @@ import write from "./images/svg/write.svg";
 import stats from "./images/svg/stats.svg";
 import validate from "./images/svg/validate.svg";
 import error from "./images/svg/error.svg";
-import accountSetting from "./images/svg/account-setting.svg"
-import update from "./images/svg/update.svg"
-import user from "./images/svg/user.svg"
- 
+import accountSetting from "./images/svg/account-setting.svg";
+import update from "./images/svg/update.svg";
+import user from "./images/svg/user.svg";
 
 export const LOGO = {
   logo,
@@ -36,7 +35,7 @@ export const IMAGES = {
   boy,
   accountSetting,
   update,
-  error
+  error,
 };
 
 export const LINKS_NAVBAR = [
@@ -79,7 +78,7 @@ export const ICONS = {
   stats,
   validate,
   error,
-  user
+  user,
 };
 
 export const topicList = [
@@ -105,3 +104,8 @@ export const jobsList = [{ name: "Writer" }, { name: "Programmer" }];
 
 export const defaultprofileurl =
   "https://images.unsplash.com/photo-1631701119265-33ca2b80d00d?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=453&q=80";
+
+export const IMAGES_URL = Object.freeze({
+  AUTH_IMAGE:
+    "https://images.unsplash.com/photo-1576097492152-4687ccd1c6ec?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1300&q=80",
+});

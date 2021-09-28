@@ -13,6 +13,7 @@ function Basic() {
   const [response, setResponse] = useState(false);
   const [hideForm, setHideForm] = useState(false);
   const [status, setStatus] = useState(422);
+  const [userInfo , setUserInfo] = useState({});
   const [result, setResult] = useState();
   const retry = () => {
     setLoading(false);
@@ -44,6 +45,7 @@ function Basic() {
       .then((data) => {
         setResponse(true);
         setResult(data);
+        setUserInfo(data.userInfo)
       });
   };
 
@@ -51,7 +53,7 @@ function Basic() {
     <div className="w-full h-full relative">
       {loading ? <Loading /> : null}
       {response ? (
-        <Result retry={retry} result={result} status={status} />
+        <Result userInfo={userInfo} retry={retry} result={result} status={status} />
       ) : null}
 
       {!hideForm ? (

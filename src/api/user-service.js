@@ -5,6 +5,7 @@ const token = getInfoFromLocal().token;
 const userID = getInfoFromLocal().userID;
 
 export const addUserInfo = (userInfo) => {
+  if (!token) return;
   return fetch(ADRESS + "/add-userinfo", {
     method: "POST",
     headers: {
@@ -16,6 +17,7 @@ export const addUserInfo = (userInfo) => {
 };
 
 export const updateBasicInformation = (userInfo) => {
+  if (!token) return;
   const payLoad = {
     userInfo: {
       userID: userID,
@@ -37,6 +39,7 @@ export const updateBasicInformation = (userInfo) => {
 };
 
 export const updateEmail = (userInfo) => {
+  if (!token) return;
   const payLoad = {
     userInfo: {
       userID: userID,
@@ -46,7 +49,6 @@ export const updateEmail = (userInfo) => {
       email: userInfo.email,
     },
   };
-  console.log(payLoad);
   return fetch(ADRESS + "/update-email", {
     method: "POST",
     headers: {
@@ -58,6 +60,7 @@ export const updateEmail = (userInfo) => {
 };
 
 export const updatePassword = (userInfo) => {
+  if (!token) return;
   const payLoad = {
     userInfo: {
       userID: userID,
@@ -67,7 +70,6 @@ export const updatePassword = (userInfo) => {
       password: userInfo.newPassword,
     },
   };
-  console.log(payLoad);
   return fetch(ADRESS + "/update-password", {
     method: "POST",
     headers: {
@@ -77,14 +79,3 @@ export const updatePassword = (userInfo) => {
     body: JSON.stringify(payLoad),
   });
 };
-/* 
-{
-   "userInfo": {
-    "userID" : "614c5a4fdaac7e640c241254",
-    "password" : "12341234"
-   },
-   "updatedInfo" : {
-       "email" : "updated@test.com"
-   }
-}
-*/

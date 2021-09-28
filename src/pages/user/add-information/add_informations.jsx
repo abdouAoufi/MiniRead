@@ -7,8 +7,10 @@ import { topicList, jobsList, defaultprofileurl } from "../../../assets";
 import DropDown from "../../../components/drop-down/drop_down";
 import { addUserInfo } from "../../../api/user-service";
 import { AuthContext } from "../../../contexts/auth_context";
+import { useHistory } from "react-router-dom";
 
 function CompleteProfile() {
+  const history = useHistory();
   const { token, userID } = useContext(AuthContext);
   const [topics, setTopics] = useState([]);
   const [selectedJob, setSelectedJob] = useState(jobsList[0].name);
@@ -23,7 +25,6 @@ function CompleteProfile() {
   const removeTopic = (topic) => {
     let updatedTopic = [...topics];
     updatedTopic = updatedTopic.filter((t) => t !== topic);
-    console.log(updatedTopic);
     setTopics(updatedTopic);
   };
 
@@ -40,9 +41,27 @@ function CompleteProfile() {
   };
 
   const sendData = (userInfo) => {
-    addUserInfo(userInfo, userID, token).then((result) => {
-      result.json().then((data) => console.log(data));
-    });
+    console.log(userInfo);
+    let status = 422;
+    addUserInfo(userInfo, userID, token)
+      .then((result) => {
+        status = result.status;
+        result
+          .json()
+          .then((data) => {
+            console.log(data);
+            if (status >= 400) {
+              return history.replace("/404");
+            }
+            history.replace("/");
+          })
+          .catch((err) => {
+            history.replace("/404");
+          });
+      })
+      .catch((err) => {
+        history.replace("/404");
+      });
   };
   return (
     <div className="h-screen ">
@@ -109,7 +128,7 @@ function CompleteProfile() {
             </div>
 
             <div className="absolute flex right-6 bottom-4 ">
-              <Button text="Skip" />
+              <Button text="Skip" click={() => history.replace("/")} />
               <Button click={validInput} text="Save" primary />
             </div>
           </div>

@@ -16,6 +16,7 @@ import {
   getHomePosts,
   checkForAuth,
 } from "../../api/home-service";
+import { deleteToken } from "../../services/tokenservice";
 import { WindowContext } from "../../contexts/window_context";
 import { AuthContext } from "../../contexts/auth_context";
 import { useHistory } from "react-router-dom";
@@ -39,6 +40,7 @@ function Home() {
           setLogged(true);
         } else {
           setLogged(false);
+          deleteToken();
         }
       });
     } else {
@@ -46,7 +48,7 @@ function Home() {
     }
   }, []);
 
-  useEffect( () => {
+  useEffect(() => {
     if (showFooter) {
       setShowFooter(false);
     }
@@ -148,7 +150,7 @@ function Home() {
       <div className="hidden lg:block lg:w-1/3 px-8 lg:px-12">
         <div className="mt-6">
           <div className=" h-48 shadow-sm  text-primary rounded relative p-6 bg-accent">
-            <Welcome/>
+            <Welcome />
           </div>
         </div>
         <div className="mt-8 border-b pb-8">

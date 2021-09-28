@@ -5,7 +5,9 @@ export const saveInfoLocal = (token, userID, userInfo) => {
 };
 
 export const updateUserInfo = (updatedInfo) => {
-  window.localStorage.setItem("userInfo", JSON.stringify(updatedInfo));
+  if (updateUserInfo) {
+    window.localStorage.setItem("userInfo", JSON.stringify(updatedInfo));
+  }
 };
 
 export const getInfoFromLocal = () => {
