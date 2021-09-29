@@ -147,7 +147,7 @@ function Home() {
           })}
         </div>
       </div>
-      <div className="hidden lg:block lg:w-1/3 px-8 lg:px-12">
+      <div className="hidden lg:block lg:w-1/3 px-8 lg:px-10">
         <div className="mt-6">
           <div className=" h-48 shadow-sm  text-primary rounded relative p-6 bg-accent">
             <Welcome />

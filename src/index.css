@@ -26,8 +26,19 @@ body {
   @apply flex flex-col justify-center md:justify-start my-auto pt-16 md:pt-0 px-12 md:px-24 lg:px-32;
 }
 
+.home-container{
+  @apply relative md:flex mt-2 flex-wrap  px-4
+}
 .img-cover {
   @apply object-cover w-full h-screen hidden md:block;
+}
+
+.right-side{
+  @apply hidden lg:block lg:w-1/3 px-8 lg:px-12;
+}
+
+.title-uppercase{
+  @apply font-semibold text-primary uppercase;
 }
 
 .highlight-text {

@@ -27,7 +27,7 @@ function CompleteProfile() {
     };
   }, []);
 
-  const generateTopics = (topic) => {
+  const generateToken = (topic) => {
     let updatedTopic = [...topics];
     updatedTopic.push(topic);
     setTopics(updatedTopic);
@@ -51,28 +51,23 @@ function CompleteProfile() {
     sendData(finalPayLoad.userInfo);
   };
 
-  const sendData = (userInfo) => {
-    console.log(userInfo);
+  const sendData = async (userInfo) => {
     let status = 422;
-    addUserInfo(userInfo, userID, token)
-      .then((result) => {
-        status = result.status;
-        result
-          .json()
-          .then((data) => {
-            console.log(data);
-            if (status >= 400) {
-              return history.replace("/404");
-            }
-            history.replace("/");
-          })
-          .catch((err) => {
-            history.replace("/404");
-          });
-      })
-      .catch((err) => {
-        history.replace("/404");
-      });
+    let response = addUserInfo(userInfo, userID, token);
+    status = response.status;
+    let data = response.json();
+    if (status >= 400) {
+      return goErrorPage();
+    }
+    goHome();
+  };
+
+  const goHome = () => {
+    history.replace("/");
+  };
+
+  const goErrorPage = () => {
+    history.replace("/404");
   };
   return (
     <div className="h-screen ">
@@ -84,7 +79,7 @@ function CompleteProfile() {
               In order to give you better experience with{" "}
               <span className="font-bold text-secondary-dark">MiniRead. </span>
               <br />
-              We want you to give us some information about you.
+              We would to give us some information about you.
             </p>
           </div>
           <div className="mt-4 ">
@@ -109,7 +104,7 @@ function CompleteProfile() {
               </UploadBtn>
             </div>
 
-            <div className="mt-2 h-full ">
+            <div className="mt-4 h-full ">
               <Subtitle text=" What sounds intressting for you?" />
               <div className="mt-3">
                 {topicList.map((tpc, idx) => {
