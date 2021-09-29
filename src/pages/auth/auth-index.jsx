@@ -21,10 +21,10 @@ function Auth() {
     }
     checkForAuth(token).then((result) => {
       if (result.status === 200) {
-        setLogged(true);
+        // setLogged(true);
         goHome();
       } else {
-        setLogged(false);
+        // setLogged(false);
       }
     });
   }, []);

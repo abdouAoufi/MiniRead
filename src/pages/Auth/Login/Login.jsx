@@ -7,7 +7,8 @@ import { WindowContext } from "../../../contexts/window_context";
 import { useHistory } from "react-router-dom";
 import Input from "../../../components/layout@/input/input";
 
-function Login({ switchAuthState }) {
+function 
+Login({ switchAuthState }) {
   const history = useHistory();
   const { setMessageWindow } = useContext(WindowContext);
   const [loading, setLoading] = useState(false);
