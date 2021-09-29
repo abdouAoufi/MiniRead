@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import Button from "../../../components/layout@/button/button";
 import HeadBig from "../../../components/typographie/title/title";
 import Subtitle from "../../../components/typographie/subtitle/Subtitle";
@@ -8,13 +8,24 @@ import DropDown from "../../../components/drop-down/drop_down";
 import { addUserInfo } from "../../../api/user-service";
 import { AuthContext } from "../../../contexts/auth_context";
 import { useHistory } from "react-router-dom";
+import { LayoutContext } from "../../../contexts/layout_context";
+import { IMAGES_URL } from "../../../assets";
+import UploadBtn from "../../../components/upload/upload";
 
 function CompleteProfile() {
   const history = useHistory();
+  const { setShowFooter, setShowNavbar } = useContext(LayoutContext);
   const { token, userID } = useContext(AuthContext);
   const [topics, setTopics] = useState([]);
   const [selectedJob, setSelectedJob] = useState(jobsList[0].name);
   const [otherJob, setOtherJob] = useState("");
+
+  useEffect(() => {
+    () => {
+      setShowFooter(false);
+      setShowNavbar(false);
+    };
+  }, []);
 
   const generateTopics = (topic) => {
     let updatedTopic = [...topics];
@@ -77,15 +88,15 @@ function CompleteProfile() {
             </p>
           </div>
           <div className="mt-4 ">
-            <Subtitle text="Your job" />
+            <Subtitle text="Your occupation" />
             <div className="mt-2 relative flex items-center">
               <div className="relative z-100 ">
                 <DropDown list={jobsList} setSelected={setSelectedJob} />
               </div>
               <input
                 onChange={(e) => setOtherJob(e.target.value)}
-                placeholder="Other job "
-                className="border ml-4 w-40 outline-none   py-2 px-2 rounded"
+                placeholder="Other occupations "
+                className="small-input"
                 type="text"
                 name="work"
                 id=""
@@ -93,25 +104,12 @@ function CompleteProfile() {
             </div>
             <div className="mt-4">
               <Subtitle text="Upload your photos" />
-              <div className="flex  items-center  mt-2 bg-grey-lighter">
-                <label className=" flex px-4 py-2 items-center bg-white text-blue rounded uppercase border border-blue cursor-pointer hover:bg-blue hover:text-black">
-                  <svg
-                    className="w-8 h-8"
-                    fill="#00beb0"
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 20 20"
-                  >
-                    <path d="M16.88 9.1A4 4 0 0 1 16 17H5a5 5 0 0 1-1-9.9V7a3 3 0 0 1 4.52-2.59A4.98 4.98 0 0 1 17 8c0 .38-.04.74-.12 1.1zM11 11h3l-4-4-4 4h3v3h2v-3z" />
-                  </svg>
-                  <span className="ml-3 text-base leading-normal">
-                    Select a file
-                  </span>
-                  <input type="file" className="hidden" accept="*/images" />
-                </label>
-              </div>
+              <UploadBtn>
+                <input type="file" className="hidden" accept="*/images" />
+              </UploadBtn>
             </div>
 
-            <div className="mt-2">
+            <div className="mt-2 h-full ">
               <Subtitle text=" What sounds intressting for you?" />
               <div className="mt-3">
                 {topicList.map((tpc, idx) => {
@@ -124,20 +122,17 @@ function CompleteProfile() {
                     />
                   );
                 })}
-              </div>
-            </div>
 
-            <div className="absolute flex right-6 bottom-4 ">
-              <Button text="Skip" click={() => history.replace("/")} />
-              <Button click={validInput} text="Save" primary />
+                <div className="flex ">
+                  <Button text="Skip" click={() => history.replace("/")} />
+                  <Button click={validInput} text="Save" primary />
+                </div>
+              </div>
             </div>
           </div>
         </div>
         <div className="w-1/2 shadow-2xl">
-          <img
-            className="object-cover w-full h-screen hidden md:block"
-            src="https://images.unsplash.com/photo-1576097492152-4687ccd1c6ec?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1300&q=80"
-          />
+          <img className="img-cover" src={IMAGES_URL.CONTINUE_IMAGE} />
         </div>
       </div>
     </div>

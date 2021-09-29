@@ -1,5 +1,5 @@
 import React, { useState, useContext } from "react";
-import { useFormik } from "formik";
+import {  useFormik } from "formik";
 import RegisterHandler from "./RegisterHandler";
 import { signup } from "../../../api/auth-service";
 import Loading from "../../../components/layout@/loading/Loading";
@@ -92,7 +92,7 @@ function Register({ switchAuthState, update }) {
         id: "eamil",
         name: "email",
         type: "email",
-        placeholder: "Johnsmith@email.com",
+        placeholder: "johnsmith@email.com",
       },
       changeProp: {
         value: formik.values.email,
@@ -106,7 +106,7 @@ function Register({ switchAuthState, update }) {
         id: "password",
         name: "password",
         type: "password",
-        placeholder: "Your password",
+        placeholder: "your password",
       },
       changeProp: {
         value: formik.values.password,
@@ -120,7 +120,7 @@ function Register({ switchAuthState, update }) {
         id: "confirmPassword",
         name: "confirmPassword",
         type: "password",
-        placeholder: "Your password",
+        placeholder: "confirm password",
       },
       changeProp: {
         value: formik.values.confirmPassword,

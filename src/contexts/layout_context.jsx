@@ -3,7 +3,7 @@ export const LayoutContext = createContext();
 
 export const LayoutContextProvider = (props) => {
   const [showFooter, setShowFooter] = useState(false);
-  const [showNavbar, setShowNavbar] = useState(true);
+  const [showNavbar, setShowNavbar] = useState(false);
 
   return (
     <LayoutContext.Provider

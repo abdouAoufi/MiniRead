@@ -94,10 +94,8 @@ export const topicList = [
   "math",
   "science",
   "hand craft",
-  "psychology",
-  "travels",
-  "politics",
-  "photography",
+  "others",
+   
 ];
 
 export const jobsList = [{ name: "Writer" }, { name: "Programmer" }];
@@ -108,8 +106,10 @@ export const defaultprofileurl =
 export const IMAGES_URL = Object.freeze({
   AUTH_IMAGE:
     "https://images.unsplash.com/photo-1576097492152-4687ccd1c6ec?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1300&q=80",
+  CONTINUE_IMAGE:
+    "https://images.unsplash.com/photo-1550719080-b3d783a8f679?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=870&q=80",
 });
 
 export const LOGIN_INPUT = Object.freeze({
-  email: { id: "eamil", name: "email", type: "email"  },
+  email: { id: "eamil", name: "email", type: "email" },
 });
