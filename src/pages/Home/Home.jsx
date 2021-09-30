@@ -55,11 +55,10 @@ function Home() {
     if (!showNavbar) {
       setShowNavbar(true);
     }
-    fetchResources();
+    // fetchResources();
   }, []);
 
   const fetchResources = async () => {
-    console.log("FETCHNG -----");
     setLoadingArticles(true);
     let fetchedTags, fetchedTrendPosts, fetchedPosts;
     try {
@@ -149,9 +148,7 @@ function Home() {
       </div>
       <div className="hidden lg:block lg:w-1/3 px-8 lg:px-10">
         <div className="mt-6">
-          <div className=" h-48 shadow-sm  text-primary rounded relative p-6 bg-accent">
             <Welcome />
-          </div>
         </div>
         <div className="mt-8 border-b pb-8">
           {loadingSmall ? <Loading /> : null}

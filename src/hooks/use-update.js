@@ -7,6 +7,6 @@ export default function useUpdateEffect(callback, dependencies) {
       firseRenderRef.current = false;
       return;
     }
-    return callback();
+   // return callback();
   }, dependencies);
 }
