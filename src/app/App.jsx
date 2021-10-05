@@ -1,14 +1,15 @@
 import styled from "styled-components";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import Article from "../pages/Article/Article";
 
 function App() {
-  return <div>
-    <Title>Hello react</Title>
-  </div>;
+  return (
+    <Router>
+      <Switch>
+        <Route path="/" component={Article} />
+      </Switch>
+    </Router>
+  );
 }
-
-const Title = styled.h1`
-  font-size: 1rem;
-  color : red;
-`;
 
 export default App;
