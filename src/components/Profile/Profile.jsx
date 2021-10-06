@@ -23,9 +23,9 @@ function Profile() {
           Aoufi abderahmane
         </Typography>
         <Typography
-          variant="p"
+           variant="body2"
           component="div"
-          sx={{ color: TYPO_COLORS.lessBlack, fontSize: "12px" }}
+          sx={{ color: TYPO_COLORS.lessBlack, fontSize: "12px" , fontWeight:"medium"}}
         >
           Javascript developer
         </Typography>
