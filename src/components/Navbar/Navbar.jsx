@@ -12,35 +12,31 @@ import { IconButton } from "@mui/material";
 
 function Navbar() {
   return (
-    <>
-      <AppBar
-        sx={{
-          backgroundColor: BG_COLOR.white,
-          borderBottom: "2px solid #EEEEEE",
-          boxShadow: 0,
-        }}
-        position="static"
-      >
-        <Toolbar sx={{ display: "flex", justifyContent: "space-between" }}>
-          <Wrapper>
-            <IconButton
-              aria-label="menu"
-              size="large"
-              sx={{ color: DEFAULT_COLORS.primary }}
-            >
-              <MenuIcon />
-            </IconButton>
-          </Wrapper>
-          <Box>
-            <Logo src={logo} />
-          </Box>
-          <Box sx={{ display: "flex", alignItems: "center" }}>
-            <SearchBar />
-            <Button>Log in</Button>
-          </Box>
-        </Toolbar>
-      </AppBar>
-    </>
+    <AppBar
+      sx={{
+        backgroundColor: BG_COLOR.white,
+        borderBottom: "2px solid #EEEEEE",
+        boxShadow: 0,
+      }}
+      position="static"
+    >
+      <Toolbar sx={{ display: "flex", justifyContent: "space-between" }}>
+        <Wrapper>
+          <IconButton
+            aria-label="menu"
+            size="large"
+            sx={{ color: DEFAULT_COLORS.primary }}
+          >
+            <MenuIcon />
+          </IconButton>
+        </Wrapper>
+        <Logo src={logo} />
+        <Box sx={{ display: "flex", alignItems: "center" }}>
+          <SearchBar />
+          <Button>Log in</Button>
+        </Box>
+      </Toolbar>
+    </AppBar>
   );
 }
 
