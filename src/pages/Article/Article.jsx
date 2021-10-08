@@ -8,26 +8,20 @@ import Tag from "../../components/Tag";
 import Text from "../../components/Typography/Pragraph";
 import PictureArticle from "../../components/Picture";
 import SideBar from "./components/SideBar";
+import AboutMe from "./components/Aboutme";
+import ArticleCore from "./components/ArticleCore";
 
 function Article() {
   return (
     <>
       <Navbar />
-      <Box sx={{ display: "flex" }}>
-        <div>
+      <Box sx={{ display: { xs: "block", md: "flex" } }}>
+        <Box sx={{ display: { xs: "none", md: "block" } }}>
           <SideBar />
-        </div>
-        <Box sx={{ px: 2, py: 2 }}>
-          <Profile />
-          <Title>How to use async/await inside loops in JavaScript </Title>
-          <Tag>Javascript</Tag>
-          <Tag>Front end</Tag>
-          <Text>{ARTICLE.text}</Text>
-          <PictureArticle
-            image={ARTICLE.picture}
-            text="Async/Await in Javascript"
-          />
-          <Text>{ARTICLE.text}</Text>
+        </Box>
+        <ArticleCore />
+        <Box>
+          <AboutMe />
         </Box>
       </Box>
     </>
