@@ -33,4 +33,9 @@ export const ARTICLE = {
     "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse4.mm.bing.net%2Fth%3Fid%3DOIP.Bmlbt1w2sj1QBwMvw3ZjQQHaDt%26pid%3DApi&f=1",
 };
 
-
+export const ARTICLE_CARD = {
+  articleImageHeaderUrl: "",
+  title: "Make some noise with your work.",
+  topics: ["Web", "Javascript", "React"],
+  timeReading: 4,
+};

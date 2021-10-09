@@ -24,7 +24,7 @@ export default function index() {
             <ListItemIcon sx={{ color: TYPO_COLORS.lessBlack }}>
               {singleLink.icon}
             </ListItemIcon>
-            <ListItemText sx={{ color: TYPO_COLORS.lessBlack }}>
+            <ListItemText sx={{ color: TYPO_COLORS.lessBlack , }}>
               {singleLink.text}
             </ListItemText>
           </ListItem>
