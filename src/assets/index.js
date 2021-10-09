@@ -1,3 +1,5 @@
+import HomeIcon from "@mui/icons-material/Home";
+
 export const DEFAULT_COLORS = Object.freeze({
   primary: "#364f6b",
   secondary: "#00bBb0",
@@ -30,3 +32,5 @@ export const ARTICLE = {
   picture:
     "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse4.mm.bing.net%2Fth%3Fid%3DOIP.Bmlbt1w2sj1QBwMvw3ZjQQHaDt%26pid%3DApi&f=1",
 };
+
+

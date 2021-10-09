@@ -7,9 +7,9 @@ import MoreInfo from "./components/MoreInfo";
 
 function Home() {
   return (
-    <Box component="div">
+    <Box component="div" sx={{height : "100vh"}}>
       <Navbar />
-      <Box component="div" sx={{ display: "flex" , width : "100%" }}>
+      <Box component="div" sx={{ display: "flex" , width : "100%", height : "100%" }}>
         <SideBar />
         <ArticleList />
         <MoreInfo />

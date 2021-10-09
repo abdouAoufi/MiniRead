@@ -11,7 +11,6 @@ export default MoreInfo;
 const Wrapper = styled.div`
   width: 100%;
   display : none;
-  border: 1px solid black;
   text-align: center;
   height : 100%;
   max-width: 25%;
