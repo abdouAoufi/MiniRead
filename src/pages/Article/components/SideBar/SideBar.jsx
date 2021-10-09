@@ -10,14 +10,9 @@ import BookmarkIcon from "@mui/icons-material/Bookmark";
 import ShareIcon from "@mui/icons-material/Share";
 import { Box } from "@mui/system";
 import MailIcon from "@mui/icons-material/Mail";
-import { BG_COLOR } from "../../../../assets";
+import { BG_COLOR, TYPO_COLORS } from "../../../../assets";
+import { Typography } from "@mui/material";
 function SideBar(props) {
-  const { window } = props;
-  const [mobileOpen, setMobileOpen] = React.useState(false);
-  const handleDrawerToggle = () => {
-    setMobileOpen(!mobileOpen);
-  };
-
   const icons = [
     <FavoriteIcon />,
     <ChatBubbleIcon />,
@@ -26,7 +21,7 @@ function SideBar(props) {
   ];
   return (
     <Box sx={{ height: "100%", background: BG_COLOR.grey }}>
-      <List sx={{}}>
+      <List>
         {["12", "22", "9", "1"].map((text, index) => (
           <ListItem button key={text}>
             <ListItemIcon
@@ -41,7 +36,16 @@ function SideBar(props) {
                 }}
               >
                 {icons[index]}
-                <span>{text}</span>
+                <Typography
+                  variant="body1"
+                  sx={{
+                    mt: 1,
+                    color: TYPO_COLORS.black,
+                    fontWeight: "semibold",
+                  }}
+                >
+                  {text}
+                </Typography>
               </Box>
             </ListItemIcon>
           </ListItem>

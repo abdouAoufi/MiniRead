@@ -1,12 +1,6 @@
 import React from "react";
 import { Box } from "@mui/system";
-import { ARTICLE } from "../../assets";
 import Navbar from "../../components/Navbar";
-import Profile from "../../components/Profile";
-import Title from "../../components/Typography/Title";
-import Tag from "../../components/Tag";
-import Text from "../../components/Typography/Pragraph";
-import PictureArticle from "../../components/Picture";
 import SideBar from "./components/SideBar";
 import AboutMe from "./components/Aboutme";
 import ArticleCore from "./components/ArticleCore";
