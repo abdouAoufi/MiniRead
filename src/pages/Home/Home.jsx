@@ -1,11 +1,19 @@
 import React from "react";
 import Navbar from "../../components/Navbar";
 import { Box } from "@mui/system";
+import SideBar from "./components/SideBar";
+import ArticleList from "./components/ArticleList";
+import MoreInfo from "./components/MoreInfo";
 
 function Home() {
   return (
     <Box component="div">
       <Navbar />
+      <Box component="div" sx={{ display: "flex" , width : "100%" }}>
+        <SideBar />
+        <ArticleList />
+        <MoreInfo />
+      </Box>
     </Box>
   );
 }
