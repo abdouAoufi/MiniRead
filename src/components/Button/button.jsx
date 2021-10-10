@@ -8,7 +8,7 @@ export default function Buttonn({ children }) {
     backgroundColor: DEFAULT_COLORS.secondary,
     fontWeight: "bold",
     textTransform: "capitalize",
-    padding: "8px 1rem",
+    padding: "4px 1rem",
     color : "white",
     margin: "auto 8px",
     fontSize: "15px",

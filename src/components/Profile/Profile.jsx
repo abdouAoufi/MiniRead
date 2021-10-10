@@ -7,7 +7,7 @@ import abdou from "../../assets/images/jpg/abdou.png";
 
 function Profile() {
   return (
-    <Box component="div" display="flex" alignItems="center" margin="6px 0">
+    <Box component="div" display="flex" alignItems="center" margin="2px 0">
       <Avatar src={abdou} alt="Abdou" sx={{ width: 48, height: 48 }} />
 
       <Box component="div" marginLeft={1}>
@@ -27,7 +27,7 @@ function Profile() {
             fontWeight: "medium",
           }}
         >
-          03 oct 2021
+          JavaScript developer
         </Typography>
       </Box>
     </Box>

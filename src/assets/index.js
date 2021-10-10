@@ -34,7 +34,7 @@ export const ARTICLE = {
 };
 
 export const ARTICLE_CARD = {
-  articleImageHeaderUrl: "",
+  articleImageHeaderUrl: "https://images.unsplash.com/photo-1593642532842-98d0fd5ebc1a?ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=869&q=80",
   title: "Make some noise with your work.",
   topics: ["Web", "Javascript", "React"],
   timeReading: 4,

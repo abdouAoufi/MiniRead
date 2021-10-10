@@ -26,6 +26,7 @@ function SideBar(props) {
         width: { xs: "auto", md: "30%" },
         borderRight: `2px solid ${BG_COLOR.grey}`,
         p: "1.5rem",
+        display: { xs: "none", md: "block" },
       }}
     >
       <Box component="div">
@@ -36,7 +37,7 @@ function SideBar(props) {
           Navigation
         </Typography>
         {/* LIST CONTAINER */}
-        <Box component="div" >
+        <Box component="div">
           <NavigatonList />
         </Box>
       </Box>
@@ -48,7 +49,7 @@ function SideBar(props) {
           Topics
         </Typography>
         {/* LIST CONTAINER */}
-        <Box component="div" >
+        <Box component="div">
           <TopicList />
         </Box>
       </Box>

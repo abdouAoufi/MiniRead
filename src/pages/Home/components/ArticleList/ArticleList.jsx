@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import ArticleCard from "./components/ArticleCard";
 import Tabs from "./components/Tabs";
+import { Box } from "@mui/material";
 
 function ArticleList() {
   const setCurrentSelect = (selected) => {
@@ -10,7 +11,12 @@ function ArticleList() {
   return (
     <Wrapper>
       <Tabs setCurrentSelect={setCurrentSelect} />
-      <ArticleCard />
+      <Box sx={{ mt: 1, p: 1 }}>
+        <ArticleCard />
+        <ArticleCard />
+        <ArticleCard />
+        <ArticleCard />
+      </Box>
     </Wrapper>
   );
 }
