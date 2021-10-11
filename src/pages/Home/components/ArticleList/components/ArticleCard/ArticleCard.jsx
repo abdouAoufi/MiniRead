@@ -6,7 +6,7 @@ import Profile from "../../../../../../components/Profile";
 import Title from "../../../../../../components/Typography/Title";
 import Tag from "../../../../../../components/Tag/Tag";
 import { Typography } from "@mui/material";
-import Button from "../../../../../../components/Button";
+import Button from "../../../../../../components/Button/Button";
 
 function index() {
   return (
