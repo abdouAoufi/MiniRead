@@ -1,20 +1,27 @@
 import React from "react";
 import { Box } from "@mui/system";
 import styled from "styled-components";
+import AppIntro from "./AppInrto";
+import PopulartPosts from "./PopularPosts";
 
 function MoreInfo() {
-  return <Wrapper>more info ....</Wrapper>;
+  return (
+    <Wrapper>
+      <AppIntro />
+      <PopulartPosts />
+    </Wrapper>
+  );
 }
 
 export default MoreInfo;
 
 const Wrapper = styled.div`
   width: 100%;
-  display : none;
-  text-align: center;
-  height : 100%;
+  padding-top: 24px;
+  display: none;
+  height: 100%;
   max-width: 25%;
-  @media (min-width: 768px){
-    display : block;
+  @media (min-width: 1024px) {
+    display: block;
   }
 `;
