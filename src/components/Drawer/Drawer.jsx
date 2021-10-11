@@ -3,20 +3,17 @@ import styled from "styled-components";
 import { Drawer } from "@mui/material";
 import List from "@mui/material/List";
 import { Box } from "@mui/system";
+import SideBar from "../../pages/Home/components/SideBar";
 
-function SideBar() {
+function Drawerr({open , switchOpen}) {
   return (
-    <Wrapper>
-      <Drawer anchor="left" open={true}>
-        <Box sx={{minWidth : "300px"}}>
-          <List>home</List>
-        </Box>
-      </Drawer>
-    </Wrapper>
+    <Drawer anchor="left" open={open} onClose={switchOpen}>
+      <SideBar />
+    </Drawer>
   );
 }
 
-export default SideBar;
+export default Drawerr;
 
 const Wrapper = styled.div`
   max-width: 25%;

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Box } from "@mui/system";
 import { AppBar, TextField } from "@mui/material";
 import { Toolbar } from "@mui/material";
@@ -9,8 +9,13 @@ import logo from "../../assets/images/svg/logo.svg";
 import SearchBar from "../SearchBar";
 import MenuIcon from "@mui/icons-material/Menu";
 import { IconButton } from "@mui/material";
+import Drawer from "../Drawer";
 
 function Navbar() {
+  const [openDrawer, setOpenDrawer] = useState(false);
+  const switchOpen = () => {
+    setOpenDrawer(!openDrawer);
+  };
   return (
     <AppBar
       sx={{
@@ -20,9 +25,11 @@ function Navbar() {
       }}
       position="static"
     >
+      <Drawer open={openDrawer} switchOpen={switchOpen} />
       <Toolbar sx={{ display: "flex", justifyContent: "space-between" }}>
         <Wrapper>
           <IconButton
+            onClick={switchOpen}
             aria-label="menu"
             size="large"
             sx={{ color: DEFAULT_COLORS.primary }}

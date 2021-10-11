@@ -23,10 +23,9 @@ function SideBar(props) {
       component="div"
       sx={{
         minHeight: "100%",
-        width: { xs: "auto", md: "30%" },
+        width: "auto",
         borderRight: `2px solid ${BG_COLOR.grey}`,
         p: "1.5rem",
-        display: { xs: "none", md: "block" },
       }}
     >
       <Box component="div">

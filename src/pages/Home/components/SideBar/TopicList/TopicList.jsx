@@ -2,18 +2,20 @@ import React from "react";
 import styled from "styled-components";
 import { TYPO_COLORS, DEFAULT_COLORS } from "../../../../../assets";
 import { List, ListItemIcon, ListItem, ListItemText } from "@mui/material";
-import HomeIcon from "@mui/icons-material/Home";
-import QuizIcon from "@mui/icons-material/Quiz";
-import InfoIcon from "@mui/icons-material/Info";
+import ComputerIcon from '@mui/icons-material/Computer';
+import HttpIcon from '@mui/icons-material/Http';
+import CodeIcon from '@mui/icons-material/Code';
+import WebIcon from '@mui/icons-material/Web';
+import BiotechIcon from '@mui/icons-material/Biotech';
+import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
 
 const NAVIGATION_LINKS = [
-  { text: "Programming", link: "/home", icon: <HomeIcon /> },
-  { text: "Web developement", link: "/quize-of-day", icon: <QuizIcon /> },
-  { text: "Computer science", link: "/about", icon: <InfoIcon /> },
-  { text: "Artificial intelligence", link: "/about", icon: <InfoIcon /> },
-  { text: "Machine learning", link: "/about", icon: <InfoIcon /> },
-  { text: "Maths", link: "/about", icon: <InfoIcon /> },
-  { text: "Others", link: "/about", icon: <InfoIcon /> },
+  { text: "Programming", link: "/home", icon: <CodeIcon /> },
+  { text: "Web developement", link: "/quize-of-day", icon: <WebIcon /> },
+  { text: "Computer science", link: "/about", icon: <ComputerIcon /> },
+  { text: "Networking", link: "/about", icon: <HttpIcon /> },
+  { text: "Artificial intelligence", link: "/about", icon: <BiotechIcon /> },
+  { text: "Others", link: "/about", icon: <MoreHorizIcon /> },
 ];
 export default function index() {
   return (
