@@ -6,7 +6,7 @@ import Profile from "../../../../../../components/Profile";
 import Title from "../../../../../../components/Typography/Title";
 import Tag from "../../../../../../components/Tag/Tag";
 import { Typography } from "@mui/material";
-// import Button from "../../../../../../components/Button/Button";
+import CostumeButton from "../../../../../../components/CostumeButton/CostumeButton";
 
 function index() {
   return (
@@ -42,7 +42,7 @@ function index() {
               >
                 4 min
               </Typography>
-              {/* <Button>Save</Button> */}
+              <CostumeButton>Save</CostumeButton>
             </Box>
           </Box>
         </Box>

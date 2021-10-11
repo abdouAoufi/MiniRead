@@ -5,7 +5,7 @@ import abdou from "../../../../assets/images/jpg/abdou.png";
 import { Avatar } from "@mui/material";
 import { Typography } from "@mui/material";
 import { TYPO_COLORS } from "../../../../assets";
-// import Button from "../../../../components/Button";
+import CostumeButton from "../../../../components/CostumeButton/CostumeButton";
 
 export default function AboutMe() {
   return (
@@ -41,7 +41,7 @@ export default function AboutMe() {
           I'm full-stach javascript developer, with 3 years of experience in
           working and building web applications and backend solution.
         </Typography>
-        {/* <Button> Contact me </Button> */}
+        <CostumeButton> Contact me </CostumeButton>
       </TextWrapper>
     </Wrapper>
   );

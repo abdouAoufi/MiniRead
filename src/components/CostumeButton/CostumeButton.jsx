@@ -3,7 +3,7 @@ import { styled } from "@mui/material/styles";
 import Button from "@mui/material/Button";
 import { DEFAULT_COLORS } from "../../assets";
 
-const Buttonn = ({ children }) => {
+const CostumeButton = ({ children }) => {
   const StyledButton = styled(Button)({
     backgroundColor: DEFAULT_COLORS.secondary,
     fontWeight: "bold",
@@ -19,4 +19,4 @@ const Buttonn = ({ children }) => {
   return <StyledButton>{children}</StyledButton>;
 };
 
-export default Buttonn ;
+export default CostumeButton ;
