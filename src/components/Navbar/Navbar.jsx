@@ -2,7 +2,7 @@ import React from "react";
 import { Box } from "@mui/system";
 import { AppBar, TextField } from "@mui/material";
 import { Toolbar } from "@mui/material";
-import Button from "../Button/Button";
+// import Button from "../Button/Button";
 import { BG_COLOR, DEFAULT_COLORS } from "../../assets";
 import styled from "styled-components";
 import logo from "../../assets/images/svg/logo.svg";
@@ -33,7 +33,7 @@ function Navbar() {
         <Logo src={logo} />
         <Box sx={{ display: "flex", alignItems: "center" }}>
           <SearchBar />
-          <Button>Log in</Button>
+          {/* <Button>Log in</Button> */}
         </Box>
       </Toolbar>
     </AppBar>
