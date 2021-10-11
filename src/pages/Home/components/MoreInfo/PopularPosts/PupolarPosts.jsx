@@ -14,32 +14,32 @@ function index() {
       </Typography>
       <Box sx={{ pl: 1 }}>
         <Typography
-          variant="body2"
+          variant="body1"
           sx={{ color: TYPO_COLORS.lessBlack, mt: 1 }}
         >
           How to make robust web app with react?
         </Typography>
         <Typography
-          variant="body2"
+          variant="body1"
           sx={{ color: TYPO_COLORS.lessBlack, mt: 1 }}
         >
           why javascript is so popular?
         </Typography>
 
         <Typography
-          variant="body2"
+          variant="body1"
           sx={{ color: TYPO_COLORS.lessBlack, mt: 1 }}
         >
           Write unit test with JEST.
         </Typography>
         <Typography
-          variant="body2"
+          variant="body1"
           sx={{ color: TYPO_COLORS.lessBlack, mt: 1 }}
         >
           How deno js deal with dependecies?
         </Typography>
         <Typography
-          variant="body2"
+          variant="body1"
           sx={{ color: TYPO_COLORS.lessBlack, mt: 1 }}
         >
           How to make robust web app with react?

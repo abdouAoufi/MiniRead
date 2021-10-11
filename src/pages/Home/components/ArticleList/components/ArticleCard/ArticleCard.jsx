@@ -29,11 +29,11 @@ function index() {
             <Box
               component="div"
               sx={{
-                mt:1,
+                mt: 1,
                 display: "flex",
                 alignItems: "center",
                 float: "right",
-                pb : 1 
+                pb: 1,
               }}
             >
               <Typography
@@ -55,14 +55,15 @@ export default index;
 
 const Wrapper = styled.div`
   border: 1px solid #c4c4c4;
+  background-color: white;
   border-radius: 8px;
   overflow: hidden;
-  margin-top : 8px;
+  margin-top: 8px;
 `;
 
 const ImageHeader = styled.img`
   width: 100%;
-  height: 280px;
+  height: 230px;
   object-fit: cover;
   border-top-left-radius: 4px;
   border-top-right-radius: 4px;
