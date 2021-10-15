@@ -8,10 +8,8 @@ import { useMediaQuery } from "@mui/material";
 import { useTheme } from "@mui/material";
 import styled from "styled-components";
 
-
 function SearchBar() {
   const theme = useTheme();
-  const matches = useMediaQuery(theme.breakpoints.up("sm"));
   return (
     <Wrapper>
       <Paper
@@ -22,13 +20,17 @@ function SearchBar() {
           boxShadow: 0,
           display: "flex",
           alignItems: "center",
-          width: 200,
+          width: { xs: 130, md: 220 },
         }}
       >
         <InputBase
           size="small"
-          sx={{ flex: 1, p: "0 8px", color: TYPO_COLORS.balck }}
-          placeholder="Search articles"
+          sx={{
+            flex: 1,
+            p: { xs: "0 8px", md: "0 12px" },
+            color: TYPO_COLORS.balck,
+          }}
+          placeholder="Search"
         />
         <IconButton>
           <SearchIcon />
@@ -41,8 +43,7 @@ function SearchBar() {
 export default SearchBar;
 
 const Wrapper = styled.div`
-  display: none;
-  @media (min-width: 768px) {
+  /* @media (min-width: 768px) {
     display: block;
-  }
+  } */
 `;

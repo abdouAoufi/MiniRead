@@ -6,6 +6,7 @@ import { Avatar } from "@mui/material";
 import { Typography } from "@mui/material";
 import { TYPO_COLORS } from "../../../../assets";
 import CostumeButton from "../../../../components/CostumeButton/CostumeButton";
+import { Link } from "react-router-dom";
 
 export default function AboutMe() {
   return (
@@ -29,19 +30,21 @@ export default function AboutMe() {
       </Typography>
       <TextWrapper>
         <Typography
-          sx={{ color: TYPO_COLORS.balck, fontWeight: "semibold" }}
+          sx={{ color: TYPO_COLORS.lessBlack, fontWeight: "400" }}
           variant="body2"
         >
           Creator of MiniRead
         </Typography>
         <Typography
           paragraph
-          sx={{ maxWidth: "300px", mt: 2, color: TYPO_COLORS.lessBlack }}
+          sx={{ maxWidth: "300px", mt: 1, color: TYPO_COLORS.lessBlack }}
         >
-          I'm full-stach javascript developer, with 3 years of experience in
-          working and building web applications and backend solution.
+          I'm full-stach freelance javascript developer with 3 years of
+          experience in working and building web applications.
         </Typography>
-        <CostumeButton> Contact me </CostumeButton>
+        <a href="https://portfolio-abdouaoufi.vercel.app/">
+          <CostumeButton> Contact me </CostumeButton>{" "}
+        </a>
       </TextWrapper>
     </Wrapper>
   );
@@ -83,5 +86,5 @@ const TextWrapper = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding : 8px 4px;
+  padding: 6px 4px;
 `;

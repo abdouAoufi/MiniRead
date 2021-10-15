@@ -1,7 +1,11 @@
 import React from "react";
 import Box from "@mui/material/Box";
 import styled from "styled-components";
-import { ARTICLE_CARD, TYPO_COLORS } from "../../../../../../assets";
+import {
+  ARTICLE_CARD,
+  TYPO_COLORS,
+  DEFAULT_COLORS,
+} from "../../../../../../assets";
 import Profile from "../../../../../../components/Profile";
 import Title from "../../../../../../components/Typography/Title";
 import Tag from "../../../../../../components/Tag/Tag";
@@ -30,7 +34,7 @@ function index({ article }) {
               return <Tag key={tag._id}>{tag.name}</Tag>;
             })}
           </Box>
-          <Box>
+          <div>
             <Box
               component="div"
               sx={{
@@ -41,15 +45,12 @@ function index({ article }) {
                 pb: 1,
               }}
             >
-              <Typography
-                variant="body2"
-                sx={{ mr: 1, color: TYPO_COLORS.lessBlack }}
-              >
-                {article?.articleinfo.timeReading} min
+              <Typography variant="body2" sx={{ mr: 1 }} color="text.secondary">
+                {article?.articleinfo.timeReading} min &#183; web &#183;
+                20-10-2021
               </Typography>
-              <CostumeButton>Save</CostumeButton>
             </Box>
-          </Box>
+          </div>
         </Box>
       </Box>
     </Wrapper>

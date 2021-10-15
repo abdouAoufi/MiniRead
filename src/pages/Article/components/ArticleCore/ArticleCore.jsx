@@ -2,15 +2,14 @@ import React, { useState } from "react";
 import { Box } from "@mui/material";
 import Profile from "../../../../components/Profile";
 import Title from "../../../../components/Typography/Title";
+import Subtitle from "../../../../components/Typography/Subtitle";
 import Text from "../../../../components/Typography/Pragraph";
 import Tag from "../../../../components/Tag";
 import PictureArticle from "../../../../components/Picture/PictureArticle";
-import { ARTICLE } from "../../../../assets";
 import { Redirect } from "react-router-dom";
+import { Typography } from "@mui/material";
 
 export default function ArticleCore({ article }) {
-  const [content, setContent] = useState([]);
-
   if (!article) {
     return <Redirect to="/" />;
   }
@@ -33,8 +32,14 @@ export default function ArticleCore({ article }) {
           </Box>
         );
       })}
-
-      <Text>{ARTICLE.text}</Text>
+      <Box>
+        <Typography
+          variant="body1"
+          sx={{ fontWeight: "bold", color: "text.secondary" }}
+        >
+          More resources about this article :
+        </Typography>
+      </Box>
     </Box>
   );
 }

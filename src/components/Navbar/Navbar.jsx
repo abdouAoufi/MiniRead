@@ -1,9 +1,8 @@
 import React, { useState } from "react";
 import { Box } from "@mui/system";
-import { AppBar, TextField } from "@mui/material";
+import { AppBar } from "@mui/material";
 import { Toolbar } from "@mui/material";
-import CostumeButton from "../CostumeButton/CostumeButton";
-import { BG_COLOR, DEFAULT_COLORS } from "../../assets";
+import { BG_COLOR, TYPO_COLORS } from "../../assets";
 import styled from "styled-components";
 import logo from "../../assets/images/svg/logo.svg";
 import SearchBar from "../SearchBar";
@@ -14,12 +13,6 @@ import { createArticle } from "../../api/admin";
 import { Link } from "react-router-dom";
 
 function Navbar() {
-  const addArticle = () => {
-    createArticle().then((response) => {
-      console.log(response);
-    });
-  };
-
   const [openDrawer, setOpenDrawer] = useState(false);
   const switchOpen = () => {
     setOpenDrawer(!openDrawer);
@@ -40,7 +33,7 @@ function Navbar() {
             onClick={switchOpen}
             aria-label="menu"
             size="large"
-            sx={{ color: DEFAULT_COLORS.primary }}
+            sx={{ color: TYPO_COLORS.balck }}
           >
             <MenuIcon />
           </IconButton>
@@ -50,7 +43,6 @@ function Navbar() {
         </Link>
         <Box sx={{ display: "flex", alignItems: "center" }}>
           <SearchBar />
-          <CostumeButton onClick={addArticle}> Create aricle</CostumeButton>
         </Box>
       </Toolbar>
     </AppBar>

@@ -25,10 +25,9 @@ export default function AppCard() {
         >
           MiniRead
         </Typography>
-        <Typography variant="body2" color="text.secondary">
+        <Typography variant="body2" color="text.primary">
           MiniRead is a web blog created by Aoufi Abderahmane freelance
-          full-stack javascript developer. Here I share my knowledge and
-          experience in web developement and IT in general. Feel free to contact
+          full-stack javascript developer. Feel free to contact
           me!
         </Typography>
       </CardContent>
