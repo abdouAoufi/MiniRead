@@ -15,7 +15,7 @@ function Article() {
       <>
         <Navbar />
         <Typography
-          variant="h6"
+          variant="body2"
           component="div"
           sx={{ mt: 16, textAlign: "center", color: "#f85959" }}
         >

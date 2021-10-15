@@ -5,7 +5,6 @@ import Tabs from "./components/Tabs";
 import { Box } from "@mui/material";
 
 function ArticleList({ articleList }) {
-  
   return (
     <Wrapper>
       <Box sx={{ mt: 1, p: 1 }}>

@@ -17,7 +17,7 @@ export default function index() {
     <List>
       {NAVIGATION_LINKS.map((singleLink, index) => {
         return (
-          <Link to={singleLink.link}>
+          <Link to={singleLink.link} key={index}>
             <ListItem button key={index}>
               <ListItemIcon sx={{ color: DEFAULT_COLORS.secondary }}>
                 {singleLink.icon}

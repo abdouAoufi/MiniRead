@@ -8,11 +8,15 @@ function index() {
     <Box marginTop="1rem">
       <Typography
         variant="body1"
-        sx={{ color: TYPO_COLORS.balck, fontWeight: "bold" }}
+        sx={{
+          color: TYPO_COLORS.balck,
+          fontWeight: "bold",
+          fontSize: "1.4rem",
+        }}
       >
         Popular this week <span>&#128293;</span>
       </Typography>
-      <Box sx={{ pl: 1 }}>
+      <Box sx={{ pl: 0 }}>
         <Typography
           variant="body1"
           sx={{ color: TYPO_COLORS.lessBlack, mt: 1 }}

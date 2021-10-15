@@ -6,12 +6,10 @@ import { Typography } from "@mui/material";
 
 export default function PictureArticle({ image, text }) {
   return (
-    <Box borderRadius="8px" >
+    <Box borderRadius="8px">
       <CardMedia
-        sx={{  overflow: "hidden" , borderRadius : "8px" }}
+        sx={{ overflow: "hidden", borderRadius: "8px" }}
         component="img"
-        minHeight="250px"
-        maxHeight="450px"
         image={image}
         alt={text}
       />
@@ -19,7 +17,7 @@ export default function PictureArticle({ image, text }) {
         <Typography
           variant="body2"
           sx={{
-              mt:1,
+            mt: 1,
             color: TYPO_COLORS.lessBlack,
             textAlign: "center",
           }}

@@ -19,8 +19,8 @@ function Home() {
   const getArticlesHome = () => {
     getArticles().then((response) => {
       console.log("Fetchting articles ...");
-      response.json().then((articles) => {
-        setArticleList(articles.articles);
+      response.json().then((data) => {
+        setArticleList(data.articles);
       });
     });
   };

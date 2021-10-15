@@ -17,13 +17,14 @@ function index({ article }) {
   if (!article) {
     return <p>Error fetching article</p>;
   }
+
   return (
     <Wrapper>
       <Link to={`article/${article._id}`}>
         <ImageHeader src={article.imageHeaderUrl} alt={ARTICLE_CARD.title} />
       </Link>
       <Box sx={{ mt: 2, p: 1 }} component="div">
-        <Profile />
+        <Profile articleDate="hiiii" />
 
         <Box sx={{ pl: 6 }} component="div">
           <Link to={`article/${article._id}`}>
@@ -46,8 +47,17 @@ function index({ article }) {
               }}
             >
               <Typography variant="body2" sx={{ mr: 1 }} color="text.secondary">
-                {article?.articleinfo.timeReading} min &#183; web &#183;
-                20-10-2021
+                {article?.articleinfo.timeReading} min
+                <Box paddingX={1} component="span">
+                  {" "}
+                  &#183;{" "}
+                </Box>{" "}
+                web
+                <Box paddingX={1} component="span">
+                  {" "}
+                  &#183;{" "}
+                </Box>{" "}
+                {new Date(article.updatedAt).toDateString()}
               </Typography>
             </Box>
           </div>

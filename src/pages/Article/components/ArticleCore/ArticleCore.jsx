@@ -16,7 +16,18 @@ export default function ArticleCore({ article }) {
   return (
     <Box sx={{ px: { xs: 2, md: 5 }, py: 2 }}>
       <Profile />
-      <Title>{article?.title}</Title>
+      <Typography
+        variant="h3"
+        component="p"
+        color="text.primary"
+        sx={{
+          fontWeight: "bold",
+          lineHeight: "3.3rem",
+          mt: 2,
+        }}
+      >
+        {article?.title}
+      </Typography>
       <Box>
         {article?.tags.map((tag) => {
           return <Tag key={tag._id}>{tag.name}</Tag>;
@@ -39,6 +50,7 @@ export default function ArticleCore({ article }) {
         >
           More resources about this article :
         </Typography>
+        <Box>{/* // TODO resources */}</Box>
       </Box>
     </Box>
   );

@@ -6,7 +6,7 @@ import { DEFAULT_COLORS, TYPO_COLORS } from "../../assets";
 import abdou from "../../assets/images/jpg/abdou.png";
 import { Link } from "react-router-dom";
 
-function Profile() {
+const Profile = ({ articleDate }) => {
   return (
     <Box component="div" display="flex" alignItems="center" margin="2px 0">
       <Avatar src={abdou} alt="Abdou" sx={{ width: 48, height: 48 }} />
@@ -29,12 +29,12 @@ function Profile() {
               fontWeight: "medium",
             }}
           >
-            JavaScript developer
+            {articleDate}
           </Typography>
         </Link>
       </Box>
     </Box>
   );
-}
+};
 
 export default Profile;

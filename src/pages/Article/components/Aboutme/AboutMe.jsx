@@ -4,7 +4,7 @@ import styled from "styled-components";
 import abdou from "../../../../assets/images/jpg/abdou.png";
 import { Avatar } from "@mui/material";
 import { Typography } from "@mui/material";
-import { TYPO_COLORS } from "../../../../assets";
+import { TYPO_COLORS, DEFAULT_COLORS } from "../../../../assets";
 import CostumeButton from "../../../../components/CostumeButton/CostumeButton";
 import { Link } from "react-router-dom";
 
@@ -30,10 +30,10 @@ export default function AboutMe() {
       </Typography>
       <TextWrapper>
         <Typography
-          sx={{ color: TYPO_COLORS.lessBlack, fontWeight: "400" }}
+          sx={{ color: DEFAULT_COLORS.secondary, fontWeight: "600" }}
           variant="body2"
         >
-          Creator of MiniRead
+          Creator of MiniRead &#128293;
         </Typography>
         <Typography
           paragraph
@@ -86,5 +86,5 @@ const TextWrapper = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 6px 4px;
+  padding: 6px 0px;
 `;
