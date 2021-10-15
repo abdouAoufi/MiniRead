@@ -9,3 +9,13 @@ export const getSigleArticle = (id) => {
     },
   });
 };
+
+export const getArticleByCategoryDB = (category) => {
+  if (!category) return;
+  return fetch(ADRESS + "/article/category/" + category, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+};

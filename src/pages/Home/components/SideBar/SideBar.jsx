@@ -1,4 +1,4 @@
-import * as React from "react";
+import React, { useContext } from "react";
 import Divider from "@mui/material/Divider";
 import NavigatonList from "./NavigationList";
 import TopicList from "./TopicList";
@@ -11,12 +11,6 @@ import { BG_COLOR, TYPO_COLORS } from "../../../../assets";
 import { Typography } from "@mui/material";
 
 function SideBar(props) {
-  const icons = [
-    <FavoriteIcon />,
-    <ChatBubbleIcon />,
-    <BookmarkIcon />,
-    <ShareIcon />,
-  ];
   return (
     <Box
       component="div"
