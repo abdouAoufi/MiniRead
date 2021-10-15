@@ -7,10 +7,9 @@ import ChatBubbleIcon from "@mui/icons-material/ChatBubble";
 import BookmarkIcon from "@mui/icons-material/Bookmark";
 import ShareIcon from "@mui/icons-material/Share";
 import { Box } from "@mui/system";
-import MailIcon from "@mui/icons-material/Mail";
 import { BG_COLOR, TYPO_COLORS } from "../../../../assets";
 import { Typography } from "@mui/material";
-import List from "@mui/material/List";
+
 function SideBar(props) {
   const icons = [
     <FavoriteIcon />,
@@ -35,7 +34,6 @@ function SideBar(props) {
         >
           Navigation
         </Typography>
-        {/* LIST CONTAINER */}
         <Box component="div">
           <NavigatonList />
         </Box>
@@ -47,7 +45,6 @@ function SideBar(props) {
         >
           Topics
         </Typography>
-        {/* LIST CONTAINER */}
         <Box component="div">
           <TopicList />
         </Box>

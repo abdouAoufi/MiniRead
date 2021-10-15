@@ -24,7 +24,9 @@ const About = () => {
           placeItems: "center",
         }}
       >
-        <ProfileImage src={abdou} alt="title" />
+        <Box component="div">
+          <ProfileImage src={abdou} alt="Aoufi abderahamane" />
+        </Box>
         <Box sx={{ p: 8 }}>
           <Typography
             variant="h2"
@@ -52,7 +54,7 @@ const About = () => {
         sx={{
           justifyContent: "center",
           placeitems: "center",
-          pt: 8,
+          pt: 6,
           pb: 4,
           display: "flex",
           flexDirection: { xs: "column", md: "row" },
@@ -76,7 +78,7 @@ const About = () => {
               color: TYPO_COLORS.lessBlack,
               fontSize: "1.25rem",
               maxWidth: "500px",
-              mt : 2
+              mt: 2,
             }}
           >
             Always up for challenge. I can create varity of web apps using
@@ -99,16 +101,17 @@ const About = () => {
           </Typography>
         </Box>
         <Box sx={{ maxWidth: { md: "500px", xs: "300px" } }}>
-          <ContaindTag>Javascript</ContaindTag>
-          <ContaindTag>ReactJs</ContaindTag>
-          <ContaindTag>NodeJs</ContaindTag>
-          <ContaindTag>ExpessJs</ContaindTag>
-          <ContaindTag>NextJs</ContaindTag>
+          <ContaindTag>JavaScript</ContaindTag>
+          <ContaindTag>React</ContaindTag>
+          <ContaindTag>Node</ContaindTag>
+          <ContaindTag>Expess</ContaindTag>
+          <ContaindTag>Redux</ContaindTag>
+          <ContaindTag>Fire base</ContaindTag>
           <ContaindTag>SQL</ContaindTag>
           <ContaindTag>Mongodb</ContaindTag>
           <ContaindTag>MERN</ContaindTag>
-          <ContaindTag>Material ui</ContaindTag>
-          <ContaindTag>Tailwind </ContaindTag>
+          <ContaindTag>Material UI</ContaindTag>
+          <ContaindTag>Tailwind</ContaindTag>
           <ContaindTag>Bootstrap</ContaindTag>
           <ContaindTag>Java</ContaindTag>
           <ContaindTag>Android</ContaindTag>
