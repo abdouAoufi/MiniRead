@@ -4,6 +4,7 @@ import { Avatar } from "@mui/material";
 import { Typography } from "@mui/material";
 import { DEFAULT_COLORS, TYPO_COLORS } from "../../assets";
 import abdou from "../../assets/images/jpg/abdou.png";
+import { Link } from "react-router-dom";
 
 function Profile() {
   return (
@@ -11,24 +12,26 @@ function Profile() {
       <Avatar src={abdou} alt="Abdou" sx={{ width: 48, height: 48 }} />
 
       <Box component="div" marginLeft={1}>
-        <Typography
-          variant="p"
-          component="div"
-          sx={{ color: TYPO_COLORS.balck, fontWeight: "bold" }}
-        >
-          Aoufi abderahmane
-        </Typography>
-        <Typography
-          variant="body2"
-          component="div"
-          sx={{
-            color: TYPO_COLORS.lessBlack,
-            fontSize: "12px",
-            fontWeight: "medium",
-          }}
-        >
-          JavaScript developer
-        </Typography>
+        <Link to="/about">
+          <Typography
+            variant="p"
+            component="div"
+            sx={{ color: TYPO_COLORS.balck, fontWeight: "bold" }}
+          >
+            Aoufi abderahmane
+          </Typography>
+          <Typography
+            variant="body2"
+            component="div"
+            sx={{
+              color: TYPO_COLORS.lessBlack,
+              fontSize: "12px",
+              fontWeight: "medium",
+            }}
+          >
+            JavaScript developer
+          </Typography>
+        </Link>
       </Box>
     </Box>
   );

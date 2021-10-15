@@ -9,7 +9,7 @@ import { DEFAULT_COLORS } from "../../../../../assets";
 
 export default function AppCard() {
   return (
-    <Card sx={{ maxWidth: 345 , boxShadow : 0 , border : "2px solid #eeeeee"}}>
+    <Card sx={{ maxWidth: 345, boxShadow: 0, border: "2px solid #eeeeee" }}>
       <CardMedia
         component="img"
         height="140"
@@ -26,14 +26,21 @@ export default function AppCard() {
           MiniRead
         </Typography>
         <Typography variant="body2" color="text.secondary">
-          Lizards are a widespread group of squamate reptiles, with over 6,000
-          species, ranging across all continents except Antarctica
+          MiniRead is a web blog created by Aoufi Abderahmane freelance
+          full-stack javascript developer. Here I share my knowledge and
+          experience in web developement and IT in general. Feel free to contact
+          me!
         </Typography>
       </CardContent>
       <CardActions>
-        <Button size="small" sx={{ color: DEFAULT_COLORS.secondary , fontWeight : "bold"}}>
-          Join
-        </Button>
+        <a href="https://portfolio-abdouaoufi.vercel.app/">
+          <Button
+            size="small"
+            sx={{ color: DEFAULT_COLORS.secondary, fontWeight: "bold" }}
+          >
+            Contact me
+          </Button>
+        </a>
       </CardActions>
     </Card>
   );

@@ -11,6 +11,7 @@ import MenuIcon from "@mui/icons-material/Menu";
 import { IconButton } from "@mui/material";
 import Drawer from "../Drawer";
 import { createArticle } from "../../api/admin";
+import { Link } from "react-router-dom";
 
 function Navbar() {
   const addArticle = () => {
@@ -44,7 +45,9 @@ function Navbar() {
             <MenuIcon />
           </IconButton>
         </Wrapper>
-        <Logo src={logo} />
+        <Link to="/">
+          <Logo src={logo} alt="MiniRead logo" />
+        </Link>
         <Box sx={{ display: "flex", alignItems: "center" }}>
           <SearchBar />
           <CostumeButton onClick={addArticle}> Create aricle</CostumeButton>

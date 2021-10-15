@@ -19,9 +19,8 @@ function index({ article }) {
         <ImageHeader src={article.imageHeaderUrl} alt={ARTICLE_CARD.title} />
       </Link>
       <Box sx={{ mt: 2, p: 1 }} component="div">
-        <Link to="/about">
-          <Profile />
-        </Link>
+        <Profile />
+
         <Box sx={{ pl: 6 }} component="div">
           <Link to={`article/${article._id}`}>
             <Title>{article?.title}</Title>

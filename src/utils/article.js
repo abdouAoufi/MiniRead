@@ -1,42 +1,36 @@
 export const templateArticle = {
-    title: "Lorem, ipsum dolor sit amet consectetur adipisicing.",
-    imageHeaderUrl:
-      "https://images.unsplash.com/photo-1631936156950-cceaff421624?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=334&q=80",
-    summary:
-      " Lorem ipsum dolor, sit amet consectetur adipisicing elit. Beatae in,\
+  title: "Confused About rem and em units in CSS?",
+  imageHeaderUrl:
+    "https://res.cloudinary.com/practicaldev/image/fetch/s--riWbfIc6--/c_imagga_scale,f_auto,fl_progressive,h_420,q_auto,w_1000/https://dev-to-uploads.s3.amazonaws.com/uploads/articles/ddjqvuwkpuocldrylav2.png",
+  summary:
+    " Lorem ipsum dolor, sit amet consectetur adipisicing elit. Beatae in,\
     possimus error saepe placeat, repellat sequi, voluptatibus odit voluptate\
     ipsa nulla ullam ratione!",
-    tags: [{ name: "web" }, { name: "java" }, { name: "node" }],
-    conclusion:
-      "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ducimus incidunt\
+  tags: [{ name: "front-end" }, { name: "css" }, { name: "css-units" }],
+  conclusion:
+    "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ducimus incidunt\
     explicabo cupiditate animi molestias, error odio neque optio eaque odit.",
-    articleinfo: {
-      timeReading: 5,
-      topic: "Web developement",
-    },
-    content: {
-      data: {
-        paragraph_1:
-          " Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur veniam\
-      nam fugit quaerat libero velit ex sed, exercitationem mollitia assumenda!\
-      Dolore cupiditate nihil odio ullam debitis. Dolorem rem iste, eos dolores\
-      esse sint iusto accusantium dolor officiis reiciendis. Magnam, dicta\
-      minus! Cupiditate, earum. Excepturi vel quam, quisquam pariatur tempora,\
-      aperiam illo vero in laborum culpa temporibus perspiciatis.",
-        imageUrl_1:
-          "https://images.unsplash.com/photo-1544629937-a001f36752e9?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1yZWxhdGVkfDF8fHxlbnwwfHx8fA%3D%3D&auto=format&fit=crop&w=500&q=60",
-        paragraph_2:
-          " Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo magni error\
-        veritatis nobis beatae quaerat, modi obcaecati hic eum tenetur saepe\
-        possimus accusamus, aperiam iure commodi nihil nam odit reprehenderit\
-        magnam perferendis! Voluptatem, officia nisi! Rerum quia, velit nemo\
-        quisquam neque totam tempore animi eum itaque modi inventore beatae ab\
-        minus obcaecati sint sunt alias nostrum! Officia consectetur molestiae\
-        quae dolorum ad omnis delectus, recusandae fugit deleniti voluptatum ullam\
-        asperiores odit, natus optio sapiente assumenda illum autem harum neque\
-        veritatis enim vero. Non, debitis. Impedit, ducimus ad?",
-        imageUrl_2:
-          "https://images.unsplash.com/photo-1631741779142-6c18e6b66b19?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+  articleinfo: {
+    timeReading: 5,
+    topic: "Web developement",
+  },
+  content: {
+    data: [
+      {
+        paragraph:
+          "rem and em units in CSS is creating confusion for beginners,\
+          Most beginners don't understand the correct meaning of both units and then use them without thinking much and it creates lots of problems for them.\
+          em and rem both are known as relative units in CSS.\
+          You've probably been using em and rem units now for a while already, but still, you might be confused about which unit is best in which scenario.",
+        imageUrl:
+          "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse4.mm.bing.net%2Fth%3Fid%3DOIP.x3eQ0WknsCLHiRLl5jGYowHaEr%26pid%3DApi&f=1",
       },
-    },
-  };
+      {
+        paragraph: `An em value is equal to the computed font size of the parent of that element. example if font size of parent element is 20 px then 1em is equal to 20px.
+          if the font size is not specified in the parent element then it will look continues up until the root element.
+          Root element font size is provided by the browser and by default it is 16px.\
+          in this case, 1em is equal to 16px.`,
+      },
+    ],
+  },
+};

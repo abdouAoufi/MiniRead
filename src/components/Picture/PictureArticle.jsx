@@ -10,7 +10,8 @@ export default function PictureArticle({ image, text }) {
       <CardMedia
         sx={{  overflow: "hidden" , borderRadius : "8px" }}
         component="img"
-        height="250"
+        minHeight="250px"
+        maxHeight="450px"
         image={image}
         alt={text}
       />
