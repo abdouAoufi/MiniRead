@@ -4,18 +4,14 @@ import ArticleCard from "./components/ArticleCard";
 import Tabs from "./components/Tabs";
 import { Box } from "@mui/material";
 
-function ArticleList() {
-  const setCurrentSelect = (selected) => {
-    console.log(selected);
-  };
+function ArticleList({ articleList }) {
+  
   return (
     <Wrapper>
-      <Tabs setCurrentSelect={setCurrentSelect} />
       <Box sx={{ mt: 1, p: 1 }}>
-        <ArticleCard />
-        <ArticleCard />
-        <ArticleCard />
-        <ArticleCard />
+        {articleList.map((article, index) => {
+          return <ArticleCard article={article} key={index} />;
+        })}
       </Box>
     </Wrapper>
   );
@@ -25,7 +21,5 @@ export default ArticleList;
 
 const Wrapper = styled.div`
   width: 100%;
-  /* max-height: 100vh; */
   overflow: auto;
-  flex-grow: 1;
 `;

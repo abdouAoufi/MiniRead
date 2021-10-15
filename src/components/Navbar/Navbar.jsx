@@ -10,8 +10,15 @@ import SearchBar from "../SearchBar";
 import MenuIcon from "@mui/icons-material/Menu";
 import { IconButton } from "@mui/material";
 import Drawer from "../Drawer";
+import { createArticle } from "../../api/admin";
 
 function Navbar() {
+  const addArticle = () => {
+    createArticle().then((response) => {
+      console.log(response);
+    });
+  };
+
   const [openDrawer, setOpenDrawer] = useState(false);
   const switchOpen = () => {
     setOpenDrawer(!openDrawer);
@@ -40,7 +47,7 @@ function Navbar() {
         <Logo src={logo} />
         <Box sx={{ display: "flex", alignItems: "center" }}>
           <SearchBar />
-          <CostumeButton>Log in</CostumeButton>
+          <CostumeButton onClick={addArticle}> Create aricle</CostumeButton>
         </Box>
       </Toolbar>
     </AppBar>

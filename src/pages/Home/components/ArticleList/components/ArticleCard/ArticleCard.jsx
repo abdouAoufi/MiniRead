@@ -6,24 +6,30 @@ import Profile from "../../../../../../components/Profile";
 import Title from "../../../../../../components/Typography/Title";
 import Tag from "../../../../../../components/Tag/Tag";
 import { Typography } from "@mui/material";
+import { Link } from "react-router-dom";
 import CostumeButton from "../../../../../../components/CostumeButton/CostumeButton";
 
-function index() {
+function index({ article }) {
+  if (!article) {
+    return <p>Error fetching article</p>;
+  }
   return (
     <Wrapper>
-      <ImageHeader
-        src={ARTICLE_CARD.articleImageHeaderUrl}
-        alt={ARTICLE_CARD.title}
-      />
+      <Link to={`article/${article._id}`}>
+        <ImageHeader src={article.imageHeaderUrl} alt={ARTICLE_CARD.title} />
+      </Link>
       <Box sx={{ mt: 2, p: 1 }} component="div">
-        <Profile />
+        <Link to="/about">
+          <Profile />
+        </Link>
         <Box sx={{ pl: 6 }} component="div">
-          <Title>Make better noise with work</Title>
+          <Link to={`article/${article._id}`}>
+            <Title>{article?.title}</Title>
+          </Link>
           <Box component="div">
-            <Tag>Javascript</Tag>
-            <Tag>web</Tag>
-            <Tag>typescript</Tag>
-            <Tag>nodeJS</Tag>
+            {article?.tags.map((tag, index) => {
+              return <Tag key={tag._id}>{tag.name}</Tag>;
+            })}
           </Box>
           <Box>
             <Box
@@ -40,7 +46,7 @@ function index() {
                 variant="body2"
                 sx={{ mr: 1, color: TYPO_COLORS.lessBlack }}
               >
-                4 min
+                {article?.articleinfo.timeReading} min
               </Typography>
               <CostumeButton>Save</CostumeButton>
             </Box>

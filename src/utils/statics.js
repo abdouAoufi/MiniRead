@@ -1,0 +1,1 @@
+export const ADRESS = "http://192.168.1.111:1337"
