@@ -33,4 +33,14 @@ export const templateArticle = {
       },
     ],
   },
+  resources: [
+    {
+      title: "all about css units",
+      link: "https://dev.to/vetswhocode/the-css-series-part-6-css-units-a02",
+    },
+    {
+      title: "css units",
+      link: "https://www.w3schools.com/CSSref/css_units.asp",
+    },
+  ],
 };

@@ -4,9 +4,9 @@ import { InputBase } from "@mui/material";
 import { IconButton } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 import { BG_COLOR, TYPO_COLORS } from "../../assets";
-import { useMediaQuery } from "@mui/material";
 import { useTheme } from "@mui/material";
 import styled from "styled-components";
+import { createArticle } from "../../api/admin";
 
 function SearchBar() {
   const theme = useTheme();
@@ -32,7 +32,7 @@ function SearchBar() {
           }}
           placeholder="Search"
         />
-        <IconButton>
+        <IconButton onClick={() => createArticle()}>
           <SearchIcon />
         </IconButton>
       </Paper>

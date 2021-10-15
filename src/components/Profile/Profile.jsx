@@ -11,7 +11,7 @@ const Profile = ({ articleDate }) => {
     <Box component="div" display="flex" alignItems="center" margin="2px 0">
       <Avatar src={abdou} alt="Abdou" sx={{ width: 48, height: 48 }} />
 
-      <Box component="div" marginLeft={1}>
+      <Box component="div" marginLeft={1.5}>
         <Link to="/about">
           <Typography
             variant="p"
@@ -29,7 +29,7 @@ const Profile = ({ articleDate }) => {
               fontWeight: "medium",
             }}
           >
-            {articleDate}
+            {articleDate || "Javascript developer"}
           </Typography>
         </Link>
       </Box>

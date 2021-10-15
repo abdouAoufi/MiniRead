@@ -9,11 +9,20 @@ export const getArticles = () => {
   });
 };
 
-export const getTrendPost = () => {
-  return fetch(ADRESS + "/trends", {
+export const getLatestArticlesDB = () => {
+  return fetch(ADRESS + "/latest-posts", {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
     },
   });
 };
+
+// export const getTrendPost = () => {
+//   return fetch(ADRESS + "/trends", {
+//     method: "GET",
+//     headers: {
+//       "Content-Type": "application/json",
+//     },
+//   });
+// };

@@ -6,7 +6,7 @@ import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 import { TYPO_COLORS } from "../../../../../../assets";
 
-const feedType = ["Feed", "Latest", "Top"];
+const feedType = ["Feed", "Latest"];
 
 export default function BasicTabs({ setCurrentSelect }) {
   const [value, setValue] = React.useState(0);
@@ -21,7 +21,6 @@ export default function BasicTabs({ setCurrentSelect }) {
       <Tabs value={value} onChange={handleChange} aria-label="Primary tabs">
         <Tab label="Feed" sx={{ color: TYPO_COLORS.lessBlack }} />
         <Tab label="Latest" />
-        <Tab label="Top" />
       </Tabs>
     </Box>
   );

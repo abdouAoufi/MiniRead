@@ -5,23 +5,38 @@ import SideBar from "./components/SideBar";
 import ArticleList from "./components/ArticleList";
 import MoreInfo from "./components/MoreInfo";
 import styled from "styled-components";
-import { getArticles } from "../../api/home";
+import { getArticles, getLatestArticlesDB } from "../../api/home";
 import Tabs from "./components/ArticleList/components/Tabs";
 
 function Home() {
-  console.log("home rendered");
   const [articleList, setArticleList] = useState([]);
 
   const setCurrentSelect = (selected) => {
     setArticleList([]);
-    setTimeout(getArticlesHome, 2000);
+    switch (selected) {
+      case "Feed":
+        getArticlesHome();
+        break;
+      case "Latest":
+        getLatestArticles();
+        break;
+    }
   };
   const getArticlesHome = () => {
     getArticles().then((response) => {
-      console.log("Fetchting articles ...");
       response.json().then((data) => {
         setArticleList(data.articles);
       });
+    });
+  };
+  const getLatestArticles = () => {
+    // TODO get latest articles
+    getLatestArticlesDB().then((response) => {
+      if (response.ok) {
+        response.json().then((articlesData) => {
+          setArticleList(articlesData.articles)
+        });
+      }
     });
   };
 
