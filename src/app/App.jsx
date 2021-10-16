@@ -3,18 +3,25 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Article from "../pages/Article";
 import Home from "../pages/Home";
 import About from "../pages/About";
+import PreviewArticle from "../pages/PreviewArticle";
+import CreateArticle from "../pages/CreateArticle";
 import { CategoryProvider } from "../context/category";
+import { PreviewContextProvider } from "../context/articlePreview";
 
 function App() {
   return (
     <CategoryProvider>
-      <Router>
-        <Switch>
-          <Route path="/article/:id" component={Article} />
-          <Route path="/about" component={About} />
-          <Route path="/" component={Home} />
-        </Switch>
-      </Router>
+      <PreviewContextProvider>
+        <Router>
+          <Switch>
+            <Route path="/preview" component={PreviewArticle} />
+            <Route path="/article/:id" component={Article} />
+            <Route path="/create-article" component={CreateArticle} />
+            <Route path="/about" component={About} />
+            <Route path="/" component={Home} />
+          </Switch>
+        </Router>
+      </PreviewContextProvider>
     </CategoryProvider>
   );
 }

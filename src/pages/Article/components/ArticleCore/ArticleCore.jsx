@@ -56,15 +56,27 @@ export default function ArticleCore({ article }) {
         <Box>
           <Typography
             variant="body1"
-            sx={{ fontWeight: "bold", color: "text.primary", marginTop: 2 , fontSize : "1.35rem"}}
+            sx={{
+              fontWeight: "bold",
+              color: "text.primary",
+              marginTop: 2,
+              fontSize: "1.35rem",
+            }}
           >
             More resources about this article :
           </Typography>
           <Box marginTop={1}>
             {article?.resources.map((resource) => {
               return (
-                <a href={resource.link}>
-                  <Typography variant="body1" sx={{ color: "#00bBb0", fontSize:"1.0rem" , fontWeight : "600" }}>
+                <a key={resource.link} href={resource.link}>
+                  <Typography
+                    variant="body1"
+                    sx={{
+                      color: "#00bBb0",
+                      fontSize: "1.0rem",
+                      fontWeight: "600",
+                    }}
+                  >
                     {resource.title}
                   </Typography>
                 </a>

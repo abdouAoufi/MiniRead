@@ -39,7 +39,7 @@ export default function Animations() {
           />
         </Box>
 
-        <Box key={1} sx={{ display: { xs: "block", md: "none" } }}>
+        <Box key={2} sx={{ display: { xs: "block", md: "none" } }}>
           <Skeleton
             sx={{ borderRadius: "8px", mt: 2 }}
             variant="rectangular"

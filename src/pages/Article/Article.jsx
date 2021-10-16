@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { Box } from "@mui/system";
 import { Typography } from "@mui/material";
 import Navbar from "../../components/Navbar";
@@ -8,8 +8,11 @@ import ArticleCore from "./components/ArticleCore";
 import { useParams, useHistory, Link } from "react-router-dom";
 import { getSigleArticle } from "../../api/article";
 import Loading from "../../components/Loading";
+import { PreviewContext } from "../../context/articlePreview";
 
 function Article() {
+  const { articlePreview } = useContext(PreviewContext);
+
   const articleID = useParams().id;
   if (!articleID || articleID.length <= 12) {
     return (
@@ -38,6 +41,9 @@ function Article() {
     );
   }
   const fetchSingleArticle = () => {
+    if (articlePreview) {
+      return setArticle(articlePreview);
+    }
     getSigleArticle(articleID)
       .then((response) => {
         if (response.ok) {
