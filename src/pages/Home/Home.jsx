@@ -40,7 +40,7 @@ function Home() {
     }
     getArticles().then((response) => {
       response.json().then((data) => {
-        // setTrendList(data.trendArticle);
+        setTrendList(data.trendArticle);
         setArticleList(data.articles);
       });
     });

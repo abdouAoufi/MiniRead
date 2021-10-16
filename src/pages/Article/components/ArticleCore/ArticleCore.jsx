@@ -9,8 +9,10 @@ import PictureArticle from "../../../../components/Picture/PictureArticle";
 import { Redirect } from "react-router-dom";
 import { Typography } from "@mui/material";
 import styled from "styled-components";
+import Resources from "./components/Resources/Resources";
 
 export default function ArticleCore({ article }) {
+  console.log(article);
   if (!article) {
     return <Redirect to="/" />;
   }
@@ -36,8 +38,8 @@ export default function ArticleCore({ article }) {
           {article?.title}
         </Typography>
         <Box>
-          {article?.tags.map((tag) => {
-            return <Tag key={tag._id}>{tag.name}</Tag>;
+          {article?.tags.map((tag, index) => {
+            return <Tag key={index}>{tag}</Tag>;
           })}
         </Box>
         {article?.content.data.map((section, index) => {
@@ -54,35 +56,7 @@ export default function ArticleCore({ article }) {
           );
         })}
         <Box>
-          <Typography
-            variant="body1"
-            sx={{
-              fontWeight: "bold",
-              color: "text.primary",
-              marginTop: 2,
-              fontSize: "1.35rem",
-            }}
-          >
-            More resources about this article :
-          </Typography>
-          <Box marginTop={1}>
-            {article?.resources.map((resource) => {
-              return (
-                <a key={resource.link} href={resource.link}>
-                  <Typography
-                    variant="body1"
-                    sx={{
-                      color: "#00bBb0",
-                      fontSize: "1.0rem",
-                      fontWeight: "600",
-                    }}
-                  >
-                    {resource.title}
-                  </Typography>
-                </a>
-              );
-            })}
-          </Box>
+          <Resources resources={article?.resources} />
         </Box>
       </Box>
     </Wrapper>

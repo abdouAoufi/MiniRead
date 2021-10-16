@@ -13,18 +13,6 @@ export default function PictureArticle({ image, text }) {
         image={image}
         alt={text}
       />
-      {text && (
-        <Typography
-          variant="body2"
-          sx={{
-            mt: 1,
-            color: TYPO_COLORS.lessBlack,
-            textAlign: "center",
-          }}
-        >
-          {text}
-        </Typography>
-      )}
     </Box>
   );
 }

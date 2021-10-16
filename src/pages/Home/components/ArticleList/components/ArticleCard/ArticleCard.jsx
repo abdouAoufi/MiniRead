@@ -32,7 +32,7 @@ function index({ article }) {
           </Link>
           <Box component="div">
             {article?.tags.map((tag, index) => {
-              return <Tag key={tag._id}>{tag.name}</Tag>;
+              return <Tag key={index}>{tag}</Tag>;
             })}
           </Box>
           <div>

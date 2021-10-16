@@ -59,6 +59,25 @@ export const previewArticle = {
   ],
 };
 
+export const initialPreviewArticle = {
+  updatedAt: "2021-10-15T22:08:28.362Z",
+  title: "",
+  category: "",
+  popularity: 0,
+  imageHeaderUrl: "",
+  summary: "",
+  tags: [],
+  conclusion: "",
+  articleinfo: {
+    timeReading: 0,
+    topic: "",
+  },
+  content: {
+    data: [],
+  },
+  resources: [],
+};
+
 export const templateArticle = {
   title: "Confused About rem and em units in CSS?",
   category: "Computer science",
