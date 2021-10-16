@@ -63,13 +63,13 @@ export const initialPreviewArticle = {
   updatedAt: "2021-10-15T22:08:28.362Z",
   title: "",
   category: "",
-  popularity: 0,
+  popularity: "",
   imageHeaderUrl: "",
   summary: "",
   tags: [],
   conclusion: "",
   articleinfo: {
-    timeReading: 0,
+    timeReading: "",
     topic: "",
   },
   content: {

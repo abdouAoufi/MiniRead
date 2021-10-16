@@ -100,6 +100,7 @@ function CreateArticle() {
         }}
       >
         <Box>
+        <p>basic information</p>
           <TextField
             variant="outlined"
             placeholder="title"
@@ -158,6 +159,7 @@ function CreateArticle() {
             sx={{ width: "100%", mt: 1 }}
           />
         </Box>
+        <p>article information</p>
 
         <TextField
           variant="outlined"
@@ -176,8 +178,11 @@ function CreateArticle() {
           onChange={handleArticleInfo}
           sx={{ width: "100%", mt: 1 }}
         />
+        <p>section 1 </p>
 
         <TextField
+          rows={6}
+          multiline
           variant="outlined"
           placeholder="paragraph 1"
           name="sectionOne"
@@ -193,8 +198,10 @@ function CreateArticle() {
           onChange={handleSection}
           sx={{ width: "100%", mt: 1 }}
         />
-
+        <p>section 2 </p>
         <TextField
+          rows={6}
+          multiline
           variant="outlined"
           placeholder="paragraph 2"
           name="sectionTwo"
@@ -212,11 +219,10 @@ function CreateArticle() {
         />
 
         <Box component="div" mt={4}></Box>
-        <CostumeButton onClick={insertTags}>
-          push
-        </CostumeButton>
+        <CostumeButton onClick={insertTags}>push</CostumeButton>
+        <Box component="div" mt={1}></Box>
         <CostumeButton onClick={previewCurrentArticle}>
-          create article
+          preview article
         </CostumeButton>
       </Box>
     </Box>

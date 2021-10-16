@@ -9,6 +9,7 @@ import { useParams, useHistory, Link } from "react-router-dom";
 import { getSigleArticle } from "../../api/article";
 import Loading from "../../components/Loading";
 import { PreviewContext } from "../../context/articlePreview";
+import Footer from "../../components/Footer";
 
 function Article() {
   const { articlePreview } = useContext(PreviewContext);
@@ -73,10 +74,11 @@ function Article() {
             <Loading />
           </Box>
         )}
-        <Box>
+        <Box sx={{ px: { xs: 2, md: 1 } }}>
           <AboutMe />
         </Box>
       </Box>
+      <Footer />
     </>
   );
 }

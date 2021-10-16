@@ -58,7 +58,9 @@ const Wrapper = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  border-radius: 3px;
+  border-radius: 8px;
+  padding-bottom: 8px;
+  margin-bottom: 8px;
   overflow: hidden;
 `;
 

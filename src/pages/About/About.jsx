@@ -3,12 +3,12 @@ import Navbar from "../.././components/Navbar";
 import styled from "styled-components";
 import abdou from "../../assets/images/jpg/abdou.png";
 import Box from "@mui/material/Box";
-import Title from "../../components/Typography/Title";
 import { Typography } from "@mui/material";
 import { TYPO_COLORS } from "../../assets";
 import { Button } from "@mui/material";
 import { DEFAULT_COLORS } from "../../assets";
 import ContaindTag from "../../components/Tag/Outlined";
+import Footer from "../../components/Footer";
 
 const About = () => {
   return (
@@ -104,6 +104,8 @@ const About = () => {
           <ContaindTag>JavaScript</ContaindTag>
           <ContaindTag>React</ContaindTag>
           <ContaindTag>Node</ContaindTag>
+          <ContaindTag>Rest</ContaindTag>
+          <ContaindTag>GraphQl</ContaindTag>
           <ContaindTag>Expess</ContaindTag>
           <ContaindTag>Redux</ContaindTag>
           <ContaindTag>Fire base</ContaindTag>
@@ -119,6 +121,7 @@ const About = () => {
           <ContaindTag>GitHub</ContaindTag>
         </Box>
       </Box>
+      <Footer />
     </Wrapper>
   );
 };

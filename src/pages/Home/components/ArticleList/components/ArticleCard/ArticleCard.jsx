@@ -21,7 +21,7 @@ function index({ article }) {
   return (
     <Wrapper>
       <Link to={`article/${article._id}`}>
-        <ImageHeader src={article.imageHeaderUrl} alt={ARTICLE_CARD.title} />
+        <ImageHeader src={article.imageHeaderUrl} alt={article.title} />
       </Link>
       <Box sx={{ mt: 2, p: 1 }} component="div">
         <Profile />
