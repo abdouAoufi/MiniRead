@@ -5,15 +5,17 @@ import { IconButton } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 import { BG_COLOR, TYPO_COLORS } from "../../assets";
 import styled from "styled-components";
-import { searchArticleDB } from "../../api/article";
 import { CategoryContext } from "../../context/category";
+import { useHistory } from "react-router-dom";
 
 function SearchBar() {
+  const history = useHistory();
   const { setKeyWord } = useContext(CategoryContext);
   const [keywords, setKeyWords] = useState("");
   const performSearch = () => {
     if (!keywords || keywords.length <= 2) return;
     setKeyWord(keywords);
+    history.replace("/")
   };
   return (
     <Wrapper>

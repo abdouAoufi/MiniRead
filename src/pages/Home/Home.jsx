@@ -51,7 +51,6 @@ function Home() {
     searchArticleDB(keyWord).then((response) => {
       if (response.ok) {
         response.json().then((data) => {
-          setKeyWord("");
           setArticleList(data.articles);
         });
       }
