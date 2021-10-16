@@ -3,7 +3,7 @@ import { styled } from "@mui/material/styles";
 import Button from "@mui/material/Button";
 import { DEFAULT_COLORS } from "../../assets";
 
-const CostumeButton = ({ children , onClick}) => {
+const CostumeButton = ({ children, onClick }) => {
   const StyledButton = styled(Button)({
     backgroundColor: DEFAULT_COLORS.secondary,
     fontWeight: "bold",
@@ -11,6 +11,9 @@ const CostumeButton = ({ children , onClick}) => {
     padding: "4px 1rem",
     color: "white",
     margin: "auto 8px",
+    textAlign : "center",
+    display: "block",
+    maxWidth: "120px",
     fontSize: "15px",
     "&:hover": {
       backgroundColor: DEFAULT_COLORS.darker.secondary,
@@ -19,4 +22,4 @@ const CostumeButton = ({ children , onClick}) => {
   return <StyledButton onClick={onClick}>{children}</StyledButton>;
 };
 
-export default CostumeButton ;
+export default CostumeButton;

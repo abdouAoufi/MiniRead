@@ -11,10 +11,14 @@ import { getArticleByCategoryDB } from "../../api/article";
 import Tabs from "./components/ArticleList/components/Tabs";
 import { CategoryContext } from "../../context/category";
 import Loading from "../../components/Loading";
+import { Typography } from "@mui/material";
+import CostumeButton from "../../components/CostumeButton/CostumeButton";
 
 function Home() {
   const [articleList, setArticleList] = useState([]);
   const [trendArticle, setTrendList] = useState([]);
+  const [isNotFound, setIsNotFound] = useState(false);
+  const [loading, setLoading] = useState(false);
   const { category, setCategory, keyWord, setKeyWord } =
     useContext(CategoryContext);
 
@@ -31,11 +35,10 @@ function Home() {
   };
 
   const getArticlesHome = () => {
-    if (category) return;
-    if (keyWord) return;
     resetList();
     getArticles().then((response) => {
       response.json().then((data) => {
+        setLoading(false);
         setTrendList(data.trendArticle);
         setArticleList(data.articles);
       });
@@ -45,10 +48,17 @@ function Home() {
   const searchArticles = () => {
     resetList();
     searchArticleDB(keyWord).then((response) => {
-      if (response.ok) {
+      if (response.status === 200) {
         response.json().then((data) => {
+          if (data.articles.length === 0) {
+            return setIsNotFound(true);
+          }
+          setLoading(false);
           setArticleList(data.articles);
         });
+      } else {
+        setLoading(false);
+        setIsNotFound(true);
       }
     });
   };
@@ -56,8 +66,9 @@ function Home() {
   const getArticleByCategory = () => {
     resetList();
     getArticleByCategoryDB(category).then((response) => {
-      if (response.ok) {
-        response.json().then((data) => {
+      if (response.status === 200 || response.status === 201) {
+        return response.json().then((data) => {
+          setLoading(false);
           setArticleList(data.articles);
         });
       }
@@ -68,6 +79,7 @@ function Home() {
     getLatestArticlesDB().then((response) => {
       if (response.ok) {
         response.json().then((articlesData) => {
+          setLoading(false);
           setArticleList(articlesData.articles);
         });
       }
@@ -75,10 +87,17 @@ function Home() {
   };
 
   const resetList = () => {
+    setLoading(true);
+    setIsNotFound(false);
     setArticleList([]);
   };
 
-  useLayoutEffect(getArticlesHome, [category]);
+  useLayoutEffect(() => {
+    if (category) return;
+    if (keyWord) return;
+    getArticlesHome();
+  }, []);
+
   useEffect(() => {
     if (category) {
       getArticleByCategory();
@@ -86,13 +105,16 @@ function Home() {
         setCategory(null);
       };
     }
+  }, [category]);
+
+  useEffect(() => {
     if (keyWord) {
       searchArticles();
       return function () {
         setKeyWord(null);
       };
     }
-  }, [category, keyWord]);
+  }, [keyWord]);
 
   return (
     <Wrapper>
@@ -113,11 +135,40 @@ function Home() {
           <Tabs setCurrentSelect={setCurrentSelect} />
           {articleList.length > 0 ? (
             <ArticleList articleList={articleList} />
-          ) : (
-            <Box textAlign="center">
+          ) : null}
+          {loading ? (
+            <Box>
               <Loading />
             </Box>
-          )}
+          ) : null}
+          {isNotFound ? (
+            <Box
+              sx={{
+                display: "flex",
+                justifyContent: "center",
+                flexDirection: "column",
+                placeItems: "center",
+              }}
+            >
+              <Typography
+                variant="body1"
+                component="div"
+                sx={{ mt: 16, textAlign: "center", color: "#f85959" }}
+              >
+                We're having trouble finding this article
+              </Typography>
+              <Box marginTop={4}>
+                <CostumeButton
+                  onClick={() => {
+                    getArticlesHome();
+                  }}
+                >
+                  {" "}
+                  Go home
+                </CostumeButton>
+              </Box>
+            </Box>
+          ) : null}
         </Box>
         <MoreInfo trendArticle={trendArticle} />
       </Box>

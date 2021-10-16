@@ -12,7 +12,6 @@ import styled from "styled-components";
 import Resources from "./components/Resources/Resources";
 
 export default function ArticleCore({ article }) {
-  console.log(article);
   if (!article) {
     return <Redirect to="/" />;
   }

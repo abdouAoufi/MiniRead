@@ -9,36 +9,15 @@ import { getSigleArticle } from "../../api/article";
 import Loading from "../../components/Loading";
 import { PreviewContext } from "../../context/articlePreview";
 import Footer from "../../components/Footer";
+import Error from "./components/Error/Error";
 
 function Article() {
   const { articlePreview } = useContext(PreviewContext);
+  
 
   const articleID = useParams().id;
-  if (!articleID || articleID.length <= 12) {
-    return (
-      <>
-        <Navbar />
-        <Typography
-          variant="body2"
-          component="div"
-          sx={{ mt: 16, textAlign: "center", color: "#f85959" }}
-        >
-          We're having trouble finding this article
-        </Typography>
-        <Link to="/">
-          <Typography
-            sx={{
-              mt: 2,
-              textAlign: "center",
-              color: "#364f6b",
-              fontWeight: "bold",
-            }}
-          >
-            Go Home
-          </Typography>
-        </Link>
-      </>
-    );
+  if (!articleID || articleID.length <= 23) {
+    return <Error />;
   }
   const fetchSingleArticle = () => {
     if (articlePreview) {
@@ -46,12 +25,13 @@ function Article() {
     }
     getSigleArticle(articleID)
       .then((response) => {
-        if (response.ok) {
-          return response.json();
+        if (response.status === 200) {
+          response.json().then((data) => {
+            setArticle(data.article);
+          });
+        } else {
+
         }
-      })
-      .then((data) => {
-        setArticle(data.article);
       })
       .catch((err) => {
         throw new Error(err);

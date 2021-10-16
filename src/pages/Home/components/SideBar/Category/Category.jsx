@@ -11,12 +11,28 @@ import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
 import { CategoryContext } from "../../../../../context/category";
 
 const NAVIGATION_LINKS = [
-  { text: "Programming", link: "/home", icon: <CodeIcon /> },
-  { text: "Web developement", link: "/quize-of-day", icon: <WebIcon /> },
-  { text: "Computer science", link: "/about", icon: <ComputerIcon /> },
-  { text: "Networking", link: "/about", icon: <HttpIcon /> },
-  { text: "Artificial intelligence", link: "/about", icon: <BiotechIcon /> },
-  { text: "Others", link: "/about", icon: <MoreHorizIcon /> },
+  { text: "Programming", identifier: "prg", icon: <CodeIcon /> },
+  {
+    text: "Web developement",
+    identifier: "web",
+    icon: <WebIcon />,
+  },
+  {
+    text: "Computer science",
+    identifier: "cs",
+    icon: <ComputerIcon />,
+  },
+  { text: "Networking", identifier: "net", link: "/about", icon: <HttpIcon /> },
+  {
+    text: "Artificial intelligence",
+    identifier: "ai",
+    icon: <BiotechIcon />,
+  },
+  {
+    text: "Others",
+    identifier: "oth",
+    icon: <MoreHorizIcon />,
+  },
 ];
 export default function index() {
   const { setCategory } = useContext(CategoryContext);
@@ -26,7 +42,7 @@ export default function index() {
         return (
           <ListItem
             button
-            onClick={() => setCategory(singleLink.text)}
+            onClick={() => setCategory(singleLink.identifier)}
             key={index}
           >
             <ListItemIcon sx={{ color: TYPO_COLORS.lessBlack }}>

@@ -26,7 +26,7 @@ function Resources({ resources }) {
             sx={{
               color: "#00bBb0",
               fontSize: "1.0rem",
-              fontWeight: "600",
+              fontWeight: "400",
             }}
           >
             {resources.sourceOne.title}
@@ -38,7 +38,7 @@ function Resources({ resources }) {
             sx={{
               color: "#00bBb0",
               fontSize: "1.0rem",
-              fontWeight: "600",
+              fontWeight: "400",
             }}
           >
             {resources.sourceTwo.title}
