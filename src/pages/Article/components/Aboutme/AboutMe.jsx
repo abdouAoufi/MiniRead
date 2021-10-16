@@ -39,7 +39,7 @@ export default function AboutMe() {
           paragraph
           sx={{ maxWidth: "300px", mt: 1, color: TYPO_COLORS.lessBlack }}
         >
-          Full-stakh freelance javascript developer with 
+          Full-stack freelance javascript developer with 
           experience in working and building web applications.
         </Typography>
         <a href="https://portfolio-abdouaoufi.vercel.app/">
@@ -60,7 +60,7 @@ const Wrapper = styled.div`
   justify-content: center;
   border-radius: 8px;
   padding-bottom: 8px;
-  margin-bottom: 8px;
+  margin-bottom: 38px;
   overflow: hidden;
 `;
 

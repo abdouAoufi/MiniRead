@@ -153,9 +153,9 @@ function Home() {
               <Typography
                 variant="body1"
                 component="div"
-                sx={{ mt: 16, textAlign: "center", color: "#f85959" }}
+                sx={{ mt: 16, textAlign: "center", color: "#f85959", fontWeight : "600" }}
               >
-                We're having trouble finding this article
+                Sorry! we couldn't find any article 
               </Typography>
               <Box marginTop={4}>
                 <CostumeButton
