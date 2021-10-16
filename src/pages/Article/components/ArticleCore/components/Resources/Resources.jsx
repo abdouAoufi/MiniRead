@@ -20,22 +20,30 @@ function Resources({ resources }) {
         More resources about this article :
       </Typography>
       <Box marginTop={1}>
-        {resources.map((resource) => {
-          return (
-            <a key={resource.link} href={resource.link}>
-              <Typography
-                variant="body1"
-                sx={{
-                  color: "#00bBb0",
-                  fontSize: "1.0rem",
-                  fontWeight: "600",
-                }}
-              >
-                {resource.title}
-              </Typography>
-            </a>
-          );
-        })}
+        <a href={resources.sourceOne.link}>
+          <Typography
+            variant="body1"
+            sx={{
+              color: "#00bBb0",
+              fontSize: "1.0rem",
+              fontWeight: "600",
+            }}
+          >
+            {resources.sourceOne.title}
+          </Typography>
+        </a>
+        <a href={resources.sourceTwo.link}>
+          <Typography
+            variant="body1"
+            sx={{
+              color: "#00bBb0",
+              fontSize: "1.0rem",
+              fontWeight: "600",
+            }}
+          >
+            {resources.sourceTwo.title}
+          </Typography>
+        </a>
       </Box>
     </>
   );

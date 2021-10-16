@@ -75,7 +75,10 @@ export const initialPreviewArticle = {
   content: {
     data: [],
   },
-  resources: [],
+  resources: {
+    sourceOne: { title: "", link: "" },
+    sourceTwo: { title: "", link: "" },
+  },
 };
 
 export const templateArticle = {

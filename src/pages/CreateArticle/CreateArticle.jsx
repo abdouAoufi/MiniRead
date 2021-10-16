@@ -13,6 +13,8 @@ function CreateArticle() {
   const [article, setArticle] = useState(initialPreviewArticle);
   const [sectionOne, setSectionOne] = useState({ paragraph: "", imageUrl: "" });
   const [sectionTwo, setSectionTwo] = useState({ paragraph: "", imageUrl: "" });
+  const [sourceOne, setSourceOne] = useState(article.resources.sourceOne);
+  const [sourceTwo, setSourceTwo] = useState(article.resources.sourceTwo);
   const [tags, setTags] = useState("");
 
   const handleInput = (e) => {
@@ -80,10 +82,22 @@ function CreateArticle() {
     setArticle(updateArticle);
   };
 
+  const setSourceOneINP = (e) => {
+    let updateArticle = { ...article };
+    updateArticle.resources.sourceOne[e.target.name] = e.target.value;
+    setArticle(updateArticle);
+  };
+
+  const setSourceTwoINP = (e) => {
+    let updateArticle = { ...article };
+    updateArticle.resources.sourceTwo[e.target.name] = e.target.value;
+    setArticle(updateArticle);
+  };
+
   const previewCurrentArticle = () => {
     insertContent();
     setArticlePreview(article);
-    // console.log(article)
+    console.log(article)
     history.replace("/preview");
   };
 
@@ -100,7 +114,7 @@ function CreateArticle() {
         }}
       >
         <Box>
-        <p>basic information</p>
+          <p>Basic information</p>
           <TextField
             variant="outlined"
             placeholder="title"
@@ -143,6 +157,8 @@ function CreateArticle() {
             sx={{ width: "100%", mt: 1 }}
           />
           <TextField
+            rows={3}
+            multiline
             variant="outlined"
             placeholder="summary"
             name="summary"
@@ -150,16 +166,8 @@ function CreateArticle() {
             onChange={handleInput}
             sx={{ width: "100%", mt: 1 }}
           />
-          <TextField
-            variant="outlined"
-            placeholder="conclusion"
-            name="conclusion"
-            value={article.conclusion}
-            onChange={handleInput}
-            sx={{ width: "100%", mt: 1 }}
-          />
         </Box>
-        <p>article information</p>
+        <p>Article information</p>
 
         <TextField
           variant="outlined"
@@ -178,7 +186,7 @@ function CreateArticle() {
           onChange={handleArticleInfo}
           sx={{ width: "100%", mt: 1 }}
         />
-        <p>section 1 </p>
+        <p>Section 1 </p>
 
         <TextField
           rows={6}
@@ -198,7 +206,7 @@ function CreateArticle() {
           onChange={handleSection}
           sx={{ width: "100%", mt: 1 }}
         />
-        <p>section 2 </p>
+        <p>Section 2 </p>
         <TextField
           rows={6}
           multiline
@@ -217,6 +225,50 @@ function CreateArticle() {
           onChange={handleSection}
           sx={{ width: "100%", mt: 1 }}
         />
+        <p>Resources </p>
+        <Box sx={{ display: "flex", justifyContent: "space-around" }}>
+          <TextField
+            onChange={setSourceOneINP}
+            variant="outlined"
+            placeholder="title 1"
+            name="title"
+            sx={{ flex: 1, mt: 1 }}
+          />
+          <TextField
+            onChange={setSourceOneINP}
+            variant="outlined"
+            placeholder="link 1"
+            name="link"
+            sx={{ flex: 2, mt: 1 }}
+          />
+        </Box>
+        <Box sx={{ display: "flex", justifyContent: "space-around", mt: 1 }}>
+          <TextField
+            onChange={setSourceTwoINP}
+            variant="outlined"
+            placeholder="title 2"
+            name="title"
+            sx={{ flex: 1, mt: 1 }}
+          />
+          <TextField
+            onChange={setSourceTwoINP}
+            variant="outlined"
+            placeholder="link 2"
+            name="link"
+            sx={{ flex: 2, mt: 1 }}
+          />
+        </Box>
+        <p>Conclusion</p>
+        <TextField
+          rows={3}
+          multiline
+          variant="outlined"
+          placeholder="conclusion"
+          name="conclusion"
+          value={article.conclusion}
+          onChange={handleInput}
+          sx={{ width: "100%", mt: 1 }}
+        />
 
         <Box component="div" mt={4}></Box>
         <CostumeButton onClick={insertTags}>push</CostumeButton>
@@ -224,14 +276,10 @@ function CreateArticle() {
         <CostumeButton onClick={previewCurrentArticle}>
           preview article
         </CostumeButton>
+        <Box component="div" mt={4}></Box>
       </Box>
     </Box>
   );
 }
 
 export default CreateArticle;
-
-// const createArticle = () => {
-//   setArticlePreview(previewArticle);
-//   history.replace("/preview");
-// };

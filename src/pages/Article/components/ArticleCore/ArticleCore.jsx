@@ -42,6 +42,9 @@ export default function ArticleCore({ article }) {
             return <Tag key={index}>{tag}</Tag>;
           })}
         </Box>
+        <Box mt={4} mb={4}>
+          {article?.summary && <Text>{article.summary}</Text>}
+        </Box>
         {article?.content.data.map((section, index) => {
           return (
             <Box key={index}>
@@ -55,6 +58,16 @@ export default function ArticleCore({ article }) {
             </Box>
           );
         })}
+        <Box mt={8}>
+          {article?.conclusion && (
+            <div>
+              <Typography sx={{ fontWeight: "bold", fontSize: "1.4rem" }}>
+                Conclusion:
+              </Typography>
+              <Text>{article.conclusion}</Text>
+            </div>
+          )}
+        </Box>
         <Box>
           <Resources resources={article?.resources} />
         </Box>

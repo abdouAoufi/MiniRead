@@ -2,7 +2,6 @@ import React, { useEffect, useState, useContext } from "react";
 import { Box } from "@mui/system";
 import { Typography } from "@mui/material";
 import Navbar from "../../components/Navbar";
-import SideBar from "./components/SideBar";
 import AboutMe from "./components/Aboutme";
 import ArticleCore from "./components/ArticleCore";
 import { useParams, useHistory, Link } from "react-router-dom";
