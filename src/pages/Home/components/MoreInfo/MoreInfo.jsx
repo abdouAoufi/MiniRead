@@ -4,11 +4,11 @@ import styled from "styled-components";
 import AppIntro from "./AppInrto";
 import PopulartPosts from "./PopularPosts";
 
-function MoreInfo() {
+function MoreInfo({ trendArticle }) {
   return (
     <Wrapper>
       <AppIntro />
-      <PopulartPosts />
+      <PopulartPosts trendArticle={trendArticle}/>
     </Wrapper>
   );
 }

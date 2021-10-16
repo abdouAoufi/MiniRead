@@ -6,13 +6,17 @@ import ArticleList from "./components/ArticleList";
 import MoreInfo from "./components/MoreInfo";
 import styled from "styled-components";
 import { getArticles, getLatestArticlesDB } from "../../api/home";
+import { searchArticleDB } from "../../api/article";
 import { getArticleByCategoryDB } from "../../api/article";
 import Tabs from "./components/ArticleList/components/Tabs";
 import { CategoryContext } from "../../context/category";
+import Loading from "../../components/Loading";
 
 function Home() {
   const [articleList, setArticleList] = useState([]);
-  const { category, setCategory } = useContext(CategoryContext);
+  const [trendArticle, setTrendList] = useState([]);
+  const { category, setCategory, keyWord, setKeyWord } =
+    useContext(CategoryContext);
 
   const setCurrentSelect = (selected) => {
     setArticleList([]);
@@ -28,16 +32,31 @@ function Home() {
   };
 
   const getArticlesHome = () => {
+    if (keyWord) {
+      return searchArticles();
+    }
     if (category) {
       return getArticleByCategory();
     }
     getArticles().then((response) => {
       response.json().then((data) => {
+        setTrendList(data.trendArticle);
         setArticleList(data.articles);
       });
     });
   };
 
+  const searchArticles = () => {
+    setArticleList([]);
+    searchArticleDB(keyWord).then((response) => {
+      if (response.ok) {
+        response.json().then((data) => {
+          setKeyWord("");
+          setArticleList(data.articles);
+        });
+      }
+    });
+  };
   const getLatestArticles = () => {
     getLatestArticlesDB().then((response) => {
       if (response.ok) {
@@ -59,7 +78,7 @@ function Home() {
     });
   };
 
-  useEffect(getArticlesHome, [category]);
+  useEffect(getArticlesHome, [category, keyWord]);
 
   return (
     <Wrapper>
@@ -73,7 +92,7 @@ function Home() {
           position: "relative",
         }}
       >
-        <Box sx={{ width: "35%", display: { xs: "none", md: "block" } }}>
+        <Box sx={{ width: "30%", display: { xs: "none", md: "block" } }}>
           <SideBar />
         </Box>
         <Box sx={{ flexGrow: 1, minWidth: "50%" }}>
@@ -82,11 +101,11 @@ function Home() {
             <ArticleList articleList={articleList} />
           ) : (
             <Box textAlign="center">
-              <p>Loading ...</p>
+              <Loading />
             </Box>
           )}
         </Box>
-        <MoreInfo />
+        <MoreInfo trendArticle={trendArticle} />
       </Box>
     </Wrapper>
   );

@@ -1,11 +1,6 @@
 import React, { useContext } from "react";
-import Divider from "@mui/material/Divider";
 import NavigatonList from "./NavigationList";
-import TopicList from "./TopicList";
-import FavoriteIcon from "@mui/icons-material/Favorite";
-import ChatBubbleIcon from "@mui/icons-material/ChatBubble";
-import BookmarkIcon from "@mui/icons-material/Bookmark";
-import ShareIcon from "@mui/icons-material/Share";
+import CategoryList from "./Category";
 import { Box } from "@mui/system";
 import { BG_COLOR, TYPO_COLORS } from "../../../../assets";
 import { Typography } from "@mui/material";
@@ -37,10 +32,10 @@ function SideBar(props) {
           variant="body1"
           sx={{ fontWeight: "bold", color: TYPO_COLORS.balck }}
         >
-          Topics
+          Categories
         </Typography>
         <Box component="div">
-          <TopicList />
+          <CategoryList />
         </Box>
       </Box>
     </Box>

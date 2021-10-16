@@ -7,6 +7,7 @@ import AboutMe from "./components/Aboutme";
 import ArticleCore from "./components/ArticleCore";
 import { useParams, useHistory, Link } from "react-router-dom";
 import { getSigleArticle } from "../../api/article";
+import Loading from "../../components/Loading";
 
 function Article() {
   const articleID = useParams().id;
@@ -60,19 +61,10 @@ function Article() {
           <SideBar />
         </Box>
         {article ? (
-          <ArticleCore article={article}/>
+          <ArticleCore article={article} />
         ) : (
           <Box sx={{ minWidth: "65%" }}>
-            {" "}
-            <Typography
-              sx={{
-                mt: 2,
-                textAlign: "center",
-                color: "#3f3b3b",
-              }}
-            >
-              loading....
-            </Typography>
+            <Loading />
           </Box>
         )}
         <Box>

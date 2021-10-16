@@ -1,6 +1,16 @@
+/*
+Programming
+Web developement
+Computer science
+Networking
+Artificial intelligence
+Others
+*/
+
 export const templateArticle = {
   title: "Confused About rem and em units in CSS?",
-  category: "Programming",
+  category: "Computer science",
+  popularity: 70,
   imageHeaderUrl:
     "https://res.cloudinary.com/practicaldev/image/fetch/s--riWbfIc6--/c_imagga_scale,f_auto,fl_progressive,h_420,q_auto,w_1000/https://dev-to-uploads.s3.amazonaws.com/uploads/articles/ddjqvuwkpuocldrylav2.png",
   summary:

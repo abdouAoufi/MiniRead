@@ -17,12 +17,12 @@ export default function AboutMe() {
           <Avatar
             src={abdou}
             alt="Aoufi abderahmane"
-            sx={{ width: 64, height: 64 }}
+            sx={{ width: 85, height: 85 }}
           />
         </AvatarWrapper>
       </ImageWrapper>
       <Typography
-        sx={{ mt: 4, color: TYPO_COLORS.balck, fontWeight: "bold" }}
+        sx={{ mt: 6, color: TYPO_COLORS.balck, fontWeight: "bold" }}
         component="h5"
         variant="h6"
       >
@@ -70,7 +70,7 @@ const ImageHeader = styled.img`
 
 const AvatarWrapper = styled.div`
   position: absolute;
-  bottom: -28px;
+  bottom: -42.5px;
 `;
 
 const ImageWrapper = styled.div`

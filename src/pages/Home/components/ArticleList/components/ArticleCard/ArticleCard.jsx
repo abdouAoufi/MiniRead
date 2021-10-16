@@ -11,7 +11,6 @@ import Title from "../../../../../../components/Typography/Title";
 import Tag from "../../../../../../components/Tag/Tag";
 import { Typography } from "@mui/material";
 import { Link } from "react-router-dom";
-import CostumeButton from "../../../../../../components/CostumeButton/CostumeButton";
 
 function index({ article }) {
   if (!article) {

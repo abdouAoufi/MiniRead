@@ -8,8 +8,8 @@ function ArticleList({ articleList }) {
   return (
     <Wrapper>
       <Box sx={{ mt: 1, p: 1 }}>
-        {articleList.map((article, index) => {
-          return <ArticleCard article={article} key={index} />;
+        {articleList.map((article) => {
+          return <ArticleCard article={article} key={article._id} />;
         })}
       </Box>
     </Wrapper>

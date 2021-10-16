@@ -19,3 +19,14 @@ export const getArticleByCategoryDB = (category) => {
     },
   });
 };
+
+export const searchArticleDB = (keywords) => {
+  if (!keywords) return;
+  return fetch(ADRESS + "/search/?search=" + keywords, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+};
+
