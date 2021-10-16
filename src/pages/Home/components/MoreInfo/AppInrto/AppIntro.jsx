@@ -9,7 +9,7 @@ import { DEFAULT_COLORS } from "../../../../../assets";
 
 export default function AppCard() {
   return (
-    <Card sx={{ maxWidth: 345, boxShadow: 0, border: "2px solid #eeeeee" }}>
+    <Card sx={{ maxWidth: "90%", boxShadow: 0, border: "2px solid #eeeeee" }}>
       <CardMedia
         component="img"
         height="140"
@@ -22,13 +22,13 @@ export default function AppCard() {
           gutterBottom
           variant="h5"
           component="div"
+          sx={{ fontWeight: "bold" }}
         >
           MiniRead
         </Typography>
-        <Typography variant="body2" color="text.primary">
+        <Typography variant="body1" color="text.secondary">
           MiniRead is a web blog created by Aoufi Abderahmane freelance
-          full-stack javascript developer. Feel free to contact
-          me!
+          full-stack javascript developer. Feel free to contact me!
         </Typography>
       </CardContent>
       <CardActions>

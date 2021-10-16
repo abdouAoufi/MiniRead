@@ -64,9 +64,6 @@ function Article() {
     <>
       <Navbar />
       <Box sx={{ display: { xs: "block", md: "flex" } }}>
-        <Box sx={{ display: { xs: "none", md: "block" } }}>
-          <SideBar />
-        </Box>
         {article ? (
           <ArticleCore article={article} />
         ) : (

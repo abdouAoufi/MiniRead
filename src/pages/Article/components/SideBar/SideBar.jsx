@@ -21,7 +21,7 @@ function SideBar(props) {
   ];
   return (
     <Box sx={{ height: "100%", background: BG_COLOR.grey }}>
-      <List>
+      {/* <List>
         {["12", "22", "9", "1"].map((text, index) => (
           <ListItem button key={text}>
             <ListItemIcon
@@ -50,7 +50,7 @@ function SideBar(props) {
             </ListItemIcon>
           </ListItem>
         ))}
-      </List>
+      </List> */}
     </Box>
   );
 }

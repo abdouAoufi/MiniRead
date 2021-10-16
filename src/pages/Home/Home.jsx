@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect, useContext, useLayoutEffect } from "react";
 import Navbar from "../../components/Navbar";
 import { Box } from "@mui/system";
 import SideBar from "./components/SideBar";
@@ -19,10 +19,9 @@ function Home() {
     useContext(CategoryContext);
 
   const setCurrentSelect = (selected) => {
-    setArticleList([]);
+    resetList();
     switch (selected) {
       case "Feed":
-        setCategory("");
         getArticlesHome();
         break;
       case "Latest":
@@ -32,12 +31,9 @@ function Home() {
   };
 
   const getArticlesHome = () => {
-    if (keyWord) {
-      return searchArticles();
-    }
-    if (category) {
-      return getArticleByCategory();
-    }
+    if (category) return;
+    if (keyWord) return;
+    resetList();
     getArticles().then((response) => {
       response.json().then((data) => {
         setTrendList(data.trendArticle);
@@ -47,7 +43,7 @@ function Home() {
   };
 
   const searchArticles = () => {
-    setArticleList([]);
+    resetList();
     searchArticleDB(keyWord).then((response) => {
       if (response.ok) {
         response.json().then((data) => {
@@ -56,6 +52,18 @@ function Home() {
       }
     });
   };
+
+  const getArticleByCategory = () => {
+    resetList();
+    getArticleByCategoryDB(category).then((response) => {
+      if (response.ok) {
+        response.json().then((data) => {
+          setArticleList(data.articles);
+        });
+      }
+    });
+  };
+
   const getLatestArticles = () => {
     getLatestArticlesDB().then((response) => {
       if (response.ok) {
@@ -66,18 +74,25 @@ function Home() {
     });
   };
 
-  const getArticleByCategory = () => {
+  const resetList = () => {
     setArticleList([]);
-    getArticleByCategoryDB(category).then((response) => {
-      if (response.ok) {
-        response.json().then((data) => {
-          setArticleList(data.articles);
-        });
-      }
-    });
   };
 
-  useEffect(getArticlesHome, [category, keyWord]);
+  useLayoutEffect(getArticlesHome, [category]);
+  useEffect(() => {
+    if (category) {
+      getArticleByCategory();
+      return function () {
+        setCategory(null);
+      };
+    }
+    if (keyWord) {
+      searchArticles();
+      return function () {
+        setKeyWord(null);
+      };
+    }
+  }, [category, keyWord]);
 
   return (
     <Wrapper>
@@ -91,7 +106,7 @@ function Home() {
           position: "relative",
         }}
       >
-        <Box sx={{ width: "30%", display: { xs: "none", md: "block" } }}>
+        <Box sx={{ width: "25%", display: { xs: "none", md: "block" } }}>
           <SideBar />
         </Box>
         <Box sx={{ flexGrow: 1, minWidth: "50%" }}>

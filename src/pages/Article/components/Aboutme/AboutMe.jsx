@@ -39,7 +39,7 @@ export default function AboutMe() {
           paragraph
           sx={{ maxWidth: "300px", mt: 1, color: TYPO_COLORS.lessBlack }}
         >
-          I'm full-stach freelance javascript developer with 3 years of
+          Full-stakh freelance javascript developer with 
           experience in working and building web applications.
         </Typography>
         <a href="https://portfolio-abdouaoufi.vercel.app/">

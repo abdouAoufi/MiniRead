@@ -82,9 +82,9 @@ const About = () => {
             }}
           >
             Always up for challenge. I can create varity of web apps using
-            latest web technology such as ReactJS and NodeJs. I've created
-            several web apps for start-ups. And now being Freelancer You can get
-            in touch with me below.
+            latest web technology such as ReactJS and NodeJs. I can create API (
+            Rest and GraphQL ) . And now being Freelancer You can get in touch
+            with me below.
             <a href="https://portfolio-abdouaoufi.vercel.app/">
               <Button
                 size="large"

@@ -16,11 +16,10 @@ function MoreInfo({ trendArticle }) {
 export default MoreInfo;
 
 const Wrapper = styled.div`
-  width: 100%;
   padding-top: 24px;
   display: none;
   height: 100%;
-  max-width: 25%;
+  width: 30%;
   @media (min-width: 1024px) {
     display: block;
   }

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { Box } from "@mui/system";
 import { AppBar, TextField } from "@mui/material";
 import { Toolbar } from "@mui/material";
@@ -9,13 +9,20 @@ import SearchBar from "../SearchBar";
 import MenuIcon from "@mui/icons-material/Menu";
 import { IconButton } from "@mui/material";
 import Drawer from "../Drawer";
-import { createArticle } from "../../api/admin";
-import { Link } from "react-router-dom";
+import { useHistory } from "react-router-dom";
+import { CategoryContext } from "../../context/category";
 
 function Navbar() {
+  const { setKeyWord, setCategory } = useContext(CategoryContext);
+  const history = useHistory();
   const [openDrawer, setOpenDrawer] = useState(false);
   const switchOpen = () => {
     setOpenDrawer(!openDrawer);
+  };
+  const refreshHomePage = () => {
+    setCategory(null);
+    setKeyWord(null);
+    history.replace("/");
   };
   return (
     <AppBar
@@ -38,9 +45,13 @@ function Navbar() {
             <MenuIcon />
           </IconButton>
         </Wrapper>
-        <Link to="/">
-          <Logo src={logo} alt="MiniRead logo" />
-        </Link>
+        <Box
+          component="div"
+          onClick={refreshHomePage}
+          sx={{ cursor: "pointer" }}
+        >
+          <Logo src={logo} alt="MiniRead_logo" />
+        </Box>
         <Box sx={{ display: "flex", alignItems: "center" }}>
           <SearchBar />
         </Box>
