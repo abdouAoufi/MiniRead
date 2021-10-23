@@ -9,7 +9,7 @@ import { Link } from "react-router-dom";
 
 const NAVIGATION_LINKS = [
   { text: "Home", link: "/", icon: <HomeIcon /> },
-  { text: "Quize", link: "/quize-of-day", icon: <QuizIcon /> },
+  { text: "Quize", link: "/quiz", icon: <QuizIcon /> },
   { text: "About", link: "/about", icon: <InfoIcon /> },
 ];
 export default function index() {
